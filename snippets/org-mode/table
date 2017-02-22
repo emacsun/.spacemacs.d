@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: table
+# --
+#+CAPTION: $1
+#+NAME: tab:$2
+#+ATTR_HTML: :border 1 :rules all :frame border :align center
+#+ATTR_LATEX: :align center
+$0

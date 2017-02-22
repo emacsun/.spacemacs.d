@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: equation2
+# --
+\\[$1\\] $0
