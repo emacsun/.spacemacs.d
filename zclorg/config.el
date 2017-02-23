@@ -73,6 +73,7 @@
 ;; (spacemacs/set-leader-keys "fn" 'find-file) ;
 
 (spacemacs/set-leader-keys "oc" 'org-cycle-agenda-files)
+(spacemacs/set-leader-keys "oC" 'org-capture)
 (spacemacs/set-leader-keys "od" 'sydict-look-up-word)
 (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
 (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
