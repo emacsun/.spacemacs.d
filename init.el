@@ -134,7 +134,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Consolas"
-                               :size 20 
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -307,6 +307,7 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "fn" 'find-file)
   (spacemacs/set-leader-keys "fp" 'ffap)
   (spacemacs/set-leader-keys "oe" 'open-in-desktop)
+  (spacemacs/set-leader-keys "bc" 'whitespace-cleanup)
   (spacemacs/set-leader-keys "fw" 'ido-write-file)
   (spacemacs/set-leader-keys "fd" 'open-in-desktop)
   (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
@@ -356,6 +357,7 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
+  (setq org-latex-toc-command "\\tableofcontents\n\n\\newpage\n\n")
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
