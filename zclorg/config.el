@@ -72,8 +72,8 @@
 
 ;; (spacemacs/set-leader-keys "fn" 'find-file) ;
 
-(spacemacs/set-leader-keys "oc" 'org-cycle-agenda-files)
-(spacemacs/set-leader-keys "oC" 'org-capture)
+;; (spacemacs/set-leader-keys "oc" 'org-cycle-agenda-files)
+(spacemacs/set-leader-keys "oc" 'org-capture)
 (spacemacs/set-leader-keys "od" 'sydict-look-up-word)
 (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
 (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
@@ -84,7 +84,7 @@
 
 (spacemacs/set-leader-keys "oa" 'org-agenda)
 (spacemacs/set-leader-keys "ob" 'previous-buffer)
-(spacemacs/set-leader-keys "oc" 'calendar)
+(spacemacs/set-leader-keys "oC" 'calendar)
 (spacemacs/set-leader-keys "od" 'bh/show-org-agenda)
 (spacemacs/set-leader-keys "of" 'org-publish-current-file)
 (spacemacs/set-leader-keys "op" 'org-publish-current-project)
@@ -170,7 +170,7 @@
 (setq org-capture-templates
       '(
 ;;	("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n Added:%T\n" :clock-in t :clock-resume t)
-	("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n   Added:%U\n")
+	("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? :TODO:\n   Added:%U\n")
 	("w" "wordpress" entry (file+headline "~/zorg/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
 	("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
 	("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
