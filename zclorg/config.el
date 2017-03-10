@@ -2212,3 +2212,5 @@ the plist used as a communication channel."
 		extra contents)))))
 (setq org-bullets-bullet-list '("✿" "❀" "☢" "★" ))
 
+
+
