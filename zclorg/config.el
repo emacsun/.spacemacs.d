@@ -154,9 +154,10 @@
 (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
 (setq org-todo-state-tags-triggers
-      (quote (("CANCELLED" ("CANCELLED" . t))
-	      ("WAITING" ("WAITING" . t))
-	      ("HOLD" ("WAITING" . t) ("HOLD" . t))
+      (quote
+       (("CANCELLED" ("CANCELLED" . t) ("TODO" . nil) ("NEXT" . nil))
+	      ("WAITING" ("WAITING" . t) ("TODO" . nil) ("NEXT" . nil))
+	      ("HOLD" ("WAITING" . t) ("HOLD" . t) ("TODO" . nil) ("NEXT" . nil))
 	      ("NEXT" ("NEXT" . t) ("TODO" . nil) ("DONE" . nil))
 	      ("TODO" ("TODO" . t) ("NEXT" . nil) ("DONE" . nil))
 	      ("DONE" ("DONE" . t) ("TODO" . nil) ("NEXT" . nil))

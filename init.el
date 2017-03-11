@@ -357,8 +357,9 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  (setq org-latex-toc-command "\\tableofcontents\n\n\\newpage\n\n")
+  (setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n\\newpage\n\n")
   )
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -411,16 +412,16 @@ layers configuration. You are free to put any user code."
  '(org-fontify-whole-heading-line nil)
  '(org-structure-template-alist
    (quote
-    (("d" "#+begin_definition  
+    (("d" "#+begin_definition
 ?
 #+end_definition")
-     ("i" "#+begin_instance 
+     ("x" "#+begin_instance
 ?
 #+end_instance")
-     ("p" "#+begin_proof 
+     ("p" "#+begin_proof
 ?
 #+end_proof")
-     ("t" "#+begin_theorem 
+     ("t" "#+begin_theorem
 ?
 #+end_theorem")
      ("s" "#+begin_src ?
@@ -433,6 +434,11 @@ layers configuration. You are free to put any user code."
 #+end_example" "<example>
 ?
 </example>")
+     ("o" "#+begin_output
+?
+#+end_output" "<output>
+?
+</output>")
      ("q" "#+begin_quote
 ?
 #+end_quote" "<quote>
