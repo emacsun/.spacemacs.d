@@ -414,16 +414,24 @@ layers configuration. You are free to put any user code."
    (quote
     (("d" "#+begin_definition
 ?
-#+end_definition")
+#+end_definition" "<definition>
+?
+</definition>")
      ("x" "#+begin_instance
 ?
-#+end_instance")
+#+end_instance" "<instance>
+?
+</instance>")
      ("p" "#+begin_proof
 ?
-#+end_proof")
+#+end_proof" "<proof>
+?
+</proof>")
      ("t" "#+begin_theorem
 ?
-#+end_theorem")
+#+end_theorem" "<theorem>
+?
+</theorem>")
      ("s" "#+begin_src ?
 
 #+end_src" "<src lang=\"?\">
