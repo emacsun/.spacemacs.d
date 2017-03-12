@@ -1697,7 +1697,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
   (condition-case nil
       (org-display-inline-images)
     (error nil)))
-
+ 
 ;; (org-babel-do-load-languages
 ;;  (quote org-babel-load-languages)
 ;;  (quote ((emacs-lisp . t)
@@ -1725,36 +1725,15 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;; Don't enable this because it breaks access to emacs from my Android phone
 (setq org-startup-with-inline-images nil)
 
-                                        ; experimenting with docbook exports - not finished
-(setq org-export-docbook-xsl-fo-proc-command "fop %s %s")
-(setq org-export-docbook-xslt-proc-command "xsltproc --output %s /usr/share/xml/docbook/stylesheet/nwalsh/fo/docbook.xsl %s")
-                                        ;
-                                        ; Inline images in HTML instead of producting links to the image
 (setq org-html-inline-images t)
-                                        ; Do not use sub or superscripts - I currently don't need this functionality in my documents
 (setq org-export-with-sub-superscripts nil)
-                                        ; Use org.css from the norang website for export document stylesheets
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                        ;(setq org-html-head-extra "<link rel=\"stylesheet\" href=\"http://doc.norang.ca/org.css\" type=\"text/css\" />")
 (setq org-html-head-include-default-style nil)
-                                        ; Do not generate internal css formatting for HTML exports
+;; Do not generate internal css formatting for HTML exports
 (setq org-export-htmlize-output-type (quote css))
-                                        ; Export with LaTeX fragments
 (setq org-export-with-LaTeX-fragments t)
-                                        ; Increase default number of headings to export
 (setq org-export-headline-levels 6)
-
-                                        ; List of projects
-                                        ; norang       - http://www.norang.ca/
-                                        ; doc          - http://doc.norang.ca/
-                                        ; org-mode-doc - http://doc.norang.ca/org-mode.html and associated files
-                                        ; org          - miscellaneous todo lists for publishing
 (setq org-publish-project-alist
-                                        ;
-                                        ; http://www.norang.ca/  (norang website)
-                                        ; norang-org are the org-files that generate the content
-                                        ; norang-extra are images and css files that need to be included
-                                        ; norang is the top-level project that gets published
       (quote (("zcl-org"
                :base-directory "~/zorg/output/"
                :publishing-directory "~/zorg/output_html/"
