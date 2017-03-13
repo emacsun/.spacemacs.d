@@ -410,76 +410,7 @@ layers configuration. You are free to put any user code."
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-fontify-whole-heading-line nil)
- '(org-structure-template-alist
-   (quote
-    (("d" "#+begin_definition
-?
-#+end_definition" "<definition>
-?
-</definition>")
-     ("x" "#+begin_instance
-?
-#+end_instance" "<instance>
-?
-</instance>")
-     ("p" "#+begin_proof
-?
-#+end_proof" "<proof>
-?
-</proof>")
-     ("t" "#+begin_theorem
-?
-#+end_theorem" "<theorem>
-?
-</theorem>")
-     ("s" "#+begin_src ?
 
-#+end_src" "<src lang=\"?\">
-
-</src>")
-     ("e" "#+begin_example
-?
-#+end_example" "<example>
-?
-</example>")
-     ("o" "#+begin_output
-?
-#+end_output" "<output>
-?
-</output>")
-     ("q" "#+begin_quote
-?
-#+end_quote" "<quote>
-?
-</quote>")
-     ("v" "#+begin_verse
-?
-#+end_verse" "<verse>
-?
-</verse>")
-     ("c" "#+begin_center
-?
-#+end_center" "<center>
-?
-</center>")
-     ("l" "#+begin_latex
-?
-#+end_latex" "<literal style=\"latex\">
-?
-</literal>")
-     ("L" "#+latex: " "<literal style=\"latex\">?</literal>")
-     ("h" "#+begin_html
-?
-#+end_html" "<literal style=\"html\">
-?
-</literal>")
-     ("H" "#+html: " "<literal style=\"html\">?</literal>")
-     ("a" "#+begin_ascii
-?
-#+end_ascii")
-     ("A" "#+ascii: ")
-     ("i" "#+index: ?" "#+index: ?")
-     ("I" "#+include %file ?" "<include file=%file markup=\"?\">"))))
  '(package-selected-packages
    (quote
     (mmm-mode markdown-toc markdown-mode gh-md jdee web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yapfify xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme matlab-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump disaster dired+ diff-hl define-word cython-mode company-statistics company-quickhelp company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format chinese-fonts-setup cdlatex bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-complete-clang auto-complete-c-headers auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-math ac-ispell)))
