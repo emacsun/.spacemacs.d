@@ -357,7 +357,6 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  (setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n\\newpage\n\n")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
