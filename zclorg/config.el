@@ -1484,6 +1484,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
         (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")
                 ("e" "#+begin_example\n?\n#+end_example" "<example>\n?\n</example>")
                 ("d" "#+begin_definition\n?\n#+end_definition" "<definition>\n?\n</definition>")
+                ("x" "#+begin_instance\n?\n#+end_instance" "<instance>\n?\n</instance>")
                 ("p" "#+begin_proof\n?\n#+end_proof" "<proof>\n?\n</proof>")
                 ("t" "#+begin_theorem\n?\n#+end_theorem" "<theorem>\n?\n</theorem>")
                 ("o" "#+begin_output\n?\n#+end_output" "<output>\n?\n</output>")
@@ -1976,6 +1977,76 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :author nil)
               ("linux"
                :components ("linux-org" "linux-extra"))
+              ("tools-inherit"
+               :base-directory "~/zorg/output/"
+               :recursive t
+               :base-extension "css\\|js"
+               :publishing-directory "~/zorg/output_html/tools/"
+               :publishing-function org-publish-attachment
+               )
+              ("tools-org"
+               :base-directory "~/zorg/output/tools"
+               :publishing-directory "~/zorg/output_html/tools/"
+               :recursive t
+               :section-number nil
+               :table-of-contents nil
+               :base-extension "org"
+               :publishing-function org-html-publish-to-html
+               :auto-sitemap t                ; Generate sitemap.org automagically...
+               :sitemap-filename "tools-map.org"  ;  call it sitemap.org
+               :sitemap-title "tools地图"         ;
+               :sitemap-sort-folders last
+               ;;:sitemap-file-entry-format "%t%d"
+               :style-include-default nil
+               :section-numbers nil
+               :table-of-contents nil
+               :author-info nil
+               :creator-info nil
+               )
+              ("tools-extra"
+               :base-directory "~/zorg/output/tools"
+               :publishing-directory "~/zorg/output_html/tools"
+               :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
+               :publishing-function org-publish-attachment
+               :recursive t
+               :author nil)
+              ("tools"
+               :components ("tools-org" "tools-extra"))
+              ("read-inherit"
+               :base-directory "~/zorg/output/"
+               :recursive t
+               :base-extension "css\\|js"
+               :publishing-directory "~/zorg/output_html/read/"
+               :publishing-function org-publish-attachment
+               )
+              ("read-org"
+               :base-directory "~/zorg/output/read"
+               :publishing-directory "~/zorg/output_html/read/"
+               :recursive t
+               :section-number nil
+               :table-of-contents nil
+               :base-extension "org"
+               :publishing-function org-html-publish-to-html
+               :auto-sitemap t                ; Generate sitemap.org automagically...
+               :sitemap-filename "read-map.org"  ;  call it sitemap.org
+               :sitemap-title "read地图"         ;
+               :sitemap-sort-folders last
+               ;;:sitemap-file-entry-format "%t%d"
+               :style-include-default nil
+               :section-numbers nil
+               :table-of-contents nil
+               :author-info nil
+               :creator-info nil
+               )
+              ("read-extra"
+               :base-directory "~/zorg/output/read"
+               :publishing-directory "~/zorg/output_html/read"
+               :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
+               :publishing-function org-publish-attachment
+               :recursive t
+               :author nil)
+              ("read"
+               :components ("read-org" "read-extra"))
               ("math-inherit"
                :base-directory "~/zorg/output/"
                :recursive t
