@@ -108,7 +108,8 @@
   (spacemacs/set-leader-keys "ov" 'visible-mode)
   (spacemacs/set-leader-keys "ow" 'bh/widen)
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
-
+  )
+(with-eval-after-load 'org
   (defun bh/hide-other ()
     (interactive)
     (save-excursion
@@ -1582,6 +1583,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
   (setq org-log-done 'time);;一个 TODO（未完成）状态改变为一个完成状态时，标题下面就会插入一行 “CLOSED:[timestamp]”
   (setq org-log-done 'note);;提示你输入一个记录（note），并将它保存在n标题为“Closing Note”项目之下
+  )
+(with-eval-after-load 'org
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;wo de;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-agenda-use-tag-inheritance nil)
 ;;;;;设置org时间戳为英文；；；；；；；；；
@@ -1686,7 +1689,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                         ; org          - miscellaneous todo lists for publishing
 
 (setq org-list-allow-alphabetical t)
-
+)
+(with-eval-after-load 'org
 ;; Explicitly load required exporters
 (require 'ox-html)
 (require 'ox-latex)
@@ -2277,4 +2281,5 @@ the plist used as a communication channel."
       org-src-tab-acts-natively t)
 ;;(setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n\\newpage\n\n")
 (setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n")
+
 )
