@@ -1489,7 +1489,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                 ("p" "#+begin_proof\n?\n#+end_proof" "<proof>\n?\n</proof>")
                 ("t" "#+begin_theorem\n?\n#+end_theorem" "<theorem>\n?\n</theorem>")
                 ("o" "#+begin_output\n?\n#+end_output" "<output>\n?\n</output>")
-                ("p" "#+begin_problem\n?\n#+end_problem" "<problem>\n?\n</problem>")
+                ("P" "#+begin_problem\n?\n#+end_problem" "<problem>\n?\n</problem>")
                 ("a" "#+begin_answer\n?\n#+end_answer" "<answer>\n?\n</answer>")
                 ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
                 ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
