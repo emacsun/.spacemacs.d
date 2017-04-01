@@ -2053,6 +2053,41 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :author nil)
               ("read"
                :components ("read-org" "read-extra"))
+              ("me-inherit"
+               :base-directory "~/zorg/output/"
+               :recursive t
+               :base-extension "css\\|js"
+               :publishing-directory "~/zorg/output_html/me/"
+               :publishing-function org-publish-attachment
+               )
+              ("me-org"
+               :base-directory "~/zorg/output/me"
+               :publishing-directory "~/zorg/output_html/me/"
+               :recursive t
+               :section-number nil
+               :table-of-contents nil
+               :base-extension "org"
+               :publishing-function org-html-publish-to-html
+               :auto-sitemap t                ; Generate sitemap.org automagically...
+               :sitemap-filename "me-map.org"  ;  call it sitemap.org
+               :sitemap-title "read地图"         ;
+               :sitemap-sort-folders last
+               ;;:sitemap-file-entry-format "%t%d"
+               :style-include-default nil
+               :section-numbers nil
+               :table-of-contents nil
+               :author-info nil
+               :creator-info nil
+               )
+              ("me-extra"
+               :base-directory "~/zorg/output/me"
+               :publishing-directory "~/zorg/output_html/me"
+               :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
+               :publishing-function org-publish-attachment
+               :recursive t
+               :author nil)
+              ("me"
+               :components ("me-org" "me-extra"))
               ("math-inherit"
                :base-directory "~/zorg/output/"
                :recursive t
