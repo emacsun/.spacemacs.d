@@ -2307,6 +2307,37 @@ the plist used as a communication channel."
                 (if (org-string-nw-p attributes)
                     (concat " " attributes) "")
                 extra contents)))))
+(defun org-html-footnote-section (info)
+  "Format the footnote section.
+INFO is a plist used as a communication channel."
+  (let* ((fn-alist (org-export-collect-footnote-definitions info))
+         (fn-alist
+          (cl-loop for (n _type raw) in fn-alist collect
+                   (cons n (if (eq (org-element-type raw) 'org-data)
+                               (org-trim (org-export-data raw info))
+                             (format "<div class=\"footpara\">%s</div>"
+                                     (org-trim (org-export-data raw info))))))))
+    (when fn-alist
+      (format
+       (plist-get info :html-footnotes-section)
+       (org-html--translate "参考文献" info)
+       (format
+        "%s"
+        (mapconcat
+         (lambda (fn)
+           (let ((n (car fn)) (def (cdr fn)))
+             (format
+              "<div class=\"footdef\">%s %s</div>"
+              (format
+               (plist-get info :html-footnote-format)
+               (org-html--anchor
+                (format "fn.%d" n)
+                n
+                (format " class=\"footnum\" href=\"#fnr.%d\"" n)
+                info))
+              def)))
+         fn-alist
+         "\n"))))))
 (setq org-bullets-bullet-list '("✿" "❀" "☢" "★" ))
 (require 'ob-python)
 (org-babel-do-load-languages
