@@ -300,10 +300,12 @@ layers configuration. You are free to put any user code."
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   (define-key evil-motion-state-map (kbd "C-e") 'end-of-line)
+  (define-key evil-motion-state-map (kbd "C-q") 'undo-tree-visualize)
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
   (define-key evil-visual-state-map (kbd "C-e") 'end-of-line)
+  (define-key evil-visual-state-map (kbd "C-q") 'undo-tree-visualize)
   (spacemacs/set-leader-keys "fn" 'find-file)
   (spacemacs/set-leader-keys "fp" 'ffap)
   (spacemacs/set-leader-keys "oe" 'open-in-desktop)
@@ -318,6 +320,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-insert-state-map (kbd "C-n") 'next-line)
   (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
   (define-key evil-insert-state-map (kbd "C-k") nil)
+  (define-key evil-insert-state-map (kbd "C-q") 'undo-tree-visualize)
   ;;(global-unset-key (kbd "C-k"))
   (define-key evil-insert-state-map (kbd "C-y") 'yank)
   (define-key evil-insert-state-map (kbd "C-v") 'scroll-up-command)
@@ -357,6 +360,7 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
