@@ -354,7 +354,6 @@ layers configuration. You are free to put any user code."
         eclim-executable "C:/Java/eclipse/eclim"
         eclimd-default-workspace "c:/Users/cliyh/workspace"
         eclimd-wait-for-process t)
-  (define-key org-mode-map (kbd "C-i") 'nil)
   (prefer-coding-system 'utf-8-unix)
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")

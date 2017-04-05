@@ -107,6 +107,7 @@
   (spacemacs/set-leader-keys "ot" 'bh/org-todo)
   (spacemacs/set-leader-keys "ov" 'visible-mode)
   (spacemacs/set-leader-keys "ow" 'bh/widen)
+  (define-key org-mode-map (kbd "C-i") 'nil)
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
   )
 (with-eval-after-load 'org
