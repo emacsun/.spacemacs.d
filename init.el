@@ -359,7 +359,8 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-
+  (setq indent-tabs-mode nil)
+  (setq tab-width 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
