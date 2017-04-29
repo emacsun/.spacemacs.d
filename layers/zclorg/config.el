@@ -79,6 +79,7 @@
   (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
   (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
   (spacemacs/set-leader-keys "ol" 'org-toggle-link-display)
+  (spacemacs/set-leader-keys "om" 'org-toggle-pretty-entities)
   (spacemacs/set-leader-keys "on" 'narrow-to-region)
   (spacemacs/set-leader-keys "op" 'bh/phone-call)
   (spacemacs/set-leader-keys "os" 'bh/set-truncate-lines)

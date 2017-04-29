@@ -134,7 +134,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Yahei Consolas Hybrid";"文泉驿等宽正黑"
+   dotspacemacs-default-font '("文泉驿等宽正黑";"Yahei Consolas Hybrid";
                                :size 45
                                :weight normal
                                :width normal
@@ -237,14 +237,14 @@ values."
    dotspacemacs-line-numbers nil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -258,7 +258,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -322,6 +322,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
   (define-key evil-insert-state-map (kbd "C-k") nil)
   (define-key evil-insert-state-map (kbd "C-q") 'undo-tree-visualize)
+  (define-key evil-insert-state-map (kbd "C-r") 'undo-tree-undo)
+  (define-key evil-insert-state-map (kbd "C-t") 'undo-tree-redo)
   ;;(global-unset-key (kbd "C-k"))
   (define-key evil-insert-state-map (kbd "C-y") 'yank)
   (define-key evil-insert-state-map (kbd "C-v") 'scroll-up-command)
@@ -357,7 +359,6 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  (setq smartparens-global-mode 1)
   ;;(setq indent-tabs-mode nil)
   ;;(setq tab-width 4)
   )
@@ -420,6 +421,19 @@ layers configuration. You are free to put any user code."
  '(pos-tip-foreground-color "#272822")
  '(python-shell-completion-native-enable nil)
  '(python-shell-prompt-detect-failure-warning nil)
+ '(safe-local-variable-values
+   (quote
+    ((eval font-lock-add-keywords nil
+           (\`
+            (((\,
+               (concat "("
+                       (regexp-opt
+                        (quote
+                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
+                        t)
+                       "\\_>"))
+              1
+              (quote font-lock-variable-name-face))))))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
