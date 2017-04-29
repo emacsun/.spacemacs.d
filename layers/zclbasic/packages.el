@@ -14,7 +14,7 @@
         matlab-mode
         highlight-symbol
         chinese-fonts-setup
-        company-jedi
+       ;; company-jedi
         dired+        ))
 
 

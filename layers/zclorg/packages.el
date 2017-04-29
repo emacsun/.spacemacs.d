@@ -10,7 +10,7 @@
       :defer t
       :init
       ))
-(defun zclorg/init-org()
+(defun zclorg/post-init-org()
   (use-package org
     ;;:defer t
     :init
