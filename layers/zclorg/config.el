@@ -1611,7 +1611,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;;;;;;;;;;;;;;;;;;;;;;;;org export latex;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;need to add #+LaTeX_CLASS at the beginning
   (setq org-list-allow-alphabetical t)
-
+  (add-hook 'org-mode-hook 'turn-on-reftex)
   ;; Explicitly load required exporters
   (require 'ox-html)
   (require 'ox-latex)
