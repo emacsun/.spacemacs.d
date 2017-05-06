@@ -335,8 +335,8 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map "’" 'save-buffer)
   (define-key evil-normal-state-map "‘" 'save-buffer)
   (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
-  (evil-set-initial-state 'magit-status-mode 'emacs)
-  (push '("*magit" . emacs) evil-buffer-regexps)
+  ;;(evil-set-initial-state 'magit-status-mode 'emacs)
+  ;;(push '("*magit" . emacs) evil-buffer-regexps)
   ;; Bind clang-format-region to C-M-tab in all modes:
   (global-set-key [C-tab] 'clang-format-region)
   ;; Bind clang-format-buffer to tab on the c++-mode only:
