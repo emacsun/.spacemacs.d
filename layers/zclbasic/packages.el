@@ -15,12 +15,27 @@
         highlight-symbol
         chinese-fonts-setup
        ;; company-jedi
+        ssh-agency
+        cygwin-mount
         dired+        ))
 
 
 (defun zclbasic/init-matlab-mode()
   (use-package matlab-mode
     :defer t
+    :init
+    (progn
+      )))
+(defun zclbasic/init-cygwin-mount()
+  (use-package cygwin-mount
+    :defer t
+    :init
+    (progn
+      )))
+
+(defun zclbasic/init-ssh-agency()
+  (use-package ssh-agency
+    :defer nil
     :init
     (progn
       )))
@@ -59,4 +74,3 @@
     (push 'company-jedi company-backends)
     :config
     (push 'company-jedi company-backends-python-mode)))
-

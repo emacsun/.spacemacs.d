@@ -13,19 +13,23 @@
   (let (
         (mypaths
          '(
-           "." 
+           "."
            "C:/texlive/2015/bin/win32"
            ;;"C:/Emacs/bin"
            "C:/Emacs64/bin"
            "C:/Emacs64/bin/zclbin"
            "c:/Emacs64/bin/glo65wb/bin"
-           "C:/cygwin64/bin"
+           ;;"C:/cygwin64/bin"
+           "C:/Git/cmd"
+           "C:/Git/migw64/bin"
+           "C:/Git/usr/bin"
            "C:/LLVM/bin"
            "C:/Users/cliyh/Anaconda3"
            "C:/Users/cliyh/Anaconda3/Scripts"
            "C:/TDM-GCC-64/bin"
            "C:/Java/jdk1.8.0_121/bin"
            "C:/Java/apache-maven-3.3.9-bin"
+           "C:/Users/cliyh/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/cmd"
            ;;"C:/Anaconda3/"
            ;;"C:/Anaconda3/Scripts"
            ;;"F:/document/my_research/research_paper/casthesis"
@@ -40,8 +44,8 @@
 ;; ido
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
-(add-hook 'ido-setup-hook 
-          (lambda () 
+(add-hook 'ido-setup-hook
+          (lambda ()
             (define-key ido-completion-map [tab] 'ido-complete)))
 
 ;;;###autoload
@@ -51,7 +55,7 @@
 ;;;###autoload
 (defun ido-sort-mtime ()
   (setq ido-temp-list
-        (sort ido-temp-list 
+        (sort ido-temp-list
               (lambda (a b)
                 (time-less-p
                  (sixth (file-attributes (concat ido-current-directory b)))
@@ -106,7 +110,7 @@
 
 (setq Tex-parse-self t)
 (setq TeX-show-compilation t);;显示编译信息便于纠错
-(setq LaTeX-math-menu-unicode t) 
+(setq LaTeX-math-menu-unicode t)
 (setq my-tex-commands-extra (list
     (list "XeLaTeX" "xelatex \"%s.tex\"  " 'TeX-run-command nil t)
     (list "dvipdfm" "dvipdfm \"%s.dvi\"  " 'TeX-run-command nil t)
@@ -118,8 +122,8 @@
     (list "ps2pdf" "ps2pdf \"%s.ps\" " 'TeX-run-command nil t)))
 ;;(autoload 'tex "tex" "edit the tex file")
 ;;(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
-;;(setq TeX-engine 'pdflatex);;设置latex引擎 
-;(setq TeX-engine 'xelatex);;设置latex引擎 
+;;(setq TeX-engine 'pdflatex);;设置latex引擎
+;(setq TeX-engine 'xelatex);;设置latex引擎
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;pdf view pragramm;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(setq TeX-view-program-list
 ;      '(("acroread" "acroread %o")))
@@ -133,7 +137,7 @@
 (setq reftex-use-multiple-selection-buffers t )
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" t)
-(autoload 'reftex-citation "reftex-cite" "Make citation" t)  
+(autoload 'reftex-citation "reftex-cite" "Make citation" t)
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
 (setq reftex-toc-split-windows-horizontally t);;*toc*buffer 在左侧。
 (setq reftex-toc-split-windows-fraction 0.4);;*toc*buffer 使用整个frame 的比例。
