@@ -355,17 +355,10 @@ layers configuration. You are free to put any user code."
         eclimd-default-workspace "c:/Users/cliyh/workspace"
         eclimd-wait-for-process t)
   (prefer-coding-system 'utf-8-unix)
-  ;; (setq explicit-shell-file-name "C:/cygwin64/bin/bash.exe")
-  ;; (setq shell-file-name explicit-shell-file-name)
-  ;; (setenv "SSH_ASKPASS" "git-gui--askpass")
-  ;; (list ssh-agency-add-executable (file-executable-p ssh-agency-add-executable)
-  ;;       ssh-agency-agent-executable (file-executable-p ssh-agency-agent-executable))
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  ;;(setq indent-tabs-mode nil)
-  ;;(setq tab-width 4)
 
   )
 
