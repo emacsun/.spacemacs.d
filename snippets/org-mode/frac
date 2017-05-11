@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: frac
+# --
+\frac{$1}{$2}$0
