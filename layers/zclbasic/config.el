@@ -27,6 +27,8 @@
            "C:/Users/cliyh/Anaconda3"
            "C:/Users/cliyh/Anaconda3/Scripts"
            "C:/TDM-GCC-64/bin"
+           "C:/tools/LLVM/bin"
+           "C:/tools/CMake/bin"
            "C:/Java/jdk1.8.0_121/bin"
            "C:/Java/apache-maven-3.3.9-bin"
            "C:/Users/cliyh/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/cmd"
