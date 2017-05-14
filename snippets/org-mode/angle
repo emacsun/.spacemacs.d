@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: angle
+# --
+\langle $1,$2 \rangle $0

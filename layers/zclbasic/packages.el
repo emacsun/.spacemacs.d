@@ -13,7 +13,6 @@
       '(
         matlab-mode
         highlight-symbol
-        chinese-fonts-setup
        ;; company-jedi
         ssh-agency
         cygwin-mount
@@ -49,16 +48,6 @@
       (global-set-key (kbd "M-p") 'highlight-symbol-prev)
       )))
 
-(defun zclbasic/init-chinese-fonts-setup()
-  (use-package chinese-fonts-setup
-    :defer t
-    :init
-    (progn
-      ;;(setq cfs-profiles '("coding" "orging" "reading"))
-      )
-    :config
-    ;;(setq cfs-profiles '("coding" "orging" "reading"))
-  ))
 
 (defun zclbasic/init-dired+()
   (use-package dired+

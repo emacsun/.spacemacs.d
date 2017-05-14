@@ -13,3 +13,5 @@
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
 (global-set-key [f4] 'helm-projectile-grep)
+
+(set-register ?i (cons 'file "~/zorg/output/index.org"))
