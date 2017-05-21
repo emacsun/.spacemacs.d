@@ -135,7 +135,6 @@
   ;;   (interactive)
   ;;   (find-file "/tmp/publish/scratch.org")
   ;;   (gnus-make-directory "/tmp/publish"))
-
   (defun bh/switch-to-scratch ()
     (interactive)
     (switch-to-buffer "*scratch*"))
@@ -1620,6 +1619,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
   (add-hook 'org-mode-hook
             (lambda () (setq truncate-lines nil)))
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex);
+  (spacemacs|diminish org-cdlatex-mode "Ⓞ" "O")
+
   ;; 使用pdflatex一步生成PDF
   (setq org-latex-to-pdf-process
         '("pdflatex -interaction nonstopmode %f"
@@ -1649,7 +1650,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
          (file-exists-p (buffer-file-name))
          (reftex-parse-all)))
   (add-hook 'org-mode-hook 'org-mode-reftex-setup)
-
   (add-to-list 'org-latex-classes
                '("cn-article"
                  "\\documentclass[10pt,a4paper,UTF8]{article}

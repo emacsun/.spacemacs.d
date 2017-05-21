@@ -138,6 +138,7 @@
 (setq reftex-save-parse-info t)
 (setq reftex-use-multiple-selection-buffers t )
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
+(spacemacs|diminish reftex-mode "Ⓡ" "R")
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" t)
 (autoload 'reftex-citation "reftex-cite" "Make citation" t)
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
@@ -172,3 +173,5 @@
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (add-hook 'org-mode-hook 'auto-complete-mode);
 ;;(setq cfs-profiles '("coding" "orging" "reading"))
+;; other basic setup
+(spacemacs|diminish ggtags-mode "Ⓖ" "G")

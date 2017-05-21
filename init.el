@@ -337,6 +337,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map "’" 'save-buffer)
   (define-key evil-normal-state-map "‘" 'save-buffer)
   (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
+  (spacemacs|diminish company-mode "Ⓐ" "A")
   ;;(evil-set-initial-state 'magit-status-mode 'emacs)
   ;;(push '("*magit" . emacs) evil-buffer-regexps)
   ;; Bind clang-format-region to C-M-tab in all modes:
@@ -356,8 +357,6 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
