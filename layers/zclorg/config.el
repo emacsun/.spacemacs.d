@@ -78,6 +78,7 @@
   (spacemacs/set-leader-keys "od" 'sydict-look-up-word)
   (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
   (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
+  (spacemacs/set-leader-keys "oj" 'org-preview-latex-fragment)
   (spacemacs/set-leader-keys "ol" 'org-toggle-link-display)
   (spacemacs/set-leader-keys "om" 'org-toggle-pretty-entities)
   (spacemacs/set-leader-keys "on" 'narrow-to-region)
