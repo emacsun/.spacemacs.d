@@ -357,6 +357,20 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
+  (setq helm-exit-idle-delay 0)
+  (setq projectile-enable-caching t)
+  (setq helm-scroll-amount 4
+        helm-quick-update t
+        helm-idle-delay 0.01
+        helm-input-idle-delay 0.05
+        helm-candidate-number-limit 200
+        helm-M-x-requires-pattern 0
+        helm-move-to-line-cycle-in-source t
+        ido-use-virtual-buffers t
+        helm-buffers-fuzzy-matching t
+        helm-boring-file-regexp-list
+        '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$" "\\.jpg" "\\.png" "\\.fig" "\\.mat" "\\.dat"  )
+        )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
