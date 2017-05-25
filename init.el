@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -60,7 +61,7 @@ values."
      python;
      ;;java
      html
-     markdown
+     ;;markdown
      zclbasic
      zclirony
      )
@@ -357,20 +358,25 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  (setq helm-exit-idle-delay 0)
-  (setq projectile-enable-caching t)
-  (setq helm-scroll-amount 4
-        helm-quick-update t
-        helm-idle-delay 0.01
-        helm-input-idle-delay 0.05
-        helm-candidate-number-limit 200
-        helm-M-x-requires-pattern 0
-        helm-move-to-line-cycle-in-source t
-        ido-use-virtual-buffers t
-        helm-buffers-fuzzy-matching t
-        helm-boring-file-regexp-list
-        '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$" "\\.jpg" "\\.png" "\\.fig" "\\.mat" "\\.dat"  )
-        )
+  (with-eval-after-load "company"
+    (setq company-clang-arguments (append   company-clang-arguments
+                                            '("-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/")))
+
+    )
+  ;; (setq helm-exit-idle-delay 0)
+  ;; (setq projectile-enable-caching t)
+  ;; (setq helm-scroll-amount 4
+  ;;       helm-quick-update t
+  ;;       helm-idle-delay 0.00
+  ;;       helm-input-idle-delay 0.00
+  ;;       helm-candidate-number-limit 200
+  ;;       helm-M-x-requires-pattern 0
+  ;;       helm-move-to-line-cycle-in-source t
+  ;;       ido-use-virtual-buffers t
+  ;;       helm-buffers-fuzzy-matching t
+  ;;       helm-boring-file-regexp-list
+  ;;       '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$" "\\.jpg" "\\.png" "\\.fig" "\\.mat" "\\.dat"  )
+  ;;       )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -393,7 +399,7 @@ layers configuration. You are free to put any user code."
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(evil-escape-delay 0.5)
- '(fci-rule-color "#073642")
+ '(fci-rule-color "#073642" t)
  '(flycheck-check-syntax-automatically nil)
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-symbol-colors
@@ -429,11 +435,13 @@ layers configuration. You are free to put any user code."
  '(paradox-github-token "e18bbc25c1a76fd1f8d680513267b4c75485bac9")
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
+ '(projectile-enable-caching t)
  '(python-shell-completion-native-enable nil)
  '(python-shell-prompt-detect-failure-warning nil)
  '(safe-local-variable-values
    (quote
-    ((eval font-lock-add-keywords nil
+    ((company-clang-arguments "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/")
+     (eval font-lock-add-keywords nil
            (\`
             (((\,
                (concat "("
