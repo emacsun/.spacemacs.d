@@ -1,0 +1,258 @@
+GTAGS(1)                    General Commands Manual                   GTAGS(1)
+
+
+
+[1mNAME[0m
+       gtags - create tag files for global
+
+[1mSYNOPSIS[0m
+       [1mgtags [22m[-ciIOqvw][-d [4mtag-file[24m][-f [4mfile[24m][[4mdbpath[24m]
+
+[1mDESCRIPTION[0m
+       [1mGtags [22mis used to create tag files for [1mglobal[22m(1).
+
+       [1mGtags  [22mrecursively  collects  source files under the current directory,
+       picks up symbols and writes the cross-reference data into the tag files
+       ('GTAGS', 'GRTAGS' and 'GPATH').
+
+       If 'gtags.files' exists in the current directory or a file is specified
+       by the [1m-f [22moption, target files are limited by it. Lines  starting  with
+       '. ' are comments.
+
+       C, yacc, Assembly, Java, C++ and PHP source files are supported.  Files
+       whose names end in '.c', '.h' are assumed to be C source files.   Files
+       whose  names  end  in  '.y' are assumed to be yacc source files.  Files
+       whose names end in '.s', '.S' are assumed to be Assembly source  files.
+       Files  whose  names end in '.java' are assumed to be Java source files.
+       Files whose names end in '.c++', '.cc', '.hh', '.cpp', '.cxx',  '.hxx',
+       '.hpp',  '.C',  '.H'  are  assumed to be C++ source files.  Files whose
+       names end in '.php', '.php3', '.phtml' are assumed  to  be  PHP  source
+       files.   Other files are assumed to be text files. Gtags does not treat
+       binary files.
+
+[1mOPTIONS[0m
+       The following options are available:
+
+       [1m--accept-dotfiles[0m
+              Accept files and directories whose names begin with a  dot.   By
+              default, [1mgtags [22mignores them.
+
+       [1m-c[22m, [1m--compact[0m
+              Make  'GTAGS' in compact format.  This option does not influence
+              'GRTAGS', because that is always made in compact format.
+
+       [1m--config[22m[=[4mname[24m]
+              Print the value of config variable [4mname[24m.  If [4mname[24m is not  speci-
+              fied  then print all names and values.  In addition to the vari-
+              ables listed in  the  ENVIRONMENT  section,  you  can  refer  to
+              install  directories  by  read  only  variables: [1mbindir[22m, [1mlibdir[22m,
+              [1mdatadir[22m, [1mlocalstatedir [22mand [1msysconfdir[22m.
+
+       [1m-d[22m, [1m--dump [4m[22mtag-file[0m
+              Dump a tag file as text to the standard output. Output format is
+
+       [1m--explain[0m
+              Explain handling files.
+
+       [1m-f[22m, [1m--file [4m[22mfile[0m
+              Give a list of candidates of target files.  Files which are  not
+              on the list are ignored.  The argument [4mfile[24m can be set to '-' to
+              accept a list of files from the standard input.  File names must
+              be  separated by newline.  To make the list you may use [1mfind[22m(1),
+              which has rich options for selecting files.
+
+       [1m--gtagsconf [4m[22mfile[0m
+              Set environment variable [1mGTAGSCONF [22mto [4mfile[24m.
+
+       [1m--gtagslabel [4m[22mlabel[0m
+              Set environment variable [1mGTAGSLABEL [22mto [4mlabel[24m.
+
+       [1m-I[22m, [1m--idutils[0m
+              In addition to tag files, make ID database for [1midutils[22m(1).
+
+       [1m-i[22m, [1m--incremental[0m
+              Update tag files incrementally.  It's better  to  use  [1mglobal[22m(1)
+              with the [1m-u [22mcommand.
+
+       [1m-O[22m, [1m--objdir[0m
+              Use BSD-style objdir as the location of tag files.  If '$MAKEOB-
+              JDIRPREFIX' directory  exists,  [1mgtags  [22mcreates  '$MAKEOBJDIRPRE-
+              FIX/<current  directory>'  directory  and makes tag files in it.
+              If [4mdbpath[24m is specified, this option is ignored.
+
+       [1m--single-update [4m[22mfile[0m
+              Update tag files for a single file.  It is considered that  [4mfile[0m
+              was  added,  updated or deleted, and there is no change in other
+              files.  This option implies the [1m-i [22moption.
+
+       [1m--skip-unreadable[0m
+              Skip unreadable files.
+
+       [1m--sqlite3[0m
+              Use Sqlite 3 API to make tag files. By default, BSD/DB 1.85  API
+              is  used.   To  use  this  option,  you need to invoke configure
+              script with [1m--with-sqlite3 [22min the build phase.
+
+       [1m--statistics[0m
+              Print statistics information.
+
+       [1m-q[22m, [1m--quiet[0m
+              Quiet mode.
+
+       [1m-v[22m, [1m--verbose[0m
+              Verbose mode.
+
+       [1m-w[22m, [1m--warning[0m
+              Print warning messages.
+
+       [4mdbpath[24m The directory in which tag files are generated.  The default  is
+              the current directory.
+
+[1mEXAMPLES[0m
+       $ ls -F
+       Makefile      src/    lib/
+       $ gtags -v
+       $ global -x main
+       main              10 src/main.c  main (argc, argv) {
+
+[1mFILES[0m
+       'GTAGS'
+              Tag file for definitions.
+
+       'GRTAGS'
+              Tag file for references.
+
+       'GPATH'
+              Tag file for source files.
+
+       'gtags.conf', '$HOME/.globalrc'
+              See [1mgtags.conf[22m(5).
+
+       'gtags.files'
+              The list of candidates of target files.
+
+[1mENVIRONMENT[0m
+       The following environment variables affect the execution of [1mgtags[22m:
+
+       [1mGTAGSCACHE[0m
+              The size of the B-tree cache. The default is 50000000 (bytes).
+
+       [1mGTAGSCONF[0m
+              Configuration file.
+
+       [1mGTAGSFORCECPP[0m
+              If  this  variable  is  set,  each  file whose suffix is '.h' is
+              treated as a C++ source file.
+
+       [1mGTAGSFORCEENDBLOCK[0m
+              If this variable is set, each } at the first column  brings  end
+              of block of 0 level.
+
+       [1mGTAGSLABEL[0m
+              Configuration label. The default is 'default'.
+
+       [1mGTAGSLOGGING[0m
+              If  this  variable  is  set, '$GTAGSLOGGING' is used as the path
+              name of a log file. There is no default value.
+
+       [1mGTAGS_COMMANDLINE[0m
+              This  variable  can  only  be  referenced  from  the  hook  (see
+              gtags_hook).   [1mGtags [22msets its own effective command line to this
+              variable before calling the hook. Each argument is separated  by
+              whitespace, and real whitespace is represented as '%20'. This is
+              read only.
+
+       [1mGTAGS_OPTIONS[0m
+              The value of this variable is inserted in the head of arguments.
+
+       [1mMAKEOBJDIR[0m
+              If this variable is set, '$MAKEOBJDIR' is used as  the  name  of
+              BSD-style objdir. The default is 'obj'.
+
+       [1mMAKEOBJDIRPREFIX[0m
+              If this variable is set, '$MAKEOBJDIRPREFIX' is used as the pre-
+              fix of BSD-style objdir. The default is '/usr/obj'.
+
+       [1mTMPDIR [22mThe location used to stored  temporary  files.  The  default  is
+              '/tmp'.
+
+[1mCONFIGURATION[0m
+       The  following  configuration  variables affect the execution of [1mgtags[22m.
+       You can see the default value  for  each  variable  with  the  [1m--config[0m
+       option.
+
+       gtags_parser (comma separated list)
+              Specify the mapping of language names and plug-in parsers.  Each
+              part delimited by the comma consists of  the  language  name,  a
+              colon,  the  shared object path, an optional colon followed by a
+              function name.  If the function name is not specified,  'parser'
+              is  assumed.  As a special exception, [1mgtags [22mcollects values from
+              multiple gtags_parser variables.
+
+       gtags_hook (command line)
+              Specify a command line which should be executed at the beginning
+              of [1mgtags [22mafter loading configuration file. You can use this hook
+              to update 'gtags.files' dynamically.  "./" in  it  always  means
+              the project root directory, since [1mgtags [22mis always invoked there.
+
+       icase_path (boolean)
+              Ignore  case  distinctions  in  the  path.   Suffixes  check  is
+              affected by this capability.
+
+       langmap (comma separated list)
+              Language mapping. Each comma-separated map consists of the  lan-
+              guage  name,  a colon, and a list of file extensions.  As a spe-
+              cial exception, [1mgtags  [22mcollects  values  from  multiple  langmap
+              variables.  Default mapping is:
+              'c:.c.h,yacc:.y,asm:.s.S,java:.java,cpp:.c++.cc.hh.cpp.cxx.hxx.hpp.C.H,php:.php.php3.phtml'.
+
+       skip (comma separated list)
+              [1mGtags [22mskips files and directories which are given in this  list.
+              As a special exception, [1mgtags [22mcollects values from multiple skip
+              variables.  If the value ends with  '/',  it  is  assumed  as  a
+              directory  and  [1mgtags  [22mskips  all files under it.  The value may
+              include glob patterns (*, ?, [...], [!...], [^...]).
+
+              If the value starts with '/', it is assumed a relative path name
+              from the root directory of the project. You cannot use glob pat-
+              terns for a path name. However, this direction  is  out-of-date,
+              and is not recommended. Instead, you can use [1m-f [22moption which can
+              be combined with [1mfind[22m(1). Since  [1mfind[22m(1)  has  rich  options  to
+              select  files,  you  can do everything. Additionally, this tech-
+              nique can also be applied to  any  other  tagging  systems  like
+              [1mctags[22m(1), [1mcscope[22m(1), and etc.
+
+              Skip   list   is   also   effective  when  you  use  the  [1m-f  [22mor
+              'gtags.files'.
+
+[1mDIAGNOSTICS[0m
+       [1mGtags [22mexits with a non-0 value if an error occurred, 0 otherwise.
+
+       Note that files created by [1mgtags [22mwith a non-zero exit  code  should  be
+       considered corrupted.
+
+[1mSEE ALSO[0m
+       [1mglobal[22m(1), [1mhtags[22m(1), [1mgtags.conf[22m(5).
+
+       GNU GLOBAL source code tag system
+       (http://www.gnu.org/software/global/).
+
+[1mBUG[0m
+       'GTAGS' and 'GRTAGS' are very large.  In advance of using this command,
+       check the space of your disk.
+
+       Assembly support is far from complete.  It extracts  only  ENTRY()  and
+       ALTENTRY() from source file.  Probably valid only for FreeBSD and Linux
+       kernel source.
+
+       There is no concurrency control about tag files.
+
+[1mAUTHOR[0m
+       Shigio YAMAGUCHI, Hideki IWAMOTO and others.
+
+[1mHISTORY[0m
+       The [1mgtags [22mcommand appeared in FreeBSD 2.2.2.
+
+
+
+GNU Project                     September 2016                        GTAGS(1)

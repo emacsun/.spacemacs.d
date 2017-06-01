@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -358,25 +358,9 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  (with-eval-after-load "company"
-    (setq company-clang-arguments (append   company-clang-arguments
-                                            '("-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/")))
-
-    )
-  ;; (setq helm-exit-idle-delay 0)
-  ;; (setq projectile-enable-caching t)
-  ;; (setq helm-scroll-amount 4
-  ;;       helm-quick-update t
-  ;;       helm-idle-delay 0.00
-  ;;       helm-input-idle-delay 0.00
-  ;;       helm-candidate-number-limit 200
-  ;;       helm-M-x-requires-pattern 0
-  ;;       helm-move-to-line-cycle-in-source t
-  ;;       ido-use-virtual-buffers t
-  ;;       helm-buffers-fuzzy-matching t
-  ;;       helm-boring-file-regexp-list
-  ;;       '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$" "\\.jpg" "\\.png" "\\.fig" "\\.mat" "\\.dat"  )
-  ;;       )
+  ;; (with-eval-after-load "company"
+  ;;   (setq company-clang-arguments (append   company-clang-arguments
+  ;;                                           '("-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/"))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

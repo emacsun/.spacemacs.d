@@ -1,0 +1,51 @@
+___________________________________
+|      |  |  |     |  _  |     |  |
+|  |___|  |  |  |  |    _|  |  |  |    GNU GLOBAL source code tag system
+|  |   |  |  |  |  |     |     |  |
+|  ~~  |   ~~|     |  ~  |  |  |   ~~|          for all hackers.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Copyright (c) 2011 Tama Communications Corporation
+
+ This file is free software; as a special exception the author gives
+ unlimited permission to copy and/or distribute it, with or without
+ modifications, as long as this notice is preserved.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+                ----------------------------------
+
+Usage of server-side GLOBAL
+
+If the following conditions are met, you can use server-side GLOBAL facilities
+without installing GLOBAL in your client machine.
+
+1. You have a server machine in which GLOBAL is installed. 
+   (called the "server" below)
+2. You can log in the server without pass word using ssh from your machine.
+   (called the "client" below)
+3. You can access the same project of the both sides (client and server)
+   by the same path name probably using Network File System(NFS).
+
+How to use server-site GLOBAL.
+
+1. Make some shell scripts (global-client, gtags-client, htags-client) available
+   by copying or network mounting. These are in /usr/local/share/gtags/scripts
+   on the server.
+2. Set the server name to 'GTAGSREMOTEHOST' environment variable. If your
+   user id on the server is different from the one on the client, set the user id
+   to 'GTAGSREMOTEUSER'.  And you can use above scripts instead of global, gtags
+   and htags respectively.
+
+3. To use the various environments which GLOBAL supports, please set the
+   following variables like follows:
+	GTAGSGTAGS=gtags-client
+	GTAGSGLOBAL=global-client
+	LESSGLOBALTAGS=less-global	(if you use less)
+
+	[$HOME/.elvisrc]		(if you use elvis)
+	+----------------------------
+	|set tagprg="elvis-global $1"
+
+Good luck!

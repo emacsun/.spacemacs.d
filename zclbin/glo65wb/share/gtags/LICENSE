@@ -1,0 +1,316 @@
+___________________________________
+|      |  |  |     |  _  |     |  |
+|  |___|  |  |  |  |    _|  |  |  |    GNU GLOBAL source code tag system
+|  |   |  |  |  |  |     |     |  |
+|  ~~  |   ~~|     |  ~  |  |  |   ~~|          for all hackers.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+GNU GLOBAL is a free software.
+
+	What is free software? <http://www.gnu.org/philosophy/free-sw.html>
+
+GNU GLOBAL is covered by the following free software licenses:
+
+The original part of GNU GLOBAL
+
+    Copyright (c) 1996-2016 Tama Communications Corporation
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+The Output results by htags command.
+
+    Tama Communications Corporation doesn't insist on the copyright to
+    the output results by htags command. But they might contain another
+    person's products (like jquery.js and plugins for it).
+
+Htags Hyper-text Reference Kit (htags_path2url.c):
+
+    This file is placed into the public domain by the author,
+    2005 Tama Communications Corporation.
+
+Getopt for GNU (getopt.c getopt.h getopt1.c):
+
+    Copyright (C) 1987-1996,1998-2004,2008
+         Free Software Foundation, Inc.
+
+    The GNU C Library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    The GNU C Library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with the GNU C Library; if not, write to the Free
+    Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+    02111-1307 USA.
+
+REGEX library:
+     Extended regular expression matching and search library,
+     version 0.12.
+     (Implements POSIX draft P1003.2/D11.2, except for some of the
+     internationalization features.)
+     Copyright (C) 1993-1999, 2000 Free Software Foundation, Inc.
+
+     The GNU C Library is free software; you can redistribute it and/or
+     modify it under the terms of the GNU Library General Public License as
+     published by the Free Software Foundation; either version 2 of the
+     License, or (at your option) any later version.
+
+     The GNU C Library is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     Library General Public License for more details.
+
+     You should have received a copy of the GNU Library General Public
+     License along with the GNU C Library; see the file COPYING.LIB.  If not,
+     write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+     Boston, MA  02110-1301  USA
+
+DB library:
+
+     Copyright (c) 1991, 1993, 1994
+          The Regents of the University of California.  All rights reserved.
+
+     This code is derived from software contributed to Berkeley by
+     Mike Olson.
+
+     Redistribution and use in source and binary forms, with or without
+     modification, are permitted provided that the following conditions
+     are met:
+     1. Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+     2. Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+     3. Neither the name of the University nor the names of its contributors
+        may be used to endorse or promote products derived from this software
+        without specific prior written permission.
+
+     THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+     IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+     ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+     FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+     DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+     OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+     HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+     LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+     OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+     SUCH DAMAGE.
+
+Icon files by Kevin Hughes.
+
+     [apache_1.3.1/icons/README]
+
+     Public Domain Icons
+
+     These icons were originally made for Mosaic for X and have been
+     included in the NCSA httpd and Apache server distributions in the
+     past. They are in the public domain and may be freely included in any
+     application. The originals were done by Kevin Hughes (kevinh@eit.com).
+
+     Many thanks to Andy Polyakov for tuning the icon colors and adding a
+     few new images. If you'd like to contribute additions or ideas to
+     this set, please let me know.
+
+     The distribution site for these icons is at:
+
+          http://www.eit.com/goodies/www.icons/
+
+     Kevin Hughes
+     September 11, 1995
+
+Icon files by GNOME Foundation.
+
+     [gnome-1.4/gnome-libs-1.2.13/README]
+
+     *
+     * Licensing
+     *
+     
+        The GNOME libraries (libgnome, libgnomeui, gtk-xmhtml, zvt, vfs)
+     are released under the terms of the LGPL license, read the file
+     COPYING.LIB for more information.
+
+Icon file by Tama Communications Corporation (icons/pglobe.png).
+
+    This file is placed into the public domain by the author,
+    2006 Tama Communications Corporation.
+
+jquery and plugins by the following people.
+
+    [jquery/jquery.js]
+
+    jQuery JavaScript Library v1.4.2
+    Copyright 2010, John Resig
+    Dual licensed under the MIT or GPL Version 2 licenses.
+    http://jquery.org/license
+
+    Includes Sizzle.js
+    http://sizzlejs.com/
+    Copyright 2010, The Dojo Foundation
+    Released under the MIT, BSD, and GPL Licenses.
+
+    [jquery/jquery.suggest.js, htags/jquery.suggest.css]
+
+    jquery.suggest 1.1 - 2007-08-06 by by Peter Vulgaris
+    Based on autocomplete,js by Joern Zaefferer and
+    iautocompleter.js by Stefan Petre.
+    Dual licensed under the MIT and GPL licenses.
+
+    A little modification by Tama Communications Corporation
+    was put on the public domain.
+
+    [jquery/jquery.treeview.js, htags/jquery.treeview.css]
+
+    Copyright (c) 2007 Joern Zaefferer
+    Dual licensed under the MIT and GPL licenses:
+
+cscope-15.7a by Joe Steffen and others.
+
+    Copyright (c) 1998-2000, The Santa Cruz Operation 
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    *Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+
+    *Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+
+    *Neither name of The Santa Cruz Operation nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission. 
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+    IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+    THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE
+    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION)
+    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+    DAMAGE. 
+
+Literal search code (global/literal.c derived from /usr/src/usr.bin/fgrep.c in 4.3BSD)
+
+    Caldera Ancient Unix License [http://www.tuhs.org/Archive/Caldera-license.pdf]
+
+    CALDERA
+    240 West Center Street
+    Orem, Utah 84057
+    801-765-4999 Fax 801-765-4481
+    
+    January 23, 2002
+    
+    Dear UNIX(R) enthusiasts,
+    
+    Caldera International, Inc. hereby grants a fee free license that includes the rights use,
+    modify and distribute this named source code, including creating derived binary products
+    created from the source code. The source code for which Caldera International, Inc.
+    grants rights are limited to the following UNIX Operating Systems that operate on the
+    16-Bit PDP-11 CPU and early versions of the 32-Bit UNIX Operating System, with specific
+    exclusion of  UNIX System III and UNIX System V and successor operating systems:
+    
+    32-bit  32V UNIX
+    16 bit UNIX Versions 1, 2, 3, 4, 5, 6, 7
+    
+    Caldera International, Inc. makes no guarantees or commitments that any source code is
+    available from Caldera International, Inc.
+    
+    The following copyright notice applies to the source code files for which this license
+    is granted.
+    
+    Copyright(C) Caldera International Inc.  2001-2002.  All rights reserved.
+    
+    Redistribution and use in source and binary forms, with or without modification, are
+    permitted provided that the following conditions are met:
+    
+    Redistributions of source code and documentation must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+    
+    Redistributions in binary form must reproduce the above copyright notice, this list of
+    conditions and the following disclaimer in the documentation and/or other materials
+    provided with the distribution.
+    
+    All advertising materials mentioning features or use of this software must display the
+    following acknowledgement:
+    
+    This product includes software developed or owned by Caldera International, Inc.
+    
+    Neither the name of Caldera International, Inc. nor the names of other contributors may
+    be used to endorse or promote products derived from this software without specific prior
+    written permission.
+    
+    USE OF THE SOFTWARE PROVIDED FOR UNDER THIS LICENSE BY CALDERA INTERNATIONAL, INC.
+    AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL CALDERA INTERNATIONAL, INC. BE LIABLE FOR
+    ANY DIRECT, INDIRECT INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+    USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+    OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+    
+    Very truly yours,
+    
+    /signed/ Bill Broderick
+    Bill Broderick
+    Director, Licensing Services
+    
+    * UNIX is a registered trademark of The Open Group in the US and other countries.
+
+Pygments Plug-in Parser by Yoshitaro MAKISE
+
+    [https://github.com/yoshizow/global-pygments-plugin]
+    pygments_parser.py.in
+    pygments-parser.c
+
+    Copyright (c) 2014 Yoshitaro Makise
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+SQLite3 by D. Richard Hipp
+
+    SQLite Copyright
+
+    All of the code and documentation in SQLite has been dedicated to the public domain
+    by the authors. All code authors, and representatives of the companies they work for,
+    have signed affidavits dedicating their contributions to the public domain and
+    originals of those signed affidavits are stored in a firesafe at the main offices
+    of Hwaci. Anyone is free to copy, modify, publish, use, compile, sell, or distribute
+    the original SQLite code, either in source code form or as a compiled binary,
+    for any purpose, commercial or non-commercial, and by any means.

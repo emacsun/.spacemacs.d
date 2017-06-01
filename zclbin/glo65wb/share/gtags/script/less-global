@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# global command for less
+#
+eval ${GTAGSGLOBAL-global} $*
