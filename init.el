@@ -239,7 +239,7 @@ values."
    dotspacemacs-line-numbers nil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
-   dotspacemacs-smartparens-strict-mode t
+   dotspacemacs-smartparens-strict-mode nil
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -342,7 +342,8 @@ layers configuration. You are free to put any user code."
   ;;(evil-set-initial-state 'magit-status-mode 'emacs)
   ;;(push '("*magit" . emacs) evil-buffer-regexps)
   ;; Bind clang-format-region to C-M-tab in all modes:
-  (setq-default dotspacemacs-smartparens-strict-mode t)
+  ;; (setq-default dotspacemacs-smartparens-strict-mode t)
+  (smartparens-global-mode)
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
   ;; (require 'chinese-fonts-setup)
   ;; (chinese-fonts-setup-enable)
@@ -358,9 +359,6 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
     (setq jdee-read-compile-args nil)
     )
-  ;; (with-eval-after-load "company"
-  ;;   (setq company-clang-arguments (append   company-clang-arguments
-  ;;                                           '("-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/"))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

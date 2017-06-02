@@ -1488,12 +1488,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
         (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")
                 ("e" "#+begin_example\n?\n#+end_example" "<example>\n?\n</example>")
                 ("d" "#+begin_definition\n?\n#+end_definition" "<definition>\n?\n</definition>")
-                ("x" "#+begin_instance\n?\n#+end_instance" "<instance>\n?\n</instance>")
-                ("p" "#+begin_proof\n?\n#+end_proof" "<proof>\n?\n</proof>")
-                ("t" "#+begin_theorem\n?\n#+end_theorem" "<theorem>\n?\n</theorem>")
+                ("x" "#+begin_tikzinstance\n?\n#+end_tikzinstance" "<tikzinstance>\n?\n</tikzinstance>")
+                ("p" "#+begin_tikzproof\n?\n#+end_tikzproof" "<tikzproof>\n?\n</tikzproof>")
+                ("t" "#+begin_tikztheorem\n?\n#+end_tikztheorem" "<tikztheorem>\n?\n</tikztheorem>")
                 ("o" "#+begin_output\n?\n#+end_output" "<output>\n?\n</output>")
-                ("P" "#+begin_problem\n?\n#+end_problem" "<problem>\n?\n</problem>")
-                ("a" "#+begin_answer\n?\n#+end_answer" "<answer>\n?\n</answer>")
+                ("P" "#+begin_tikzproblem\n?\n#+end_tikzproblem" "<tikzproblem>\n?\n</tikzproblem>")
+                ("a" "#+begin_tikzanswer\n?\n#+end_tikzanswer" "<tikzanswer>\n?\n</tikzanswer>")
                 ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
                 ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
                 ("c" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
@@ -1655,6 +1655,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                '("cn-article"
                  "\\documentclass[10pt,a4paper,UTF8]{article}
 \\usepackage{zclorg}
+\\usepackage{tikztheorem}
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
 ("\\section{%s}" . "\\section*{%s}")
