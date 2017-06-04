@@ -1495,6 +1495,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                 ("P" "#+begin_tikzproblem\n?\n#+end_tikzproblem" "<tikzproblem>\n?\n</tikzproblem>")
                 ("a" "#+begin_tikzanswer\n?\n#+end_tikzanswer" "<tikzanswer>\n?\n</tikzanswer>")
                 ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
+                ("Q" "#+begin_tikzquote\n?\n#+end_tikzquote" "<tikzquote>\n?\n</tikzquote>")
                 ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
                 ("c" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
                 ("l" "#+begin_latex\n?\n#+end_latex" "<literal style=\"latex\">\n?\n</literal>")
