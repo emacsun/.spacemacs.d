@@ -381,7 +381,7 @@ layers configuration. You are free to put any user code."
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(evil-escape-delay 0.5)
- '(fci-rule-color "#073642" t)
+ '(fci-rule-color "#073642")
  '(flycheck-check-syntax-automatically nil)
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-symbol-colors
