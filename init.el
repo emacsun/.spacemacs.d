@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     rust
+     markdown
      html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -43,16 +45,19 @@ values."
              colors-enable-nyan-cat-progress-bar nil)
      cscope
      ibuffer
-     ;;chinese
      ;;semantic
      shell
      (c-c++ :variables
             c-c++-enable-clang-support t
             electric-pair-mode 1)
+     (chinese :variables
+              chinese-enable-youdao-dict t
+              chinese-pyim-greatdict-enable t)
+
      ;;ycmd
      latex
-     zclorg
      org
+     zclorg
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -60,16 +65,17 @@ values."
      version-control
      python;
      ;;java
+
      html
      ;;markdown
      zclbasic
-     zclirony
+     ;;zclirony
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee )
+   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee easy-hugo)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -136,8 +142,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("文泉驿等宽正黑";"Yahei Consolas Hybrid";
-                               :size 50
+   dotspacemacs-default-font '("WenQuanYi Micro Hei Mono";"Yahei Consolas Hybrid";
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -318,6 +324,8 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
   (spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/output/index.org")))
   (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
+  (global-set-key (kbd "C-x t") 'pyim-convert-code-at-point)
+
   (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
   (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
   (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
@@ -326,7 +334,11 @@ layers configuration. You are free to put any user code."
   (define-key evil-insert-state-map (kbd "C-k") nil)
   (define-key evil-insert-state-map (kbd "C-q") 'undo-tree-visualize)
   (define-key evil-insert-state-map (kbd "C-r") 'undo-tree-undo)
-  (define-key evil-insert-state-map (kbd "C-t") 'undo-tree-redo)
+  (global-set-key (kbd "C-t") 'pyim-convert-code-at-point)
+  (global-set-key (kbd "S-=") 'pyim-convert-code-at-point)
+  (global-set-key (kbd "C-c i") 'pyim-convert-code-at-point)
+
+  ;;(define-key evil-insert-state-map (kbd "C-t") 'undo-tree-redo)
   ;;(global-unset-key (kbd "C-k"))
   (define-key evil-insert-state-map (kbd "C-y") 'yank)
   (define-key evil-insert-state-map (kbd "C-v") 'scroll-up-command)
@@ -339,27 +351,18 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map "‘" 'save-buffer)
   (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
   (spacemacs|diminish company-mode "Ⓐ" "A")
-  ;;(evil-set-initial-state 'magit-status-mode 'emacs)
-  ;;(push '("*magit" . emacs) evil-buffer-regexps)
-  ;; Bind clang-format-region to C-M-tab in all modes:
-  ;; (setq-default dotspacemacs-smartparens-strict-mode t)
   (smartparens-global-mode)
-  (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
-  ;; (require 'chinese-fonts-setup)
-  ;; (chinese-fonts-setup-enable)
   (setq sp-highlight-pair-overlay nil);
   ;;(company-quickhelp-mode nil);
   (setq company-quickhelp-delay 0.1);
   (prefer-coding-system 'utf-8-unix)
-  (setq eclim-eclipse-dirs "C:/Java/eclipse/"
-        eclim-executable "C:/Java/eclipse/eclim"
-        eclimd-default-workspace "c:/Users/cliyh/workspace"
-        eclimd-wait-for-process t)
-  (with-eval-after-load "jdee"
-    (setq jdee-server-dir "c:/Java/jdee-server-master/target/")
-    (setq jdee-read-compile-args nil)
-    )
-  )
+  (setq python-shell-interpreter "ipython3") ;python3
+  (setq pyim-default-scheme 'quanpin)
+  (define-key pyim-mode-map "," 'pyim-page-next-page)
+
+  (define-key pyim-mode-map "." 'pyim-page-previous-page)
+
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -413,17 +416,17 @@ layers configuration. You are free to put any user code."
  '(org-fontify-whole-heading-line nil)
  '(package-selected-packages
    (quote
-    (org-plus-contrib company-irony-c-headers flyspell-correct irony-eldoc company-irony irony cygwin-mount ssh-agency pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode winum powerline spinner alert log4e gntp memoize flycheck hydra parent-mode projectile pkg-info epl request xcscope gitignore-mode fringe-helper git-gutter+ git-gutter fuzzy flx magit magit-popup git-commit with-editor async smartparens iedit anzu evil goto-chg undo-tree highlight diminish pos-tip bind-map bind-key yasnippet packed dash anaconda-mode pythonic f s helm helm-core math-symbol-lists auto-complete popup mmm-mode markdown-toc markdown-mode gh-md jdee web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yapfify xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme matlab-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump disaster dired+ diff-hl define-word cython-mode company-statistics company-quickhelp company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format chinese-fonts-setup cdlatex bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-complete-clang auto-complete-c-headers auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-math ac-ispell)))
+    (easy-hugo toml-mode racer flycheck-rust cargo rust-mode youdao-dictionary names chinese-word-at-point chinese-pyim-greatdict org-plus-contrib company-irony-c-headers flyspell-correct irony-eldoc company-irony irony cygwin-mount ssh-agency pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode winum powerline spinner alert log4e gntp memoize flycheck hydra parent-mode projectile pkg-info epl request xcscope gitignore-mode fringe-helper git-gutter+ git-gutter fuzzy flx magit magit-popup git-commit with-editor async smartparens iedit anzu evil goto-chg undo-tree highlight diminish pos-tip bind-map bind-key yasnippet packed dash pythonic f s helm helm-core math-symbol-lists auto-complete popup mmm-mode markdown-toc markdown-mode gh-md jdee web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yapfify xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme matlab-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump disaster dired+ diff-hl define-word cython-mode company-statistics company-quickhelp company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format chinese-fonts-setup cdlatex bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-complete-clang auto-complete-c-headers auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-math ac-ispell)))
  '(paradox-github-token "e18bbc25c1a76fd1f8d680513267b4c75485bac9")
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(projectile-enable-caching t)
  '(python-shell-completion-native-enable nil)
+ '(python-shell-interpreter "python3.5")
  '(python-shell-prompt-detect-failure-warning nil)
  '(safe-local-variable-values
    (quote
-    ((company-clang-arguments "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/")
-     (eval font-lock-add-keywords nil
+    ((eval font-lock-add-keywords nil
            (\`
             (((\,
                (concat "("

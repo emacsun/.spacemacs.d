@@ -1,4 +1,5 @@
 (with-eval-after-load 'org
+
   (require 'org-habit)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;(setq org-directory "~/zorg/")
@@ -78,10 +79,11 @@
   (spacemacs/set-leader-keys "od" 'sydict-look-up-word)
   (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
   (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
-  (spacemacs/set-leader-keys "oj" 'org-preview-latex-fragment)
+  (spacemacs/set-leader-keys "oj" 'org-toggle-latex-fragment)
   (spacemacs/set-leader-keys "ol" 'org-toggle-link-display)
   (spacemacs/set-leader-keys "om" 'org-toggle-pretty-entities)
   (spacemacs/set-leader-keys "on" 'narrow-to-region)
+
   (spacemacs/set-leader-keys "op" 'bh/phone-call)
   (spacemacs/set-leader-keys "os" 'bh/set-truncate-lines)
   (spacemacs/set-leader-keys "ot" 'bh/org-todo)
@@ -94,6 +96,7 @@
   (spacemacs/set-leader-keys "op" 'org-publish-current-project)
   (spacemacs/set-leader-keys "oP" 'org-publish)
   (spacemacs/set-leader-keys "oh" 'bh/hide-other)
+  (spacemacs/set-leader-keys "oh" 'easy-hugo)
   (spacemacs/set-leader-keys "oi" 'org-clock-in)
   (spacemacs/set-leader-keys "oI" 'bh/punch-in)
   (spacemacs/set-leader-keys "on" 'bh/toggle-next-task-display)
@@ -1624,9 +1627,18 @@ Late deadlines first, then scheduled, then non-late deadlines"
   (spacemacs|diminish org-cdlatex-mode "Ⓞ" "O")
 
   ;; 使用pdflatex一步生成PDF
-  (setq org-latex-to-pdf-process
-        '("pdflatex -interaction nonstopmode %f"
-          "pdflatex -interaction nonstopmode %f"))
+  ;; (setq org-latex-pdf-process
+  ;;       '("pdflatex -interaction nonstopmode %f"
+  ;;         "pdflatex -interaction nonstopmode %f"))
+  (setq org-latex-pdf-process
+        '("xelatex -interaction nonstopmode %f"
+          "xelatex -interaction nonstopmode %f"))
+  (setq org-file-apps
+    (quote
+     ((auto-mode . emacs)
+      ("\\.mm\\'" . system)
+      ("\\.x?html?\\'" . system)
+      ("\\.pdf\\'" . "evince %s"))))
   ;; code执行免应答（Eval code without confirm）
   (setq org-confirm-babel-evaluate nil)
   ;; Auctex
@@ -1689,12 +1701,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
        ("default.bib" "~/zorg/research_diary/bib/201310diary.bib")))
 (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
 ;;;;orgpublish;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-                                        ; List of projects
-                                        ; norang       - http://www.norang.ca/
-                                        ; doc          - http://doc.norang.ca/
-                                        ; org-mode-doc - http://doc.norang.ca/org-mode.html and associated files
-                                        ; org          - miscellaneous todo lists for publishing
 
 (setq org-list-allow-alphabetical t)
 )
@@ -2357,3 +2363,12 @@ INFO is a plist used as a communication channel."
 (setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n")
 
 )
+;;easy hugo
+(setq easy-hugo-basedir "~/zorg/hugo/bookshelf/")
+(setq easy-hugo-url "https://yourblogdomain")
+(setq easy-hugo-sshdomain "blogdomain")
+(setq easy-hugo-root "/home/blog/")
+(setq easy-hugo-previewtime "300")
+(setq easy-hugo-default-ext ".org")
+
+;;(evil-set-initial-state 'easy-hugo-mode 'emacs)

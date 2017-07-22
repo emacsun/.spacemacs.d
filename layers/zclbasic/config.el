@@ -126,14 +126,15 @@
 ;;(autoload 'tex "tex" "edit the tex file")
 ;;(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
 ;;(setq TeX-engine 'pdflatex);;设置latex引擎
-;(setq TeX-engine 'xelatex);;设置latex引擎
+(setq TeX-engine 'xetex);;设置latex引擎
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;pdf view pragramm;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(setq TeX-view-program-list
 ;      '(("acroread" "acroread %o")))
 (add-hook 'LaTeX-mode-hook
 	  (lambda()
-	    (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
-	    (setq TeX-command-default "PdfLaTeX")))
+	    ;;(add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
+	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+	    (setq TeX-command-default "XeLaTeX")))
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-enable-partial-scans t)
 (setq reftex-save-parse-info t)
@@ -163,9 +164,7 @@
               (setq TeX-view-program-selection '((output-pdf "Evince")
                                                  (output-dvi "Okular")))))))
 (setq TeX-view-program-list
-      '(("sumatrapdf" "SumatraPDF.exe %o")
-	("Gsview" "gsview32.exe %o")
-	("Evince" "evince %o")
+      '(("Evince" "evince %o")
 	("Firefox" "firefox %o")))
 ;; org
 (setq org-directory "~/zorg/")
