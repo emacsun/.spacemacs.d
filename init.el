@@ -353,13 +353,11 @@ layers configuration. You are free to put any user code."
   (spacemacs|diminish company-mode "Ⓐ" "A")
   (smartparens-global-mode)
   (setq sp-highlight-pair-overlay nil);
-  ;;(company-quickhelp-mode nil);
   (setq company-quickhelp-delay 0.1);
   (prefer-coding-system 'utf-8-unix)
   (setq python-shell-interpreter "ipython3") ;python3
   (setq pyim-default-scheme 'quanpin)
   (define-key pyim-mode-map "," 'pyim-page-next-page)
-
   (define-key pyim-mode-map "." 'pyim-page-previous-page)
 
 )
