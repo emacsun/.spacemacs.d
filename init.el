@@ -357,9 +357,14 @@ layers configuration. You are free to put any user code."
   (prefer-coding-system 'utf-8-unix)
   (setq python-shell-interpreter "ipython3") ;python3
   (setq pyim-default-scheme 'quanpin)
-  (define-key pyim-mode-map "," 'pyim-page-next-page)
-  (define-key pyim-mode-map "." 'pyim-page-previous-page)
-
+  (define-key pyim-mode-map "." 'pyim-page-next-page)
+  (define-key pyim-mode-map "," 'pyim-page-previous-page)
+  (setq easy-hugo-preview-url "http://localhost:1313/myblog")
+  (push '("*Easy-hugo" . emacs) evil-buffer-regexps)
+  (evil-set-initial-state 'easy-hugo-mode 'emacs)
+  (with-eval-after-load "jdee"
+    (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
+    (setq jdee-read-compile-args nil))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
