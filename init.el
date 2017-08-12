@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     octave
      rust
      markdown
      html
@@ -52,7 +53,7 @@ values."
             electric-pair-mode 1)
      (chinese :variables
               chinese-enable-youdao-dict t
-              chinese-pyim-greatdict-enable t)
+              chinese-pyim-greatdict-enable nil)
 
      ;;ycmd
      latex
