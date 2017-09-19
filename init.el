@@ -58,7 +58,11 @@ values."
      ;;ycmd
      latex
      org
-     zclorg
+     ;; zclorg
+     zclorgbasic
+     zclorggtd
+     zclorgexport
+     zclorgpublish
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -76,7 +80,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee easy-hugo)
+   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -360,12 +364,11 @@ layers configuration. You are free to put any user code."
   (setq pyim-default-scheme 'quanpin)
   (define-key pyim-mode-map "." 'pyim-page-next-page)
   (define-key pyim-mode-map "," 'pyim-page-previous-page)
-  (setq easy-hugo-preview-url "http://localhost:1313/myblog")
-  (push '("*Easy-hugo" . emacs) evil-buffer-regexps)
-  (evil-set-initial-state 'easy-hugo-mode 'emacs)
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
+
+  (require 'helm-bookmark)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -418,53 +421,17 @@ layers configuration. You are free to put any user code."
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-fontify-whole-heading-line nil)
- '(package-selected-packages
-   (quote
-    (easy-hugo toml-mode racer flycheck-rust cargo rust-mode youdao-dictionary names chinese-word-at-point chinese-pyim-greatdict org-plus-contrib company-irony-c-headers flyspell-correct irony-eldoc company-irony irony cygwin-mount ssh-agency pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode winum powerline spinner alert log4e gntp memoize flycheck hydra parent-mode projectile pkg-info epl request xcscope gitignore-mode fringe-helper git-gutter+ git-gutter fuzzy flx magit magit-popup git-commit with-editor async smartparens iedit anzu evil goto-chg undo-tree highlight diminish pos-tip bind-map bind-key yasnippet packed dash pythonic f s helm helm-core math-symbol-lists auto-complete popup mmm-mode markdown-toc markdown-mode gh-md jdee web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yapfify xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme matlab-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump disaster dired+ diff-hl define-word cython-mode company-statistics company-quickhelp company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format chinese-fonts-setup cdlatex bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-complete-clang auto-complete-c-headers auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-math ac-ispell)))
  '(paradox-github-token "e18bbc25c1a76fd1f8d680513267b4c75485bac9")
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(projectile-enable-caching t)
  '(python-shell-completion-native-enable nil)
- '(python-shell-interpreter "python3.5")
+ '(python-shell-interpreter "python3.5" t)
  '(python-shell-prompt-detect-failure-warning nil)
- '(safe-local-variable-values
-   (quote
-    ((eval font-lock-add-keywords nil
-           (\`
-            (((\,
-               (concat "("
-                       (regexp-opt
-                        (quote
-                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
-                        t)
-                       "\\_>"))
-              1
-              (quote font-lock-variable-name-face))))))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (unspecified "#272822" "#3E3D31" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
