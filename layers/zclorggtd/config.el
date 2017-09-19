@@ -1,5 +1,34 @@
 
 (with-eval-after-load 'org
+    (require 'org-habit)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;(setq org-directory "~/zorg/")
+  ;;The following lines are always needed. Choose your own keys.
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
+;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (setq org-default-notes-file  "~/zorg/output/znotes/znotes.org")
+  (setq org-agenda-files (list "~/zorg/base/"
+                               ;; "~/zorg/output/lte"
+                               ;; "~/zorg/output/lte/physical"
+                               ;; "~/zorg/output/communication"
+                               ;; "~/zorg/output/communication/ECC"
+                               ;; "~/zorg/output/communication/matlab/"
+                               ;; "~/zorg/output/math"
+                               ;; "~/zorg/output/math/PMA"
+                               ;; "~/zorg/output/znotes/"
+                               ))
+  (setq org-refile-targets (quote (
+                                   ("~/zorg/base/zwork.org" :maxlevel . 6)
+                                   ("~/zorg/base/zlife.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/zjoke.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/math.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/emacs.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/computer.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/communication.org" :maxlevel . 6)
+                                   ;; ("~/zorg/output/znotes/misc.org" :maxlevel . 6)
+                                   )))
+
   (defun bh/hide-other ()
     (interactive)
     (save-excursion
