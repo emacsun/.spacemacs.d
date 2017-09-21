@@ -7,6 +7,13 @@
 (setq org-ditaa-jar-path "~/java/ditaa0_6b.jar")
 (setq org-plantuml-jar-path "~/java/plantuml.jar")
 
+(setq org-html-head "<style type=\"text/css\">
+  pre {
+    background-color: #2f4f4f;line-height: 1.6;
+    FONT: 10.5pt Consola,Yahei Monaco, Courier New, helvetica;
+    color:white;
+  }
+</style>")
 ;;(add-hook 'org-babel-after-execute-hook 'bh/display-inline-images 'append)
                                         ; Make babel results blocks lowercase
 ;;(setq org-babel-results-keyword "results")

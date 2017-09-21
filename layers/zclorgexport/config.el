@@ -10,13 +10,6 @@
   ;;为输出的html中的代码着色。
   ;;(add-to-list 'load-path "~/site-lisp/htmlize/")
                                         ;pp(require 'htmlize)
-  (setq org-html-head "<style type=\"text/css\">
-  pre {
-    background-color: #2f4f4f;line-height: 1.6;
-    FONT: 10.5pt Consola,Yahei Monaco, Courier New, helvetica;
-    color:white;
-  }
-</style>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;org export latex;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;need to add #+LaTeX_CLASS at the beginning
