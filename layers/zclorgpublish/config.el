@@ -1,6 +1,3 @@
-
-
-
 (with-eval-after-load 'org
 ;; Explicitly load required exporters
 (require 'ox-html)
@@ -56,8 +53,8 @@
 (setq org-export-headline-levels 6)
 (setq org-publish-project-alist
       (quote (("zcl-org"
-               :base-directory "~/zorg/output/"
-               :publishing-directory "~/zorg/output_html/"
+               :base-directory "~/zorg/zcl.space/"
+               :publishing-directory "~/zorg/zcl.space/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -74,8 +71,8 @@
                :author-info nil
                :creator-info nil)
               ("zcl-extra"
-               :base-directory "~/zorg/output/"
-               :publishing-directory "~/zorg/output_html/"
+               :base-directory "~/zorg/zcl.space/"
+               :publishing-directory "~/zorg/zcl.space/"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -111,15 +108,15 @@
                :components ("zcl.space-learning-org" "zcl.space-learning-extra"))
 
               ("znotes-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/znotes/"
+               :publishing-directory "~/zorg/zcl.space/znotes/"
                :publishing-function org-publish-attachment
                )
               ("znotes-org"
-               :base-directory "~/zorg/output/znotes"
-               :publishing-directory "~/zorg/output_html/znotes/"
+               :base-directory "~/zorg/zcl.space/znotes"
+               :publishing-directory "~/zorg/zcl.space/znotes/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -137,8 +134,8 @@
                :creator-info nil
                )
               ("znotes-extra"
-               :base-directory "~/zorg/output/znotes"
-               :publishing-directory "~/zorg/output_html/znotes"
+               :base-directory "~/zorg/zcl.space/znotes"
+               :publishing-directory "~/zorg/zcl.space/znotes"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -146,15 +143,15 @@
               ("znotes"
                :components ("znotes-org" "znotes-extra"))
               ("lte-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/lte/"
+               :publishing-directory "~/zorg/zcl.space/lte/"
                :publishing-function org-publish-attachment
                )
               ("lte-org"
-               :base-directory "~/zorg/output/lte"
-               :publishing-directory "~/zorg/output_html/lte/"
+               :base-directory "~/zorg/zcl.space/lte"
+               :publishing-directory "~/zorg/zcl.space/lte/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -172,8 +169,8 @@
                :creator-info nil
                )
               ("lte-extra"
-               :base-directory "~/zorg/output/lte"
-               :publishing-directory "~/zorg/output_html/lte"
+               :base-directory "~/zorg/zcl.space/lte"
+               :publishing-directory "~/zorg/zcl.space/lte"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -181,15 +178,15 @@
               ("lte"
                :components ("lte-org" "lte-extra"))
               ("communication-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/communication/"
+               :publishing-directory "~/zorg/zcl.space/communication/"
                :publishing-function org-publish-attachment
                )
               ("communication-org"
-               :base-directory "~/zorg/output/communication"
-               :publishing-directory "~/zorg/output_html/communication/"
+               :base-directory "~/zorg/zcl.space/communication"
+               :publishing-directory "~/zorg/zcl.space/communication/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -207,8 +204,8 @@
                :creator-info nil
                )
               ("communication-extra"
-               :base-directory "~/zorg/output/communication"
-               :publishing-directory "~/zorg/output_html/communication"
+               :base-directory "~/zorg/zcl.space/communication"
+               :publishing-directory "~/zorg/zcl.space/communication"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -216,15 +213,15 @@
               ("communication"
                :components ("communication-org" "communication-extra"))
               ("math-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/math/"
+               :publishing-directory "~/zorg/zcl.space/math/"
                :publishing-function org-publish-attachment
                )
               ("math-org"
-               :base-directory "~/zorg/output/math"
-               :publishing-directory "~/zorg/output_html/math/"
+               :base-directory "~/zorg/zcl.space/math"
+               :publishing-directory "~/zorg/zcl.space/math/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -242,8 +239,8 @@
                :creator-info nil
                )
               ("math-extra"
-               :base-directory "~/zorg/output/math"
-               :publishing-directory "~/zorg/output_html/math"
+               :base-directory "~/zorg/zcl.space/math"
+               :publishing-directory "~/zorg/zcl.space/math"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -251,15 +248,15 @@
               ("math"
                :components ("math-org" "math-extra"))
               ("computer-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/computer/"
+               :publishing-directory "~/zorg/zcl.space/computer/"
                :publishing-function org-publish-attachment
                )
               ("computer-org"
-               :base-directory "~/zorg/output/computer"
-               :publishing-directory "~/zorg/output_html/computer/"
+               :base-directory "~/zorg/zcl.space/computer"
+               :publishing-directory "~/zorg/zcl.space/computer/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -277,8 +274,8 @@
                :creator-info nil
                )
               ("computer-extra"
-               :base-directory "~/zorg/output/computer"
-               :publishing-directory "~/zorg/output_html/computer"
+               :base-directory "~/zorg/zcl.space/computer"
+               :publishing-directory "~/zorg/zcl.space/computer"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -286,15 +283,15 @@
               ("computer"
                :components ("computer-org" "computer-extra"))
               ("linux-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/linux/"
+               :publishing-directory "~/zorg/zcl.space/linux/"
                :publishing-function org-publish-attachment
                )
               ("linux-org"
-               :base-directory "~/zorg/output/linux"
-               :publishing-directory "~/zorg/output_html/linux/"
+               :base-directory "~/zorg/zcl.space/linux"
+               :publishing-directory "~/zorg/zcl.space/linux/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -312,8 +309,8 @@
                :creator-info nil
                )
               ("linux-extra"
-               :base-directory "~/zorg/output/linux"
-               :publishing-directory "~/zorg/output_html/linux"
+               :base-directory "~/zorg/zcl.space/linux"
+               :publishing-directory "~/zorg/zcl.space/linux"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -321,15 +318,15 @@
               ("linux"
                :components ("linux-org" "linux-extra"))
               ("tools-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/tools/"
+               :publishing-directory "~/zorg/zcl.space/tools/"
                :publishing-function org-publish-attachment
                )
               ("tools-org"
-               :base-directory "~/zorg/output/tools"
-               :publishing-directory "~/zorg/output_html/tools/"
+               :base-directory "~/zorg/zcl.space/tools"
+               :publishing-directory "~/zorg/zcl.space/tools/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -347,8 +344,8 @@
                :creator-info nil
                )
               ("tools-extra"
-               :base-directory "~/zorg/output/tools"
-               :publishing-directory "~/zorg/output_html/tools"
+               :base-directory "~/zorg/zcl.space/tools"
+               :publishing-directory "~/zorg/zcl.space/tools"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -356,15 +353,15 @@
               ("tools"
                :components ("tools-org" "tools-extra"))
               ("read-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/read/"
+               :publishing-directory "~/zorg/zcl.space/read/"
                :publishing-function org-publish-attachment
                )
               ("read-org"
-               :base-directory "~/zorg/output/read"
-               :publishing-directory "~/zorg/output_html/read/"
+               :base-directory "~/zorg/zcl.space/read"
+               :publishing-directory "~/zorg/zcl.space/read/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -382,8 +379,8 @@
                :creator-info nil
                )
               ("read-extra"
-               :base-directory "~/zorg/output/read"
-               :publishing-directory "~/zorg/output_html/read"
+               :base-directory "~/zorg/zcl.space/read"
+               :publishing-directory "~/zorg/zcl.space/read"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -391,15 +388,15 @@
               ("read"
                :components ("read-org" "read-extra"))
               ("me-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/me/"
+               :publishing-directory "~/zorg/zcl.space/me/"
                :publishing-function org-publish-attachment
                )
               ("me-org"
-               :base-directory "~/zorg/output/me"
-               :publishing-directory "~/zorg/output_html/me/"
+               :base-directory "~/zorg/zcl.space/me"
+               :publishing-directory "~/zorg/zcl.space/me/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -417,8 +414,8 @@
                :creator-info nil
                )
               ("me-extra"
-               :base-directory "~/zorg/output/me"
-               :publishing-directory "~/zorg/output_html/me"
+               :base-directory "~/zorg/zcl.space/me"
+               :publishing-directory "~/zorg/zcl.space/me"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -426,41 +423,12 @@
               ("me"
                :components ("me-org" "me-extra"))
               ("math-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/zcl.space/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/output_html/math/"
+               :publishing-directory "~/zorg/zcl.space/math/"
                :publishing-function org-publish-attachment
                )
-              ("文瑞-org"
-               :base-directory "~/zorg/output/文瑞"
-               :publishing-directory "~/zorg/output_html/文瑞/"
-               :recursive t
-               :section-number nil
-               :table-of-contents nil
-               :base-extension "org"
-               :publishing-function org-html-publish-to-html
-               :auto-sitemap t                ; Generate sitemap.org automagically...
-               :sitemap-filename "文瑞-map.org"  ;  call it sitemap.org
-               :sitemap-title "文瑞地图"         ;
-               :sitemap-sort-folders first
-               ;;:sitemap-file-entry-format "%t%d"
-               :style-include-default nil
-               :section-numbers nil
-               :table-of-contents nil
-               :html-postamble nil
-               :creator-info nil
-               :author-info t
-               )
-              ("文瑞-extra"
-               :base-directory "~/zorg/output/文瑞"
-               :publishing-directory "~/zorg/output_html/文瑞"
-               :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
-               :publishing-function org-publish-attachment
-               :recursive t
-               :author nil)
-              ("文瑞"
-               :components ("文瑞-org" "文瑞-extra"))
               )))
 
 ;; I'm lazy and don't want to remember the name of the project to publish when I modify

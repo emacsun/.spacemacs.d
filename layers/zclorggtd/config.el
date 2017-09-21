@@ -92,19 +92,30 @@
         '(
           ;;	("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n Added:%T\n" :clock-in t :clock-resume t)
           ("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n   Added:%U\n")
-          ("w" "wordpress" entry (file+headline "~/zorg/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
-          ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
-          ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
-          ("m" "math" entry (file "~/zorg/output/math/math-index.org")"* %?   :math:\n" :clock-in t :clock-resume t)
-          ("a" "computer" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
-          ("u" "linux" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
-          ("l" "my Log Time" entry (file+datetree "~/zorg/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
-          ("j" "haha joke" entry (file "~/zorg/base/zjoke.org")"* %?   :joke:\n" :clock-in t :clock-resume t)
+          ("h" "Hugo post")
+          ("hr" "Reading"
+           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "Reading")
+                 (function org-hugo-new-subtree-post-capture-template))
+
+          ("hm" "movie"
+           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
+           (function org-hugo-new-subtree-post-capture-template))
+
+
+
+          ;; ("w" "wordpress" entry (file+headline "~/zorg/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
+          ;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
+          ;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
+          ;; ("m" "math" entry (file "~/zorg/output/math/math-index.org")"* %?   :math:\n" :clock-in t :clock-resume t)
+          ;; ("a" "computer" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
+          ;; ("u" "linux" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
+          ;; ("l" "my Log Time" entry (file+datetree "~/zorg/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
+          ;; ("j" "haha joke" entry (file "~/zorg/base/zjoke.org")"* %?   :joke:\n" :clock-in t :clock-resume t)
           ("x" "org-protocol" entry (file "~/zorg/base/zrefile.org") "* TODO Review %c %U \n Added:%T\n")
-                                        ;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
-                                        ;          :clock-in t :clock-resume t )
-                                        ;	("p" "Phone call" entry (file+datetree "~/zorg/base/timelog.org") "** %T PHONE %? :PHONE:"
-                                        ;          :clock-in t :clock-resume t)
+                                        ;;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
+                                        ;;          :clock-in t :clock-resume t )
+                                        ;;	("p" "Phone call" entry (file+datetree "~/zorg/base/timelog.org") "** %T PHONE %? :PHONE:"
+                                        ;;          :clock-in t :clock-resume t)
           ))
 
   ;; Remove empty LOGBOOK drawers on clock out
@@ -1504,4 +1515,27 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
   (setq org-log-done 'time);;一个 TODO（未完成）状态改变为一个完成状态时，标题下面就会插入一行 “CLOSED:[timestamp]”
   (setq org-log-done 'note);;提示你输入一个记录（note），并将它保存在n标题为“Closing Note”项目之下
+  )
+(with-eval-after-load 'org-capture
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+    (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
+           (date (format-time-string (org-time-stamp-format :long :inactive) (org-current-time)))
+           (title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " fname)
+                   ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
+                   ":END:"
+                   "%?\n")          ;Place the cursor here finally
+                 "\n")))
+
+  (add-to-list 'org-capture-templates
+               '("h" "Hugo post"
+                 entry (file+olp "all-posts.org" "Blog Ideas")
+                 (function org-hugo-new-subtree-post-capture-template)))
   )
