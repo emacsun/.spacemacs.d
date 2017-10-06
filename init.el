@@ -51,9 +51,6 @@ values."
      (c-c++ :variables
             c-c++-enable-clang-support t
             electric-pair-mode 1)
-     (chinese :variables
-              chinese-enable-youdao-dict t
-              chinese-pyim-greatdict-enable nil)
 
      ;;ycmd
      latex
@@ -147,8 +144,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("WenQuanYi Micro Hei Mono";"Yahei Consolas Hybrid";
-                               :size 20
+   dotspacemacs-default-font '("Yahei Consolas Hybrid";
+                               :size 40
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -331,7 +328,6 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
   (spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/output/index.org")))
   (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
-  (global-set-key (kbd "C-x t") 'pyim-convert-code-at-point)
 
   (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
   (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
@@ -341,9 +337,6 @@ layers configuration. You are free to put any user code."
   (define-key evil-insert-state-map (kbd "C-k") nil)
   (define-key evil-insert-state-map (kbd "C-q") 'undo-tree-visualize)
   (define-key evil-insert-state-map (kbd "C-r") 'undo-tree-undo)
-  (global-set-key (kbd "C-t") 'pyim-convert-code-at-point)
-  (global-set-key (kbd "S-=") 'pyim-convert-code-at-point)
-  (global-set-key (kbd "C-c i") 'pyim-convert-code-at-point)
 
   ;;(define-key evil-insert-state-map (kbd "C-t") 'undo-tree-redo)
   ;;(global-unset-key (kbd "C-k"))
@@ -363,13 +356,9 @@ layers configuration. You are free to put any user code."
   (setq company-quickhelp-delay 0.1);
   (prefer-coding-system 'utf-8-unix)
   (setq python-shell-interpreter "ipython3") ;python3
-  (setq pyim-default-scheme 'quanpin)
-  (define-key pyim-mode-map "." 'pyim-page-next-page)
-  (define-key pyim-mode-map "," 'pyim-page-previous-page)
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
-
   (require 'helm-bookmark)
 )
 

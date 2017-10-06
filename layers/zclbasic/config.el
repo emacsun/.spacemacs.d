@@ -7,8 +7,6 @@
 (setq display-time-default-load-average nil)
 (setq display-time-load-average-threshold 10000)
 
-
-
 (when (string-equal system-type "windows-nt")
   (let (
         (mypaths
@@ -33,15 +31,11 @@
            "C:/Java/jdk1.8.0_121/bin"
            "C:/Java/apache-maven-3.3.9-bin"
            "C:/Users/cliyh/AppData/Local/GitHub/PortableGit_f02737a78695063deace08e96d5042710d3e32db/cmd"
-           ;;"C:/Anaconda3/"
-           ;;"C:/Anaconda3/Scripts"
-           ;;"F:/document/my_research/research_paper/casthesis"
-           ;;"C:/TDM-GCC-64/bin"
-                                        ;"C:/Program Files (x86)/gs/gs9.10/bin"
-           ;;"C:/Program Files (x86)/GnuWin32/bin"
            )))
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
     (setq exec-path (append mypaths (list "." exec-directory)))))
+
+
 
 
 ;; ido
