@@ -11,20 +11,20 @@
 
 (setq zclbasic-packages
       '(
-        ;;matlab-mode
+        matlab-mode
         highlight-symbol
        ;; company-jedi
-        ;;ssh-agency
+        ssh-agency
         ;;cygwin-mount
         dired+        ))
 
 
-;; (defun zclbasic/init-matlab-mode()
-;;   (use-package matlab-mode
-;;     :defer t
-;;     :init
-;;     (progn
-;;       )))
+(defun zclbasic/init-matlab-mode()
+  (use-package matlab-mode
+    :defer t
+    :init
+    (progn
+      )))
 (defun zclbasic/init-cygwin-mount()
   (use-package cygwin-mount
     :defer t
