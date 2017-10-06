@@ -1753,7 +1753,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-export-headline-levels 6)
 (setq org-publish-project-alist
       (quote (("zcl-org"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :publishing-directory "~/zorg/output_html/"
                :recursive t
                :section-number nil
@@ -1771,7 +1771,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :author-info nil
                :creator-info nil)
               ("zcl-extra"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :publishing-directory "~/zorg/output_html/"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1780,14 +1780,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("zcl"
                :components ("zcl-org" "zcl-extra"))
               ("znotes-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/znotes/"
                :publishing-function org-publish-attachment
                )
               ("znotes-org"
-               :base-directory "~/zorg/output/znotes"
+               :base-directory "~/zorg/output_html/znotes"
                :publishing-directory "~/zorg/output_html/znotes/"
                :recursive t
                :section-number nil
@@ -1806,7 +1806,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("znotes-extra"
-               :base-directory "~/zorg/output/znotes"
+               :base-directory "~/zorg/output_html/znotes"
                :publishing-directory "~/zorg/output_html/znotes"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1815,14 +1815,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("znotes"
                :components ("znotes-org" "znotes-extra"))
               ("lte-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/lte/"
                :publishing-function org-publish-attachment
                )
               ("lte-org"
-               :base-directory "~/zorg/output/lte"
+               :base-directory "~/zorg/output_html/lte"
                :publishing-directory "~/zorg/output_html/lte/"
                :recursive t
                :section-number nil
@@ -1841,7 +1841,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("lte-extra"
-               :base-directory "~/zorg/output/lte"
+               :base-directory "~/zorg/output_html/lte"
                :publishing-directory "~/zorg/output_html/lte"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1850,14 +1850,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("lte"
                :components ("lte-org" "lte-extra"))
               ("communication-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/communication/"
                :publishing-function org-publish-attachment
                )
               ("communication-org"
-               :base-directory "~/zorg/output/communication"
+               :base-directory "~/zorg/output_html/communication"
                :publishing-directory "~/zorg/output_html/communication/"
                :recursive t
                :section-number nil
@@ -1876,7 +1876,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("communication-extra"
-               :base-directory "~/zorg/output/communication"
+               :base-directory "~/zorg/output_html/communication"
                :publishing-directory "~/zorg/output_html/communication"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1885,14 +1885,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("communication"
                :components ("communication-org" "communication-extra"))
               ("math-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/math/"
                :publishing-function org-publish-attachment
                )
               ("math-org"
-               :base-directory "~/zorg/output/math"
+               :base-directory "~/zorg/output_html/math"
                :publishing-directory "~/zorg/output_html/math/"
                :recursive t
                :section-number nil
@@ -1911,7 +1911,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("math-extra"
-               :base-directory "~/zorg/output/math"
+               :base-directory "~/zorg/output_html/math"
                :publishing-directory "~/zorg/output_html/math"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1920,14 +1920,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("math"
                :components ("math-org" "math-extra"))
               ("computer-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/computer/"
                :publishing-function org-publish-attachment
                )
               ("computer-org"
-               :base-directory "~/zorg/output/computer"
+               :base-directory "~/zorg/output_html/computer"
                :publishing-directory "~/zorg/output_html/computer/"
                :recursive t
                :section-number nil
@@ -1946,7 +1946,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("computer-extra"
-               :base-directory "~/zorg/output/computer"
+               :base-directory "~/zorg/output_html/computer"
                :publishing-directory "~/zorg/output_html/computer"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1955,14 +1955,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("computer"
                :components ("computer-org" "computer-extra"))
               ("linux-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/linux/"
                :publishing-function org-publish-attachment
                )
               ("linux-org"
-               :base-directory "~/zorg/output/linux"
+               :base-directory "~/zorg/output_html/linux"
                :publishing-directory "~/zorg/output_html/linux/"
                :recursive t
                :section-number nil
@@ -1981,7 +1981,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("linux-extra"
-               :base-directory "~/zorg/output/linux"
+               :base-directory "~/zorg/output_html/linux"
                :publishing-directory "~/zorg/output_html/linux"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -1990,14 +1990,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("linux"
                :components ("linux-org" "linux-extra"))
               ("tools-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/tools/"
                :publishing-function org-publish-attachment
                )
               ("tools-org"
-               :base-directory "~/zorg/output/tools"
+               :base-directory "~/zorg/output_html/tools"
                :publishing-directory "~/zorg/output_html/tools/"
                :recursive t
                :section-number nil
@@ -2016,7 +2016,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("tools-extra"
-               :base-directory "~/zorg/output/tools"
+               :base-directory "~/zorg/output_html/tools"
                :publishing-directory "~/zorg/output_html/tools"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -2025,14 +2025,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("tools"
                :components ("tools-org" "tools-extra"))
               ("read-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/read/"
                :publishing-function org-publish-attachment
                )
               ("read-org"
-               :base-directory "~/zorg/output/read"
+               :base-directory "~/zorg/output_html/read"
                :publishing-directory "~/zorg/output_html/read/"
                :recursive t
                :section-number nil
@@ -2051,7 +2051,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("read-extra"
-               :base-directory "~/zorg/output/read"
+               :base-directory "~/zorg/output_html/read"
                :publishing-directory "~/zorg/output_html/read"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -2060,14 +2060,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("read"
                :components ("read-org" "read-extra"))
               ("me-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/me/"
                :publishing-function org-publish-attachment
                )
               ("me-org"
-               :base-directory "~/zorg/output/me"
+               :base-directory "~/zorg/output_html/me"
                :publishing-directory "~/zorg/output_html/me/"
                :recursive t
                :section-number nil
@@ -2086,7 +2086,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :creator-info nil
                )
               ("me-extra"
-               :base-directory "~/zorg/output/me"
+               :base-directory "~/zorg/output_html/me"
                :publishing-directory "~/zorg/output_html/me"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
@@ -2095,14 +2095,14 @@ Late deadlines first, then scheduled, then non-late deadlines"
               ("me"
                :components ("me-org" "me-extra"))
               ("math-inherit"
-               :base-directory "~/zorg/output/"
+               :base-directory "~/zorg/output_html/"
                :recursive t
                :base-extension "css\\|js"
                :publishing-directory "~/zorg/output_html/math/"
                :publishing-function org-publish-attachment
                )
               ("文瑞-org"
-               :base-directory "~/zorg/output/文瑞"
+               :base-directory "~/zorg/output_html/文瑞"
                :publishing-directory "~/zorg/output_html/文瑞/"
                :recursive t
                :section-number nil
@@ -2122,7 +2122,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                :author-info t
                )
               ("文瑞-extra"
-               :base-directory "~/zorg/output/文瑞"
+               :base-directory "~/zorg/output_html/文瑞"
                :publishing-directory "~/zorg/output_html/文瑞"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment

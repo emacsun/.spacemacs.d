@@ -315,6 +315,8 @@ layers configuration. You are free to put any user code."
   (spacemacs/set-leader-keys "bc" 'whitespace-cleanup)
   (spacemacs/set-leader-keys "fw" 'ido-write-file)
   (spacemacs/set-leader-keys "fd" 'open-in-desktop)
+  (spacemacs/set-leader-keys "ss" 'spacemacs/helm-swoop-region-or-symbol)
+  (spacemacs/set-leader-keys "sS" 'helm-swoop)
   (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
   (spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/output/index.org")))
   (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
