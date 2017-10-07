@@ -45,23 +45,6 @@
           (lambda ()
             (define-key ido-completion-map [tab] 'ido-complete)))
 
-;;;###autoload
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
-(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
-;;;###autoload
-(defun ido-sort-mtime ()
-  (setq ido-temp-list
-        (sort ido-temp-list
-              (lambda (a b)
-                (time-less-p
-                 (sixth (file-attributes (concat ido-current-directory b)))
-                 (sixth (file-attributes (concat ido-current-directory a)))))))
-  (ido-to-end  ;; move . files to end (again)
-   (delq nil (mapcar
-              (lambda (x) (and (char-equal (string-to-char x) ?.) x))
-              ido-temp-list))))
-
 
 
 ;;calendar
@@ -79,17 +62,6 @@
 (add-hook 'fancy-diary-display-mode-hook
 	   '(lambda ()
               (alt-clean-equal-signs)))
- (defun alt-clean-equal-signs ()
-   "This function makes lines of = signs invisible."
-   (goto-char (point-min))
-   (let ((state buffer-read-only))
-     (when state (setq buffer-read-only nil))
-     (while (not (eobp))
-       (search-forward-regexp "^=+$" nil 'move)
-       (add-text-properties (match-beginning 0)
-	                    (match-end 0)
-			    '(invisible t)))
-     (when state (setq buffer-read-only t))))
  (define-derived-mode fancy-diary-display-mode  fundamental-mode
    "Diary"
    "Major mode used while displaying diary entries using Fancy Display."
@@ -141,7 +113,6 @@
               (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
               (setq TeX-command-default "pdflatex")))
   )
-
 
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-enable-partial-scans t)

@@ -91,4 +91,5 @@
   (spacemacs/set-leader-keys "ow" 'bh/widen)
   (define-key org-mode-map (kbd "C-i") 'nil)
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
+  (setq org-bullets-bullet-list '("✿" "❀" "☢" "★" ))
   )
