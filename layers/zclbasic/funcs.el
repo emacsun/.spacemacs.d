@@ -49,12 +49,12 @@ This command is similar to `find-file-at-point' but without prompting for confir
     ) ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;定制alt-w 和alt-k;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;<《 》>
-;;;;;alt-w 复制当前行，alt-k复制从光标到行尾 
+;;;;;alt-w 复制当前行，alt-k复制从光标到行尾
 ;; Smart copy, if no region active, it simply copy the current whole line
 (defadvice kill-line (before check-position activate)
-  (if (member major-mode 
+  (if (member major-mode
               '(emacs-lisp-mode scheme-mode lisp-mode
-                                c-mode c++-mode objc-mode js-mode 
+                                c-mode c++-mode objc-mode js-mode
                                 latex-mode plain-tex-mode))
       (if (and (eolp) (not (bolp)))
           (progn (forward-char 1)
@@ -83,7 +83,7 @@ This command is similar to `find-file-at-point' but without prompting for confir
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;shortkey;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "M-k") 'qiang-copy-line)
-;;;dired+ 
+;;;dired+
 
 (defun xah-dired-sort ()
   "Sort dired dir listing in different ways.
@@ -102,6 +102,7 @@ Version 2015-07-30"
     (dired-sort-other ξarg )))
 (setq dired-listing-switches "-alh")
 
+;;;###autoload
 (defun hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
@@ -109,8 +110,38 @@ Version 2015-07-30"
     (setq buffer-display-table (make-display-table)))
   (aset buffer-display-table ?\^M []))
 
+;;;###autoload
 (defun remove-dos-eol ()
   "Replace DOS eolns CR LF with Unix eolns CR"
   (interactive)
   (goto-char (point-min))
   (while (search-forward "\r" nil t) (replace-match "")))
+
+;;;###autoload
+(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
+;;;###autoload
+(defun ido-sort-mtime ()
+  (setq ido-temp-list
+        (sort ido-temp-list
+              (lambda (a b)
+                (time-less-p
+                 (sixth (file-attributes (concat ido-current-directory b)))
+                 (sixth (file-attributes (concat ido-current-directory a)))))))
+  (ido-to-end  ;; move . files to end (again)
+   (delq nil (mapcar
+              (lambda (x) (and (char-equal (string-to-char x) ?.) x))
+              ido-temp-list))))
+
+(defun alt-clean-equal-signs ()
+  "This function makes lines of = signs invisible."
+  (goto-char (point-min))
+  (let ((state buffer-read-only))
+    (when state (setq buffer-read-only nil))
+    (while (not (eobp))
+      (search-forward-regexp "^=+$" nil 'move)
+      (add-text-properties (match-beginning 0)
+                           (match-end 0)
+                           '(invisible t)))
+    (when state (setq buffer-read-only t))))
