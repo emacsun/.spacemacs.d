@@ -14,4 +14,4 @@
 
 (global-set-key [f4] 'helm-projectile-grep)
 
-(set-register ?i (cons 'file "~/zorg/output/index.org"))
+(set-register ?i (cons 'file "~/zorg/zcl.space/index.org"))

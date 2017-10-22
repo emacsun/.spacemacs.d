@@ -66,30 +66,35 @@
 
   (setq org-capture-templates
         '(
-          ;;	("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n Added:%T\n" :clock-in t :clock-resume t)
-          ("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n   Added:%U\n")
+          ("t" "todo" entry (file "~/zorg/base/zrefile.org")
+           "* TODO %? :TODO: \n Added:%T\n"
+           :clock-in t :clock-resume t)
+          ;;("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n   Added:%U\n")
           ("h" "Hugo post")
           ("hr" "Reading"
            entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "Reading")
-                 (function org-hugo-new-subtree-post-capture-template))
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
 
           ("hm" "movie"
            entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
-           (function org-hugo-new-subtree-post-capture-template))
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
 
+          ("hl" "life"
+           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
           ;; ("w" "wordpress" entry (file+headline "~/zorg/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
           ;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
-          ;; ("m" "math" entry (file "~/zorg/output/math/math-index.org")"* %?   :math:\n" :clock-in t :clock-resume t)
-          ;; ("a" "computer" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
-          ;; ("u" "linux" entry (file "~/zorg/output/computer/computer-index.org")"* %?   :computer:\n" :clock-in t :clock-resume t)
           ;; ("l" "my Log Time" entry (file+datetree "~/zorg/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
-          ;; ("j" "haha joke" entry (file "~/zorg/base/zjoke.org")"* %?   :joke:\n" :clock-in t :clock-resume t)
-          ("x" "org-protocol" entry (file "~/zorg/base/zrefile.org") "* TODO Review %c %U \n Added:%T\n")
-                                        ;;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
-                                        ;;          :clock-in t :clock-resume t )
-                                        ;;	("p" "Phone call" entry (file+datetree "~/zorg/base/timelog.org") "** %T PHONE %? :PHONE:"
-                                        ;;          :clock-in t :clock-resume t)
+          ("x" "org-protocol" entry (file "~/zorg/base/zrefile.org")
+           "* TODO Review %c \n Added:%T\n")
+          ;;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
+          ;;          :clock-in t :clock-resume t )
+          ;;	("p" "Phone call" entry (file+datetree "~/zorg/base/timelog.org") "** %T PHONE %? :PHONE:"
+          ;;          :clock-in t :clock-resume t)
           ))
 
 
@@ -97,7 +102,8 @@
   ;; Targets include this file and any file contributing to the agenda - up to 9 levels deep
   ;; Use full outline paths for refile targets - we file directly with IDO
   (setq org-refile-use-outline-path t)
-
+  ;; when a task is done, popup to write some notes
+  (setq org-log-done 'note)
   ;; Targets complete directly with IDO
   (setq org-outline-path-complete-in-steps nil)
 
@@ -521,9 +527,9 @@ so change the default 'F' binding in the agenda to allow both"
   (setq org-agenda-start-on-weekday 1)
 
   ;; Enable display of the time grid so we can see the marker for the current time
-  (setq org-agenda-time-grid (quote ((daily today remove-match)
-                                     #("----------------" 0 16 (org-heading t))
-                                     (0900 1100 1300 1500 1700))))
+  ;; (setq org-agenda-time-grid (quote ((daily today remove-match)
+  ;;                                    #("----------------" 0 16 (org-heading t))
+  ;;                                    (0900 1100 1300 1500 1700))))
 
   ;; Display tags farther right
   (setq org-agenda-tags-column -102)
