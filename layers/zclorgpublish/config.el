@@ -1,8 +1,12 @@
 (with-eval-after-load 'org
 ;; Explicitly load required exporters
+;;;###autoload
 (require 'ox-html)
+;;;###autoload
 (require 'ox-latex)
+;;;###autoload
 (require 'ox-ascii)
+;;;###autoload
 (require 'ox-publish)
 (setq org-ditaa-jar-path "~/java/ditaa0_6b.jar")
 (setq org-plantuml-jar-path "~/java/plantuml.jar")
@@ -151,6 +155,7 @@
 (with-eval-after-load 'org
 
 ;;redefine several functions
+;;;###autoload
 (defun org-html-toc (depth info)
   "Build a table of contents.
 DEPTH is an integer specifying the depth of the table.  INFO is a
@@ -175,6 +180,7 @@ contents as a string, or nil if it is empty."
               (org-html--toc-text toc-entries)
               "</div>\n"
               (format "</%s>\n" outer-tag)))))
+;;;###autoload
 (defun org-html-table (table contents info)
   "Transcode a TABLE element from Org to HTML.
 CONTENTS is the contents of the table.  INFO is a plist holding
@@ -232,6 +238,7 @@ contextual information."
                           "</span> " (org-export-data caption info))))
                (funcall table-column-specs table info)
                contents)))))
+;;;###autoload
 (defun org-html-paragraph (paragraph contents info)
   "Transcode a PARAGRAPH element from Org to HTML.
 CONTENTS is the contents of the paragraph, as a string.  INFO is
@@ -276,6 +283,7 @@ the plist used as a communication channel."
                 (if (org-string-nw-p attributes)
                     (concat " " attributes) "")
                 extra contents)))))
+;;;###autoload
 (defun org-html-footnote-section (info)
   "Format the footnote section.
 INFO is a plist used as a communication channel."

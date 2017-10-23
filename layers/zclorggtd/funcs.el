@@ -1,3 +1,4 @@
+;;;###autoload
 (defun bh/hide-other ()
   (interactive)
   (save-excursion
@@ -7,6 +8,7 @@
     (org-cycle)
     (org-cycle)))
 
+;;;###autoload
 (defun bh/set-truncate-lines ()
   "Toggle value of truncate-lines and refresh window display."
   (interactive)
@@ -19,11 +21,13 @@
 ;;   (interactive)
 ;;   (find-file "/tmp/publish/scratch.org")
 ;;   (gnus-make-directory "/tmp/publish"))
+;;;###autoload
 (defun bh/switch-to-scratch ()
   (interactive)
   (switch-to-buffer "*scratch*"))
 
 ;; Remove empty LOGBOOK drawers on clock out
+;;;###autoload
 (defun bh/remove-empty-drawer-on-clock-out ()
   (interactive)
   (save-excursion
@@ -31,9 +35,11 @@
     (org-remove-empty-drawer-at (point))))
 ;;    (org-remove-empty-drawer-at "LOGBOOK" (point))))
 ;; Exclude DONE state tasks from refile targets
+;;;###autoload
 (defun bh/verify-refile-target ()
   "Exclude todo keywords with a done state from refile targets"
   (not (member (nth 2 (org-heading-components)) org-done-keywords)))
+;;;###autoload
 (defun bh/org-auto-exclude-function (tag)
   "Automatic task exclusion in the agenda with / RET"
   (and (cond
@@ -42,6 +48,7 @@
         ((string= tag "farm")
          t))
        (concat "-" tag)))
+;;;###autoload
 (defun bh/clock-in-to-next (kw)
   "Switch a task from TODO to NEXT when clocking in.
 Skips capture tasks, projects, and subprojects.
@@ -55,6 +62,7 @@ Switch projects and subprojects from NEXT back to TODO"
            (bh/is-project-p))
       "TODO"))))
 
+;;;###autoload
 (defun bh/find-project-task ()
   "Move point to the parent (project) task if any"
   (save-restriction
@@ -66,6 +74,7 @@ Switch projects and subprojects from NEXT back to TODO"
       (goto-char parent-task)
       parent-task)))
 
+;;;###autoload
 (defun bh/punch-in (arg)
   "Start continuous clocking and set the default task to the
 selected task.  If no task is selected set the Organization task
@@ -91,6 +100,7 @@ as the default task."
           (org-clock-in '(16))
         (bh/clock-in-organization-task-as-default)))))
 
+;;;###autoload
 (defun bh/punch-out ()
   (interactive)
   (setq bh/keep-clock-running nil)
@@ -98,11 +108,13 @@ as the default task."
     (org-clock-out))
   (org-agenda-remove-restriction-lock))
 
+;;;###autoload
 (defun bh/clock-in-default-task ()
   (save-excursion
     (org-with-point-at org-clock-default-task
       (org-clock-in))))
 
+;;;###autoload
 (defun bh/clock-in-parent-task ()
   "Move point to the parent (project) task if any and clock in"
   (let ((parent-task))
@@ -118,11 +130,13 @@ as the default task."
           (when bh/keep-clock-running
             (bh/clock-in-default-task)))))))
 
+;;;###autoload
 (defun bh/clock-in-organization-task-as-default ()
   (interactive)
   (org-with-point-at (org-id-find bh/organization-task-id 'marker)
     (org-clock-in '(16))))
 
+;;;###autoload
 (defun bh/clock-out-maybe ()
   (when (and bh/keep-clock-running
              (not org-clock-clocking-in)
@@ -130,11 +144,13 @@ as the default task."
              (not org-clock-resolving-clocks-due-to-idleness))
     (bh/clock-in-parent-task)))
 
+;;;###autoload
 (defun bh/clock-in-task-by-id (id)
   "Clock in a task by id"
   (org-with-point-at (org-id-find id 'marker)
     (org-clock-in nil)))
 
+;;;###autoload
 (defun bh/clock-in-last-task (arg)
   "Clock in the interrupted task if there is one
 Skip the default task and get the next one.
@@ -153,6 +169,7 @@ A prefix arg forces clock in of the default task."
     (org-with-point-at clock-in-to-task
       (org-clock-in nil))))
 
+;;;###autoload
 (defun bh/is-project-p ()
   "Any task with a todo keyword subtask"
   (save-restriction
@@ -169,6 +186,7 @@ A prefix arg forces clock in of the default task."
             (setq has-subtask t))))
       (and is-a-task has-subtask))))
 
+;;;###autoload
 (defun bh/is-project-subtree-p ()
   "Any task with a todo keyword that is in a project subtree.
 Callers of this function already widen the buffer view."
@@ -180,6 +198,7 @@ Callers of this function already widen the buffer view."
           nil
         t))))
 
+;;;###autoload
 (defun bh/is-task-p ()
   "Any task with a todo keyword and no subtask"
   (save-restriction
@@ -196,6 +215,7 @@ Callers of this function already widen the buffer view."
             (setq has-subtask t))))
       (and is-a-task (not has-subtask)))))
 
+;;;###autoload
 (defun bh/is-subproject-p ()
   "Any task which is a subtask of another project"
   (let ((is-subproject)
@@ -206,6 +226,7 @@ Callers of this function already widen the buffer view."
           (setq is-subproject t))))
     (and is-a-task is-subproject)))
 
+;;;###autoload
 (defun bh/list-sublevels-for-projects-indented ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
@@ -214,6 +235,7 @@ Callers of this function already widen the buffer view."
     (setq org-tags-match-list-sublevels nil))
   nil)
 
+;;;###autoload
 (defun bh/list-sublevels-for-projects ()
   "Set org-tags-match-list-sublevels so when restricted to a subtree we list all subtasks.
   This is normally used by skipping functions where this variable is already local to the agenda."
@@ -221,6 +243,7 @@ Callers of this function already widen the buffer view."
       (setq org-tags-match-list-sublevels t)
     (setq org-tags-match-list-sublevels nil))
   nil)
+;;;###autoload
 (defun bh/toggle-next-task-display ()
   (interactive)
   (setq bh/hide-scheduled-and-waiting-next-tasks (not bh/hide-scheduled-and-waiting-next-tasks))
@@ -228,6 +251,7 @@ Callers of this function already widen the buffer view."
     (org-agenda-redo))
   (message "%s WAITING and SCHEDULED NEXT Tasks" (if bh/hide-scheduled-and-waiting-next-tasks "Hide" "Show")))
 
+;;;###autoload
 (defun bh/skip-stuck-projects ()
   "Skip trees that are not stuck projects"
   (save-restriction
@@ -246,6 +270,7 @@ Callers of this function already widen the buffer view."
               next-headline)) ; a stuck project, has subtasks but no next task
         nil))))
 
+;;;###autoload
 (defun bh/skip-non-stuck-projects ()
   "Skip trees that are not stuck projects"
   (bh/list-sublevels-for-projects-indented)
@@ -265,6 +290,7 @@ Callers of this function already widen the buffer view."
               nil)) ; a stuck project, has subtasks but no next task
         next-headline))))
 
+;;;###autoload
 (defun bh/skip-non-projects ()
   "Skip trees that are not projects"
   (bh/list-sublevels-for-projects-indented)
@@ -284,6 +310,7 @@ Callers of this function already widen the buffer view."
             subtree-end))))
     (save-excursion (org-end-of-subtree t))))
 
+;;;###autoload
 (defun bh/skip-project-trees-and-habits ()
   "Skip trees that are projects"
   (save-restriction
@@ -297,6 +324,7 @@ Callers of this function already widen the buffer view."
        (t
         nil)))))
 
+;;;###autoload
 (defun bh/skip-projects-and-habits-and-single-tasks ()
   "Skip trees that are projects, tasks that are habits, single non-project tasks"
   (save-restriction
@@ -315,6 +343,7 @@ Callers of this function already widen the buffer view."
        (t
         nil)))))
 
+;;;###autoload
 (defun bh/skip-project-tasks-maybe ()
   "Show tasks related to the current restriction.
 When restricted to a project, skip project and sub project tasks, habits, NEXT tasks, and loose tasks.
@@ -339,6 +368,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
        (t
         nil)))))
 
+;;;###autoload
 (defun bh/skip-projects-and-habits ()
   "Skip trees that are projects and tasks that are habits"
   (save-restriction
@@ -352,12 +382,14 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
        (t
         nil)))))
 
+;;;###autoload
 (defun bh/skip-non-subprojects ()
   "Skip trees that are not projects"
   (let ((next-headline (save-excursion (outline-next-heading))))
     (if (bh/is-subproject-p)
         nil
       next-headline)))
+;;;###autoload
   (defun bh/skip-non-archivable-tasks ()
     "Skip trees that are not available for archiving"
     (save-restriction
@@ -382,6 +414,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
           next-headline))))
 
                                         ;; Erase all reminders and rebuilt reminders for today from the agenda
+;;;###autoload
 (defun bh/org-agenda-to-appt ()
   (interactive)
   (setq appt-time-msg-list nil)
@@ -389,6 +422,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ;;(global-set-key (kbd "<f5>") 'bh/org-todo)
 
+;;;###autoload
 (defun bh/org-todo (arg)
   (interactive "p")
   (if (equal arg 4)
@@ -400,6 +434,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
 
 ;;(global-set-key (kbd "<S-f5>") 'bh/widen)
 
+;;;###autoload
 (defun bh/widen ()
   (interactive)
   (if (equal major-mode 'org-agenda-mode)
@@ -410,6 +445,7 @@ When not restricted, skip project and sub-project tasks, habits, and project rel
     (widen)))
 
 (with-eval-after-load 'org-capture
+;;;###autoload
   (defun org-hugo-new-subtree-post-capture-template ()
     "Returns `org-capture' template string for new Hugo post.
 See `org-capture-templates' for more information."

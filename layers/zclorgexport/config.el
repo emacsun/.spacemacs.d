@@ -16,8 +16,11 @@
   (setq org-list-allow-alphabetical t)
   (add-hook 'org-mode-hook 'turn-on-reftex)
   ;; Explicitly load required exporters
+;;;###autoload
   (require 'ox-html)
+;;;###autoload
   (require 'ox-latex)
+;;;###autoload
   (require 'ox-ascii)
   (setq org-html-table-use-header-tags-for-first-column t);
   (add-hook 'org-mode-hook

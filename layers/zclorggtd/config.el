@@ -1,5 +1,6 @@
 
 (with-eval-after-load 'org
+;;;###autoload
     (require 'org-habit)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;(setq org-directory "~/zorg/")
@@ -226,6 +227,7 @@
 
   (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
 
+;;;###autoload
   (require 'org-id)
 
   (setq org-time-stamp-rounding-minutes (quote (1 1)))
@@ -315,6 +317,7 @@
             '(lambda () (org-defkey org-agenda-mode-map "W" 'bh/widen))
             'append)
 
+;;;###autoload
   (defun bh/restrict-to-file-or-follow (arg)
     "Set agenda restriction to 'file or with argument invoke follow mode.
 I don't use follow mode very often but I restrict to file all the time
@@ -331,10 +334,12 @@ so change the default 'F' binding in the agenda to allow both"
             '(lambda () (org-defkey org-agenda-mode-map "F" 'bh/restrict-to-file-or-follow))
             'append)
 
+;;;###autoload
   (defun bh/narrow-to-org-subtree ()
     (widen)
     (org-narrow-to-subtree))
 
+;;;###autoload
   (defun bh/narrow-to-subtree ()
     (interactive)
     (if (equal major-mode 'org-agenda-mode)
@@ -353,18 +358,21 @@ so change the default 'F' binding in the agenda to allow both"
             '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
             'append)
 
+;;;###autoload
   (defun bh/narrow-up-one-org-level ()
     (widen)
     (save-excursion
       (outline-up-heading 1 'invisible-ok)
       (bh/narrow-to-org-subtree)))
 
+;;;###autoload
   (defun bh/get-pom-from-agenda-restriction-or-point ()
     (or (org-get-at-bol 'org-hd-marker)
         (and (marker-position org-agenda-restrict-begin) org-agenda-restrict-begin)
         (and (equal major-mode 'org-mode) (point))
         org-clock-marker))
 
+;;;###autoload
   (defun bh/narrow-up-one-level ()
     (interactive)
     (if (equal major-mode 'org-agenda-mode)
@@ -376,6 +384,7 @@ so change the default 'F' binding in the agenda to allow both"
             '(lambda () (org-defkey org-agenda-mode-map "U" 'bh/narrow-up-one-level))
             'append)
 
+;;;###autoload
   (defun bh/narrow-to-org-project ()
     (widen)
     (save-excursion
@@ -383,6 +392,7 @@ so change the default 'F' binding in the agenda to allow both"
       (org-agenda-set-restriction-lock)
       (bh/narrow-to-org-subtree)))
 
+;;;###autoload
   (defun bh/narrow-to-project ()
     (interactive)
     (if (equal major-mode 'org-agenda-mode)
@@ -404,6 +414,7 @@ so change the default 'F' binding in the agenda to allow both"
 
   (defvar bh/project-list nil)
 
+;;;###autoload
   (defun bh/view-next-project ()
     (interactive)
     (let (num-project-left current-project)
@@ -455,6 +466,7 @@ so change the default 'F' binding in the agenda to allow both"
             '(lambda () (org-defkey org-agenda-mode-map "\C-c\C-x<" 'bh/set-agenda-restriction-lock))
             'append)
 
+;;;###autoload
   (defun bh/set-agenda-restriction-lock (arg)
     "Set restriction lock to current task subtree or file if prefix is specified"
     (interactive "p")
@@ -539,6 +551,7 @@ so change the default 'F' binding in the agenda to allow both"
   ;;
   (setq org-agenda-cmp-user-defined 'bh/agenda-sort)
 
+;;;###autoload
   (defun bh/agenda-sort (a b)
     "Sorting strategy for agenda items.
 Late deadlines first, then scheduled, then non-late deadlines"
@@ -599,31 +612,39 @@ Late deadlines first, then scheduled, then non-late deadlines"
        (setq result 1))
       (t nil)))
 
+;;;###autoload
   (defun bh/is-not-scheduled-or-deadline (date-str)
     (and (not (bh/is-deadline date-str))
          (not (bh/is-scheduled date-str))))
 
+;;;###autoload
   (defun bh/is-due-deadline (date-str)
     (string-match "Deadline:" date-str))
 
+;;;###autoload
   (defun bh/is-late-deadline (date-str)
     (string-match "\\([0-9]*\\) d\. ago:" date-str))
 
+;;;###autoload
   (defun bh/is-pending-deadline (date-str)
     (string-match "In \\([^-]*\\)d\.:" date-str))
 
+;;;###autoload
   (defun bh/is-deadline (date-str)
     (or (bh/is-due-deadline date-str)
         (bh/is-late-deadline date-str)
         (bh/is-pending-deadline date-str)))
 
+;;;###autoload
   (defun bh/is-scheduled (date-str)
     (or (bh/is-scheduled-today date-str)
         (bh/is-scheduled-late date-str)))
 
+;;;###autoload
   (defun bh/is-scheduled-today (date-str)
     (string-match "Scheduled:" date-str))
 
+;;;###autoload
   (defun bh/is-scheduled-late (date-str)
     (string-match "Sched\.\\(.*\\)x:" date-str))
 
@@ -697,6 +718,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
   (global-auto-revert-mode t)
 
+;;;###autoload
   (require 'org-crypt)
                                         ; Encrypt all entries before saving
   (org-crypt-use-before-save-magic)
@@ -759,6 +781,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                         ("Y" . ignore)
                                         ("Z" . ignore))))
 
+;;;###autoload
   (defun bh/show-org-agenda ()
     (interactive)
     (if org-agenda-sticky
@@ -766,17 +789,20 @@ Late deadlines first, then scheduled, then non-late deadlines"
       (switch-to-buffer "*Org Agenda*"))
     (delete-other-windows))
 
+;;;###autoload
   (require 'org-protocol)
 
   (setq require-final-newline t)
 
   (defvar bh/insert-inactive-timestamp t)
 
+;;;###autoload
   (defun bh/toggle-insert-inactive-timestamp ()
     (interactive)
     (setq bh/insert-inactive-timestamp (not bh/insert-inactive-timestamp))
     (message "Heading timestamps are %s" (if bh/insert-inactive-timestamp "ON" "OFF")))
 
+;;;###autoload
   (defun bh/insert-inactive-timestamp ()
     (interactive)
     (org-insert-time-stamp nil t t nil nil nil))
@@ -785,6 +811,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
   ;;nil t t   nil nil nil  插入一个inactive时间标签
 
 
+;;;###autoload
   (defun bh/insert-heading-inactive-timestamp ()
     (save-excursion
       (when bh/insert-inactive-timestamp
@@ -805,6 +832,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
    ;; If there is more than one, they won't work right.
    '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
 
+;;;###autoload
   (defun bh/prepare-meeting-notes ()
     "Prepare meeting notes for email
    Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
@@ -901,6 +929,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                 ("i" "#+index: ?" "#+index: ?")
                 ("I" "#+include %file ?" "<include file=%file markup=\"?\">"))))
 
+;;;###autoload
   (defun bh/mark-next-parent-tasks-todo ()
     "Visit each parent task and change NEXT states to TODO"
     (let ((mystate (or (and (fboundp 'org-state)
@@ -945,6 +974,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
               (local-set-key (kbd "C-c M-o") 'bh/mail-subtree))
             'append)
 
+;;;###autoload
   ;; (defun bh/mail-subtree ()
   ;;   (interactive)
   ;;   (org-mark-subtree)
