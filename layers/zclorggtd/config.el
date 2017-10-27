@@ -1,7 +1,7 @@
 
 (with-eval-after-load 'org
 ;;;###autoload
-    (require 'org-habit)
+  (require 'org-habit)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;(setq org-directory "~/zorg/")
   ;;The following lines are always needed. Choose your own keys.
