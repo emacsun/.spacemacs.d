@@ -133,6 +133,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         monokai
                          solarized-dark
                          monokai
                          spacemacs-dark
@@ -302,54 +303,12 @@ layers configuration. You are free to put any user code."
   (setq-default dospacemacs-line-numbers t)
   (setq-default evil-escape-key-sequence "df")
   (setq-default dotacemacs-enable-paste-micro-state t)
-  (setq-default dotspacemacs-persistent-server nil)
+  (setq-default dotspacemacs-persistent-server t)
   (setq powerline-default-separator 'arrow);;arrow, contour zigzag nil
   (setq org-fontify-whole-heading-line nil)
   (setq vc-handled-backends ())
   ;; (setq projectile)                     ;
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
-  (define-key evil-motion-state-map "j" 'evil-next-visual-line)
-  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
-  (define-key evil-motion-state-map (kbd "C-e") 'end-of-line)
-  (define-key evil-motion-state-map (kbd "C-q") 'undo-tree-visualize)
-  ;; Also in visual mode
-  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
-  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
-  (define-key evil-visual-state-map (kbd "C-e") 'end-of-line)
-  (define-key evil-visual-state-map (kbd "C-q") 'undo-tree-visualize)
-  (spacemacs/set-leader-keys "fn" 'find-file)
-  (spacemacs/set-leader-keys "fp" 'ffap)
-  (spacemacs/set-leader-keys "oe" 'open-in-desktop)
-  (spacemacs/set-leader-keys "bc" 'whitespace-cleanup)
-  (spacemacs/set-leader-keys "fw" 'ido-write-file)
-  (spacemacs/set-leader-keys "fd" 'open-in-desktop)
-  (spacemacs/set-leader-keys "ss" 'spacemacs/helm-swoop-region-or-symbol)
-  (spacemacs/set-leader-keys "sS" 'helm-swoop)
-  (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
-  (spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/zcl.space/index.org")))
-  (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
-
-  (define-key evil-insert-state-map (kbd "C-d") 'delete-char)
-  (define-key evil-insert-state-map (kbd "C-e") 'end-of-line)
-  (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
-  (define-key evil-insert-state-map (kbd "C-n") 'next-line)
-  (define-key evil-insert-state-map (kbd "C-k") 'kill-line)
-  (define-key evil-insert-state-map (kbd "C-k") nil)
-  (define-key evil-insert-state-map (kbd "C-q") 'undo-tree-visualize)
-  (define-key evil-insert-state-map (kbd "C-r") 'undo-tree-undo)
-
-  ;;(define-key evil-insert-state-map (kbd "C-t") 'undo-tree-redo)
-  ;;(global-unset-key (kbd "C-k"))
-  (define-key evil-insert-state-map (kbd "C-y") 'yank)
-  (define-key evil-insert-state-map (kbd "C-v") 'scroll-up-command)
-  (define-key evil-insert-state-map (kbd "C-w") 'kill-region)
-  (define-key evil-insert-state-map (kbd "M-y") 'helm-show-kill-ring)
-  (define-key evil-normal-state-map "Q" 'evil-ex)
-  (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)
-  (define-key evil-normal-state-map "\'" 'save-buffer)
-  (define-key evil-normal-state-map "’" 'save-buffer)
-  (define-key evil-normal-state-map "‘" 'save-buffer)
-  (define-key evil-normal-state-map (kbd "RET") 'save-buffer)
   (spacemacs|diminish company-mode "Ⓐ" "A")
   (smartparens-global-mode)
   (setq sp-highlight-pair-overlay nil);
