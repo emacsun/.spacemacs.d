@@ -124,7 +124,8 @@
                :components ("znotes-org" "znotes-extra"))
               )))
 
-(setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n")
+;;(setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n\n\n")
+(setq org-latex-toc-command "\\tableofcontents\n")
 (setq org-html-postamble t)
 ;;(setq org-html-postamble-format )
 
@@ -297,7 +298,7 @@ INFO is a plist used as a communication channel."
     (when fn-alist
       (format
        (plist-get info :html-footnotes-section)
-       (org-html--translate "参考文献" info)
+       (org-html--translate "Footnotes" info)
        (format
         "%s"
         (mapconcat

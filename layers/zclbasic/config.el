@@ -1,5 +1,7 @@
 (show-paren-mode 1)
-(setq show-paren-style 'expression)
+;;(setq show-paren-style 'expression)
+
+(setq show-paren-style 'parenthesis)
 ;; show the time
 (display-time-mode 1)
 (setq display-time-24hr-format t)

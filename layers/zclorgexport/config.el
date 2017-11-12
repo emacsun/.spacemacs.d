@@ -14,6 +14,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;org export latex;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;need to add #+LaTeX_CLASS at the beginning
   (setq org-list-allow-alphabetical t)
+  (setq org-highlight-latex-and-related '(latex script entities))
   (add-hook 'org-mode-hook 'turn-on-reftex)
   ;; Explicitly load required exporters
 ;;;###autoload
@@ -64,6 +65,14 @@
 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+(add-to-list 'org-latex-classes
+             '("article"
+               "\\documentclass[10pt,a4paper,UTF8]{article}"
+("\\section{%s}" . "\\section*{%s}")
+("\\subsection{%s}" . "\\subsection*{%s}")
+("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+("\\paragraph{%s}" . "\\paragraph*{%s}")
+("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 ;; 使用Listings宏包格式化源代码(只是把代码框用listing环境框起来，还需要额外的设置)
 (setq org-latex-listings t)
 ;; 导出Beamer的设置
