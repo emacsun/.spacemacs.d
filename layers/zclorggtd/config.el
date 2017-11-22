@@ -1,8 +1,5 @@
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (with-eval-after-load 'org
-;;;###autoload
-  (require 'org-habit)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;(setq org-directory "~/zorg/")
   ;;The following lines are always needed. Choose your own keys.
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -10,6 +7,7 @@
 ;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-default-notes-file  "~/zorg/output/znotes/znotes.org")
   (setq org-agenda-files (list "~/zorg/base/"
+                               "~/zorg/MobileOrg/inbox.org"
                                ;; "~/zorg/output/lte"
                                ;; "~/zorg/output/lte/physical"
                                ;; "~/zorg/output/communication"
@@ -90,6 +88,7 @@
           ;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
           ;; ("l" "my Log Time" entry (file+datetree "~/zorg/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
+           ("d" "diary" entry (file+datetree "~/zorg/base/zdiary.org" ) "* %t - %?  :diary:" :clock-in t :clock-resume t)
           ("x" "org-protocol" entry (file "~/zorg/base/zrefile.org")
            "* TODO Review %c \n Added:%T\n")
           ;;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
@@ -1013,4 +1012,4 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
   (setq org-log-done 'time);;一个 TODO（未完成）状态改变为一个完成状态时，标题下面就会插入一行 “CLOSED:[timestamp]”
   (setq org-log-done 'note);;提示你输入一个记录（note），并将它保存在n标题为“Closing Note”项目之下
-  )
+)
