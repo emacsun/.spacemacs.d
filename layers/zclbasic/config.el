@@ -3,12 +3,13 @@
 
 (setq show-paren-style 'parenthesis)
 ;; show the time
+(setq system-time-locale "C")
 (display-time-mode 1)
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (setq display-time-default-load-average nil)
 (setq display-time-load-average-threshold 10000)
-
+(setq display-time-format "%m-%d %a %H:%M")
 (when (string-equal system-type "windows-nt")
   (let (
         (mypaths
@@ -122,6 +123,7 @@
 (setq reftex-use-multiple-selection-buffers t )
 (autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
 (spacemacs|diminish reftex-mode "Ⓡ" "R")
+(spacemacs|diminish ggtags-mode "Ⓖ" "G")
 (autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" t)
 (autoload 'reftex-citation "reftex-cite" "Make citation" t)
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
@@ -157,6 +159,40 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 (add-hook 'org-mode-hook 'auto-complete-mode);
-;;(setq cfs-profiles '("coding" "orging" "reading"))
-;; other basic setup
-(spacemacs|diminish ggtags-mode "Ⓖ" "G")
+;;other basic setup
+;; (defsubst company-clang--build-complete-args (pos)
+;;   (append '("-fsyntax-only" "-Xclang" "-std=c++11" "-code-completion-macros")
+;;           (unless (company-clang--auto-save-p)
+;;             (list "-x" (company-clang--lang-option)))
+;;           company-clang-arguments
+;;           '("-I" "C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++")
+;;           (when (stringp company-clang--prefix)
+;;             (list "-include" (expand-file-name company-clang--prefix)))
+;;           (list "-Xclang" (format "-code-completion-at=%s"
+;;                                   (company-clang--build-location pos)))
+;;           (list (if (company-clang--auto-save-p) buffer-file-name "-"))))
+
+;; (setq company-clang-arguments
+;;       (mapcar(lambda (item)(concat "-I" item))
+;;              (split-string
+;;               "
+;; /C/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++
+;;  .
+;;     ")))
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
+;; Windows performance tweaks
+;;
+(when (boundp 'w32-pipe-read-delay)
+  (setq w32-pipe-read-delay 0))
+;; Set the buffer size to 64K on Windows (from the original 4K)
+(when (boundp 'w32-pipe-buffer-size)
+  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))

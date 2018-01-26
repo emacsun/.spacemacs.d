@@ -16,7 +16,7 @@
        ;; company-jedi
         ssh-agency
         ;;cygwin-mount
-        dired+        ))
+                ))
 
 
 (defun zclbasic/init-matlab-mode()
@@ -47,19 +47,3 @@
       (global-set-key (kbd "M-n") 'highlight-symbol-next)
       (global-set-key (kbd "M-p") 'highlight-symbol-prev)
       )))
-
-
-(defun zclbasic/init-dired+()
-  (use-package dired+
-    :defer t
-    :init
-    (progn
-      )))
-(defun zclorg/init-company-jedi()
-  (use-package company-jedi
-    :defer t
-    :init
-    (push 'company-jedi company-backends-python-mode)
-    (push 'company-jedi company-backends)
-    :config
-    (push 'company-jedi company-backends-python-mode)))

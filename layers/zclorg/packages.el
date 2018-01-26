@@ -1,7 +1,6 @@
 (setq zclorg-packages
       '(
         (org )
-        htmlize
         ox-hugo
         cdlatex
               ))
@@ -25,8 +24,3 @@
 
 (defun zclorg/post-init-cdlatex()
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
-(defun zclorg/post-init-htmlize()
-  (use-package htmlize
-    :defer t
-    :init
-    ))

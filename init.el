@@ -68,7 +68,6 @@ values."
      version-control
      python;
      ;;java
-
      html
      ;;markdown
      zclbasic
@@ -78,7 +77,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee )
+   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee irony company-irony company-irony-c-headers solarized-theme)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(orgit org-projectile)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -124,7 +123,7 @@ values."
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
-   dotspacemacs-startup-lists '(recents projects bookmarks)
+   dotspacemacs-startup-lists nil
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
    dotspacemacs-startup-recent-list-size 20
@@ -139,6 +138,7 @@ values."
                          monokai
                          spacemacs-dark
                          spacemacs-light
+                         solarized-dark
                          solarized-light
                          leuven
                          zenburn)
@@ -292,7 +292,7 @@ in `dotspacemacs/user-config'."
   (setq socks-server '("Default server" "127.0.0.1" 1080 5))
   (setq evil-shift-round nil)
   (setq byte-compile-warnings '(not obsolete))
-
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   )
 
 (defun dotspacemacs/user-config ()
@@ -320,129 +320,5 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
   (require 'helm-bookmark)
+  (load custom-file)
 )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
- '(cfs--current-profile "coding" t)
- '(cfs--profiles-steps (quote (("coding" . 4))) t)
- '(cua-normal-cursor-color "#839496")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(evil-escape-delay 0.5)
- '(fci-rule-color "#073642" t)
- '(flycheck-check-syntax-automatically nil)
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
- '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
- '(highlight-symbol-foreground-color "#93a1a1")
- '(highlight-tail-colors
-   (quote
-    (("#3E3D31" . 0)
-     ("#67930F" . 20)
-     ("#349B8D" . 30)
-     ("#21889B" . 50)
-     ("#968B26" . 60)
-     ("#A45E0A" . 70)
-     ("#A41F99" . 85)
-     ("#3E3D31" . 100))))
- '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(magit-diff-use-overlays nil)
- '(nrepl-message-colors
-   (quote
-    ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-files
-   (quote
-    ("c:/Users/cliyh/AppData/Roaming/zorg/base/zdiary.org" "c:/Users/cliyh/AppData/Roaming/zorg/base/zlife.org" "c:/Users/cliyh/AppData/Roaming/zorg/base/zrefile.org" "c:/Users/cliyh/AppData/Roaming/zorg/base/ztimelog.org" "c:/Users/cliyh/AppData/Roaming/zorg/base/zwork.org")))
- '(org-fontify-whole-heading-line nil)
- '(package-selected-packages
-   (quote
-    (org-mobile-sync org-plus-contrib org orgit youdao-dictionary names chinese-word-at-point toml-mode racer ox-hugo flycheck-rust seq cargo rust-mode eclim company-irony-c-headers flyspell-correct irony-eldoc company-irony irony cygwin-mount ssh-agency pangu-spacing find-by-pinyin-dired chinese-pyim chinese-pyim-basedict ace-pinyin pinyinlib ace-jump-mode winum powerline spinner alert log4e gntp memoize flycheck hydra parent-mode projectile pkg-info epl request xcscope gitignore-mode fringe-helper git-gutter+ git-gutter fuzzy flx magit magit-popup git-commit with-editor async smartparens iedit anzu evil goto-chg undo-tree highlight diminish pos-tip bind-map bind-key yasnippet packed dash anaconda-mode pythonic f s helm helm-core math-symbol-lists auto-complete popup mmm-mode markdown-toc markdown-mode gh-md jdee web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yapfify xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smeargle shell-pop restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme matlab-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump disaster dired+ diff-hl define-word cython-mode company-statistics company-quickhelp company-emacs-eclim company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format chinese-fonts-setup cdlatex bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-complete-clang auto-complete-c-headers auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-math ac-ispell)))
- '(paradox-github-token "e18bbc25c1a76fd1f8d680513267b4c75485bac9")
- '(pos-tip-background-color "#A6E22E")
- '(pos-tip-foreground-color "#272822")
- '(projectile-enable-caching t)
- '(python-shell-completion-native-enable nil)
- '(python-shell-interpreter "python3.5" t)
- '(python-shell-prompt-detect-failure-warning nil)
- '(safe-local-variable-values
-   (quote
-    ((company-clang-arguments "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++" "-IC:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/")
-     (eval font-lock-add-keywords nil
-           (\`
-            (((\,
-               (concat "("
-                       (regexp-opt
-                        (quote
-                         ("sp-do-move-op" "sp-do-move-cl" "sp-do-put-op" "sp-do-put-cl" "sp-do-del-op" "sp-do-del-cl"))
-                        t)
-                       "\\_>"))
-              1
-              (quote font-lock-variable-name-face))))))))
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
- '(term-default-bg-color "#002b36")
- '(term-default-fg-color "#839496")
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-   (unspecified "#272822" "#3E3D31" "#A20C41" "#F92672" "#67930F" "#A6E22E" "#968B26" "#E6DB74" "#21889B" "#66D9EF" "#A41F99" "#FD5FF0" "#349B8D" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
- '(xterm-color-names
-   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
- '(xterm-color-names-bright
-   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
- '(bold ((t (:inherit fixed-pitch :slant normal :weight bold :height 126 :width normal :foundry "outline" :family "Consolas"))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(fringe ((t (:background "dark slate gray" :foreground "mint cream"))))
- '(org-agenda-structure ((t (:background "#073642" :foreground "green3" :inverse-video nil :box (:line-width 2 :color "#002b36") :underline nil :slant normal :weight bold :height 1.1))))
- '(org-level-1 ((t (:inherit fixed-pitch :foreground "#cb4b16" :height 1.4 :family "Consolas"))))
- '(org-level-2 ((t (:inherit fixed-pitch :foreground "#859900" :height 1.2 :family "Consolas"))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))))
- '(region ((t (:background "lawn green" :foreground "black"))))
- '(spacemacs-visual-face ((t (:background "cyan" :foreground "#073642" :box (:line-width 1 :color "#073642") :inherit (quote mode-line))))))

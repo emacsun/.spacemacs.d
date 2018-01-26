@@ -6,8 +6,13 @@
   (add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
 ;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-default-notes-file  "~/zorg/output/znotes/znotes.org")
-  (setq org-agenda-files (list "~/zorg/base/"
-                               "~/zorg/MobileOrg/inbox.org"
+  (setq org-agenda-files (list "~/zorg/Dropbox/base/zlife.org"
+                               "~/zorg/Dropbox/base/zwork.org"
+                               "~/zorg/Dropbox/base/zrefile.org"
+                               "~/zorg/Dropbox/base/zdiary.org"
+                               "~/zorg/Dropbox/base/ztimelog.org"
+                               "~/zorg/Dropbox/org/refile.org"
+                               ;;"~/zorg/MobileOrg/inbox.org"
                                ;; "~/zorg/output/lte"
                                ;; "~/zorg/output/lte/physical"
                                ;; "~/zorg/output/communication"
@@ -18,8 +23,13 @@
                                ;; "~/zorg/output/znotes/"
                                ))
   (setq org-refile-targets (quote (
-                                   ("~/zorg/base/zwork.org" :maxlevel . 6)
-                                   ("~/zorg/base/zlife.org" :maxlevel . 6)
+                                   ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
+                                   ("~/zorg/Dropbox/base/zlife.org" :maxlevel . 6)
+                                   ("~/zorg/Dropbox/base/zdiary.org" :maxlevel . 6)
+                                   ("~/zorg/zcl.space/content_org/math.org" :maxlevel . 6)
+                                   ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
+                                   ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
+                                   ("~/zorg/zcl.space/content_org/life.org" :maxlevel . 6)
                                    ;; ("~/zorg/output/znotes/zjoke.org" :maxlevel . 6)
                                    ;; ("~/zorg/output/znotes/math.org" :maxlevel . 6)
                                    ;; ("~/zorg/output/znotes/emacs.org" :maxlevel . 6)
@@ -31,7 +41,7 @@
 
 
   (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+        (quote ((sequence "TODO(t)" "NEXT(n)"  "|" "DONE(d)")
                 (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
 
   (setq org-todo-keyword-faces
@@ -48,52 +58,65 @@
 
   (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
-  (setq org-todo-state-tags-triggers
-        (quote
-         (("CANCELLED" ("CANCELLED" . t) ("TODO" . nil) ("NEXT" . nil))
-          ("WAITING" ("WAITING" . t) ("TODO" . nil) ("NEXT" . nil))
-          ("HOLD" ("WAITING" . t) ("HOLD" . t) ("TODO" . nil) ("NEXT" . nil))
-          ("NEXT" ("NEXT" . t) ("TODO" . nil) ("DONE" . nil))
-          ("TODO" ("TODO" . t) ("NEXT" . nil) ("DONE" . nil))
-          ("DONE" ("DONE" . t) ("TODO" . nil) ("NEXT" . nil))
-          (done ("WAITING") ("HOLD"))
-          ;;("TODO" ("TODO" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT"))
-          ;;("NEXT" ("NEXT" . t) ("WAITING") ("CANCELLED") ("HOLD") ("TODO"))
-          ;;("DONE" ("DONE" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT") ("TODO"))
-          )))
+  ;; (setq org-todo-state-tags-triggers
+  ;;       (quote
+  ;;        (("CANCELLED" ("CANCELLED" . t) ("TODO" . nil) ("NEXT" . nil))
+  ;;         ("WAITING" ("WAITING" . t) ("TODO" . nil) ("NEXT" . nil))
+  ;;         ("HOLD" ("WAITING" . t) ("HOLD" . t) ("TODO" . nil) ("NEXT" . nil))
+  ;;         ("NEXT" ("NEXT" . t) ("TODO" . nil) ("DONE" . nil))
+  ;;         ("TODO" ("TODO" . t) ("NEXT" . nil) ("DONE" . nil))
+  ;;         ("DONE" ("DONE" . t) ("TODO" . nil) ("NEXT" . nil))
+  ;;         (done ("WAITING") ("HOLD"))
+  ;;         ;;("TODO" ("TODO" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT"))
+  ;;         ;;("NEXT" ("NEXT" . t) ("WAITING") ("CANCELLED") ("HOLD") ("TODO"))
+  ;;         ;;("DONE" ("DONE" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT") ("TODO"))
+  ;;         )))
 
+  (setq org-todo-state-tags-triggers nil);
 
   (setq org-capture-templates
         '(
-          ("t" "todo" entry (file "~/zorg/base/zrefile.org")
+          ("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO %? :TODO: \n Added:%T\n"
            :clock-in t :clock-resume t)
-          ;;("t" "todo" entry (file "~/zorg/base/zrefile.org")"* TODO %? \n   Added:%U\n")
+          ;;("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")"* TODO %? \n   Added:%U\n")
           ("h" "Hugo post")
-          ("hr" "Reading"
-           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "Reading")
+          ("hm" "Math"
+           entry (file+olp "~/zorg/zcl.space/content_org/math.org" "Math")
+           (function org-hugo-new-subtree-post-capture-template)
+           ":math:"
+           :clock-in t :clock-resume t)
+          ("hc" "Computer"
+           entry (file+olp "~/zorg/zcl.space/content_org/computer.org" "Computer")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
 
+          ("ht" "Telecommunication"
+           entry (file+olp "~/zorg/zcl.space/content_org/telecommunication.org" "Telecommunication")
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
+          ("hl" "Life"
+           entry (file+olp "~/zorg/zcl.space/content_org/life.org" "Life")
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
           ("hm" "movie"
-           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
+           entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Movie")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-
           ("hl" "life"
-           entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
+           entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Life")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ;; ("w" "wordpress" entry (file+headline "~/zorg/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
+          ;; ("w" "wordpress" entry (file+headline "~/zorg/Dropbox/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
           ;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
-          ;; ("l" "my Log Time" entry (file+datetree "~/zorg/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
-           ("d" "diary" entry (file+datetree "~/zorg/base/zdiary.org" ) "* %t - %?  :diary:" :clock-in t :clock-resume t)
-          ("x" "org-protocol" entry (file "~/zorg/base/zrefile.org")
+           ("l" "my Log Time" entry (file+datetree "~/zorg/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
+           ("d" "diary" entry (file+datetree "~/zorg/Dropbox/base/zdiary.org" ) "* %t - %?  :diary:" :clock-in t :clock-resume t)
+          ("x" "org-protocol" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO Review %c \n Added:%T\n")
-          ;;	("m" "Meeting" entry (file+datetree "~/zorg/base/timelog.org") "** %T MEETING with %? :MEETING:"
+          ;;	("m" "Meeting" entry (file+datetree "~/zorg/Dropbox/base/timelog.org") "** %T MEETING with %? :MEETING:"
           ;;          :clock-in t :clock-resume t )
-          ;;	("p" "Phone call" entry (file+datetree "~/zorg/base/timelog.org") "** %T PHONE %? :PHONE:"
+          ;;	("p" "Phone call" entry (file+datetree "~/zorg/Dropbox/base/timelog.org") "** %T PHONE %? :PHONE:"
           ;;          :clock-in t :clock-resume t)
           ))
 
@@ -133,18 +156,25 @@
 
   ;; Custom agenda command definitions
   (setq org-agenda-custom-commands
-        (quote (("N" "Notes" tags "NOTE"
-                 ((org-agenda-overriding-header "Notes")
-                  (org-tags-match-list-sublevels t)))
-                ("h" "Habits" tags-todo "STYLE=\"habit\""
-                 ((org-agenda-overriding-header "Habits")
-                  (org-agenda-sorting-strategy
-                   '(todo-state-down effort-up category-keep))))
-                ("f" occur-tree "FIXME")
+        (quote (
+                ;; ("N" "Notes" tags "NOTE"
+                ;;  ((org-agenda-overriding-header "Notes")
+                ;;   (org-tags-match-list-sublevels t)))
+                ;; ("d" "Diary" tags "diary"
+                ;;  ((org-agenda-overriding-header "my diaries")
+                ;;   (org-tags-match-list-sublevels t)))
+                ;; ("h" "Habits" tags-todo "STYLE=\"habit\""
+                ;;  ((org-agenda-overriding-header "Habits")
+                ;;   (org-agenda-sorting-strategy
+                ;;    '(todo-state-down effort-up category-keep))))
+                ;; ("f" occur-tree "FIXME")
                 (" " "Agenda"
-                 ((agenda "" nil)
+                 ((agenda "" )
+                  (tags "NOTES"
+                        ((org-agenda-overriding-header "NOTES to Refile")
+                         (org-tags-match-list-sublevels nil)))
                   (tags "REFILE"
-                        ((org-agenda-overriding-header "Tasks to Refile")
+                       ((org-agenda-overriding-header "Tasks to Refile")
                          (org-tags-match-list-sublevels nil)))
                   (tags-todo "-CANCELLED/!"
                              ((org-agenda-overriding-header "Stuck Projects")
@@ -157,11 +187,17 @@
                               (org-agenda-sorting-strategy
                                '(priority-down category-keep))))
                   (tags-todo "-CANCELLED/!NEXT"
-                             ((org-agenda-overriding-header "Project Next Tasks")
+                             ((org-agenda-overriding-header "Project NEXT Tasks")
                               (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
                               (org-tags-match-list-sublevels t)
                               (org-agenda-sorting-strategy
                                '(priority-down todo-state-down effort-up category-keep))))
+                  ;; (todo "DONE"
+                  ;;            ((org-agenda-overriding-header "Project DONE Tasks")
+                  ;;             (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
+                  ;;             (org-tags-match-list-sublevels t)
+                  ;;             (org-agenda-sorting-strategy
+                  ;;              '(priority-down todo-state-down effort-up category-keep))))
                   ;; (tags-todo "-REFILE-CANCELLED-WAITING/!"
                   ;;     ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project Subtasks" "Standalone Tasks"))
                   ;;      (org-agenda-skip-function 'bh/skip-project-tasks-maybe)
@@ -170,13 +206,14 @@
                   ;;      (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
                   ;;      (org-agenda-sorting-strategy
                   ;;       '(category-keep))))
-                  (tags "TODO"
+                  (todo "TODO"
                         ((org-agenda-overriding-header "Project Subtasks TODO")
                          (org-tags-match-list-sublevels nil)))
-                  (tags "DONE"
+                  (todo "DONE"
                         ((org-agenda-overriding-header "Project Subtasks DONE")
                          (org-tags-match-list-sublevels nil)))
-                  (tags-todo "-CANCELLED+WAITING/!"
+                  ;;(tags-todo "-CANCELLED+WAITING+HOLD/!"
+                  (todo "HOLD"
                              ((org-agenda-overriding-header "Waiting and Postponed Tasks")
                               (org-agenda-skip-function 'bh/skip-stuck-projects)
                               (org-tags-match-list-sublevels nil)
@@ -187,7 +224,6 @@
                          (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                          (org-tags-match-list-sublevels nil))))
                  nil))))
-
 
   (setq org-agenda-auto-exclude-function 'bh/org-auto-exclude-function)
 
@@ -541,7 +577,10 @@ so change the default 'F' binding in the agenda to allow both"
   ;; (setq org-agenda-time-grid (quote ((daily today remove-match)
   ;;                                    #("----------------" 0 16 (org-heading t))
   ;;                                    (0900 1100 1300 1500 1700))))
-
+  (setq org-agenda-time-grid (quote
+                              ((daily today remove-match)
+                               (0900 1100 1300 1500 1700)
+                               "......" "----------------")))
   ;; Display tags farther right
   (setq org-agenda-tags-column -102)
 

@@ -60,8 +60,8 @@
 (setq org-export-headline-levels 6)
 (setq org-publish-project-alist
       (quote (("zcl-org"
-               :base-directory "~/zorg/zcl.space/"
-               :publishing-directory "~/zorg/zcl.space/"
+               :base-directory "~/zorg/zcl.space-learning/"
+               :publishing-directory "~/zorg/zcl.space-learning/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -78,8 +78,8 @@
                :author-info nil
                :creator-info nil)
               ("zcl-extra"
-               :base-directory "~/zorg/zcl.space/"
-               :publishing-directory "~/zorg/zcl.space/"
+               :base-directory "~/zorg/zcl.space-learning/"
+               :publishing-directory "~/zorg/zcl.space-learning/"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -88,15 +88,15 @@
                :components ("zcl-org" "zcl-extra"))
 
               ("znotes-inherit"
-               :base-directory "~/zorg/zcl.space/"
+               :base-directory "~/zorg/zcl.space-learning/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/zcl.space/znotes/"
+               :publishing-directory "~/zorg/zcl.space-learning/znotes/"
                :publishing-function org-publish-attachment
                )
               ("znotes-org"
-               :base-directory "~/zorg/zcl.space/znotes"
-               :publishing-directory "~/zorg/zcl.space/znotes/"
+               :base-directory "~/zorg/zcl.space-learning/znotes"
+               :publishing-directory "~/zorg/zcl.space-learning/znotes/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -114,8 +114,8 @@
                :creator-info nil
                )
               ("znotes-extra"
-               :base-directory "~/zorg/zcl.space/znotes"
-               :publishing-directory "~/zorg/zcl.space/znotes"
+               :base-directory "~/zorg/zcl.space-learning/znotes"
+               :publishing-directory "~/zorg/zcl.space-learning/znotes"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t

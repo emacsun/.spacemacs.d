@@ -1,16 +1,15 @@
-
 (with-eval-after-load 'org
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;wo de;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-agenda-use-tag-inheritance nil)
 ;;;;;设置org时间戳为英文；；；；；；；；；
-  (setq system-time-locale "C")
 ;;;;orgexport;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;export html;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-src-fontify-natively t) ;设置代码高亮
   ;;为输出的html中的代码着色。
   ;;(add-to-list 'load-path "~/site-lisp/htmlize/")
-                                        ;pp(require 'htmlize)
+                                       ;;(require 'htmlize)
 
+  (require 'org-habit)
 ;;;;;;;;;;;;;;;;;;;;;;;;org export latex;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;need to add #+LaTeX_CLASS at the beginning
   (setq org-list-allow-alphabetical t)
