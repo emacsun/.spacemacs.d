@@ -196,3 +196,7 @@
 ;; Set the buffer size to 64K on Windows (from the original 4K)
 (when (boundp 'w32-pipe-buffer-size)
   (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+(let ((map company-active-map))
+  (mapc (lambda (x) (define-key map (format "%d" x)
+                      `(lambda () (interactive) (company-complete-number ,x))))
+        (number-sequence 0 9)))
