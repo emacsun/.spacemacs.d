@@ -464,3 +464,296 @@ See `org-capture-templates' for more information."
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
   )
+
+;;;;;;###autoload
+(defun bh/restrict-to-file-or-follow (arg)
+  "Set agenda restriction to 'file or with argument invoke follow mode.
+I don't use follow mode very often but I restrict to file all the time
+so change the default 'F' binding in the agenda to allow both"
+  (interactive "p")
+  (if (equal arg 4)
+      (org-agenda-follow-mode)
+    (widen)
+    (bh/set-agenda-restriction-lock 4)
+    (org-agenda-redo)
+    (beginning-of-buffer)))
+
+;;;;;;###autoload
+(defun bh/narrow-to-org-subtree ()
+  (widen)
+  (org-narrow-to-subtree))
+
+;;;;;;###autoload
+(defun bh/narrow-to-subtree ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (progn
+        (org-with-point-at (org-get-at-bol 'org-hd-marker)
+          (bh/narrow-to-org-subtree)
+          (save-restriction
+            (org-agenda-set-restriction-lock)))
+        (when org-agenda-sticky
+          (org-agenda-redo)))
+    (bh/narrow-to-org-subtree)
+    (save-restriction
+      (org-agenda-set-restriction-lock))))
+
+;;;;;;###autoload
+(defun bh/narrow-up-one-org-level ()
+  (widen)
+  (save-excursion
+    (outline-up-heading 1 'invisible-ok)
+    (bh/narrow-to-org-subtree)))
+;;;;;;###autoload
+(defun bh/get-pom-from-agenda-restriction-or-point ()
+  (or (org-get-at-bol 'org-hd-marker)
+      (and (marker-position org-agenda-restrict-begin) org-agenda-restrict-begin)
+      (and (equal major-mode 'org-mode) (point))
+      org-clock-marker))
+
+;;;;;;###autoload
+(defun bh/narrow-up-one-level ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (org-with-point-at (bh/get-pom-from-agenda-restriction-or-point)
+        (bh/narrow-up-one-org-level))
+    (bh/narrow-up-one-org-level)))
+
+;;;;;;###autoload
+(defun bh/narrow-to-org-project ()
+  (widen)
+  (save-excursion
+    (bh/find-project-task)
+    (org-agenda-set-restriction-lock)
+    (bh/narrow-to-org-subtree)))
+
+;;;;;;###autoload
+(defun bh/narrow-to-project ()
+  (interactive)
+  (if (equal major-mode 'org-agenda-mode)
+      (progn
+        (org-with-point-at (bh/get-pom-from-agenda-restriction-or-point)
+          (bh/narrow-to-org-project)
+          (save-excursion
+            (bh/find-project-task)
+            (org-agenda-set-restriction-lock)))
+        (org-agenda-redo)
+        (beginning-of-buffer))
+    (bh/narrow-to-org-project)
+    (save-restriction
+      (org-agenda-set-restriction-lock))))
+
+;;;;;;###autoload
+  (defun bh/view-next-project ()
+    (interactive)
+    (let (num-project-left current-project)
+      (unless (marker-position org-agenda-restrict-begin)
+        (goto-char (point-min))
+        ;; Clear all of the existing markers on the list
+        (while bh/project-list
+          (set-marker (pop bh/project-list) nil))
+        (re-search-forward "Tasks to Refile")
+        (forward-visible-line 1))
+
+      ;; Build a new project marker list
+      (unless bh/project-list
+        (while (< (point) (point-max))
+          (while (and (< (point) (point-max))
+                      (or (not (org-get-at-bol 'org-hd-marker))
+                          (org-with-point-at (org-get-at-bol 'org-hd-marker)
+                            (or (not (bh/is-project-p))
+                                (bh/is-project-subtree-p)))))
+            (forward-visible-line 1))
+          (when (< (point) (point-max))
+            (add-to-list 'bh/project-list (copy-marker (org-get-at-bol 'org-hd-marker)) 'append))
+          (forward-visible-line 1)))
+
+      ;; Pop off the first marker on the list and display
+      (setq current-project (pop bh/project-list))
+      (when current-project
+        (org-with-point-at current-project
+          (setq bh/hide-scheduled-and-waiting-next-tasks nil)
+          (bh/narrow-to-project))
+        ;; Remove the marker
+        (setq current-project nil)
+        (org-agenda-redo)
+        (beginning-of-buffer)
+        (setq num-projects-left (length bh/project-list))
+        (if (> num-projects-left 0)
+            (message "%s projects left to view" num-projects-left)
+          (beginning-of-buffer)
+          (setq bh/hide-scheduled-and-waiting-next-tasks t)
+          (error "All projects viewed.")))))
+
+;;;;;;###autoload
+(defun bh/set-agenda-restriction-lock (arg)
+  "Set restriction lock to current task subtree or file if prefix is specified"
+  (interactive "p")
+  (let* ((pom (bh/get-pom-from-agenda-restriction-or-point))
+         (tags (org-with-point-at pom (org-get-tags-at))))
+    (let ((restriction-type (if (equal arg 4) 'file 'subtree)))
+      (save-restriction
+        (cond
+         ((and (equal major-mode 'org-agenda-mode) pom)
+          (org-with-point-at pom
+            (org-agenda-set-restriction-lock restriction-type))
+          (org-agenda-redo))
+         ((and (equal major-mode 'org-mode) (org-before-first-heading-p))
+          (org-agenda-set-restriction-lock 'file))
+         (pom
+          (org-with-point-at pom
+            (org-agenda-set-restriction-lock restriction-type))))))))
+
+;;;;;;###autoload
+(defun bh/agenda-sort (a b)
+  "Sorting strategy for agenda items.
+Late deadlines first, then scheduled, then non-late deadlines"
+  (let (result num-a num-b)
+    (cond
+     ;; time specific items are already sorted first by org-agenda-sorting-strategy
+
+     ;; non-deadline and non-scheduled items next
+     ((bh/agenda-sort-test 'bh/is-not-scheduled-or-deadline a b))
+
+     ;; deadlines for today next
+     ((bh/agenda-sort-test 'bh/is-due-deadline a b))
+
+     ;; late deadlines next
+     ((bh/agenda-sort-test-num 'bh/is-late-deadline '> a b))
+
+     ;; scheduled items for today next
+     ((bh/agenda-sort-test 'bh/is-scheduled-today a b))
+
+     ;; late scheduled items next
+     ((bh/agenda-sort-test-num 'bh/is-scheduled-late '> a b))
+
+     ;; pending deadlines last
+     ((bh/agenda-sort-test-num 'bh/is-pending-deadline '< a b))
+
+     ;; finally default to unsorted
+     (t (setq result nil)))
+    result))
+
+  (defmacro bh/agenda-sort-test (fn a b)
+    "Test for agenda sort"
+    `(cond
+      ;; if both match leave them unsorted
+      ((and (apply ,fn (list ,a))
+            (apply ,fn (list ,b)))
+       (setq result nil))
+      ;; if a matches put a first
+      ((apply ,fn (list ,a))
+       (setq result -1))
+      ;; otherwise if b matches put b first
+      ((apply ,fn (list ,b))
+       (setq result 1))
+      ;; if none match leave them unsorted
+      (t nil)))
+
+  (defmacro bh/agenda-sort-test-num (fn compfn a b)
+    `(cond
+      ((apply ,fn (list ,a))
+       (setq num-a (string-to-number (match-string 1 ,a)))
+       (if (apply ,fn (list ,b))
+           (progn
+             (setq num-b (string-to-number (match-string 1 ,b)))
+             (setq result (if (apply ,compfn (list num-a num-b))
+                              -1
+                            1)))
+         (setq result -1)))
+      ((apply ,fn (list ,b))
+       (setq result 1))
+      (t nil)))
+
+;;;;;;###autoload
+  (defun bh/is-not-scheduled-or-deadline (date-str)
+    (and (not (bh/is-deadline date-str))
+         (not (bh/is-scheduled date-str))))
+
+;;;;;;###autoload
+  (defun bh/is-due-deadline (date-str)
+    (string-match "Deadline:" date-str))
+
+;;;;;;###autoload
+  (defun bh/is-late-deadline (date-str)
+    (string-match "\\([0-9]*\\) d\. ago:" date-str))
+
+;;;;;;###autoload
+  (defun bh/is-pending-deadline (date-str)
+    (string-match "In \\([^-]*\\)d\.:" date-str))
+
+;;;;;;###autoload
+  (defun bh/is-deadline (date-str)
+    (or (bh/is-due-deadline date-str)
+        (bh/is-late-deadline date-str)
+        (bh/is-pending-deadline date-str)))
+
+;;;;;;###autoload
+  (defun bh/is-scheduled (date-str)
+    (or (bh/is-scheduled-today date-str)
+        (bh/is-scheduled-late date-str)))
+
+;;;;;;###autoload
+  (defun bh/is-scheduled-today (date-str)
+    (string-match "Scheduled:" date-str))
+
+;;;;;;###autoload
+  (defun bh/is-scheduled-late (date-str)
+    (string-match "Sched\.\\(.*\\)x:" date-str))
+
+;;;;;;###autoload
+(defun bh/show-org-agenda ()
+  (interactive)
+  (if org-agenda-sticky
+      (switch-to-buffer "*Org Agenda( )*")
+    (switch-to-buffer "*Org Agenda*"))
+  (delete-other-windows))
+;;;;;;###autoload
+(defun bh/toggle-insert-inactive-timestamp ()
+  (interactive)
+  (setq bh/insert-inactive-timestamp (not bh/insert-inactive-timestamp))
+  (message "Heading timestamps are %s" (if bh/insert-inactive-timestamp "ON" "OFF")))
+
+;;;;;;###autoload
+(defun bh/insert-inactive-timestamp ()
+  (interactive)
+  (org-insert-time-stamp nil t t nil nil nil))
+  ;;;;参见org-insert-time-stamp的函数帮助
+  ;;;;nil t nil nil nil nil  插入一个active时间标签
+  ;;;;nil t t   nil nil nil  插入一个inactive时间标签
+
+;;;;;;###autoload
+(defun bh/insert-heading-inactive-timestamp ()
+  (save-excursion
+    (when bh/insert-inactive-timestamp
+      (org-return)
+      (org-cycle)
+      (bh/insert-inactive-timestamp))))
+
+;;;;;;###autoload
+(defun bh/prepare-meeting-notes ()
+  "Prepare meeting notes for email
+   Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
+  (interactive)
+  (let (prefix)
+    (save-excursion
+      (save-restriction
+        (narrow-to-region (region-beginning) (region-end))
+        (untabify (point-min) (point-max))
+        (goto-char (point-min))
+        (while (re-search-forward "^\\( *-\\\) \\(TODO\\|DONE\\): " (point-max) t)
+          (replace-match (concat (make-string (length (match-string 1)) ?>) " " (match-string 2) ": ")))
+        (goto-char (point-min))
+        (kill-ring-save (point-min) (point-max))))))
+
+;;;;;;###autoload
+(defun bh/mark-next-parent-tasks-todo ()
+  "Visit each parent task and change NEXT states to TODO"
+  (let ((mystate (or (and (fboundp 'org-state)
+                          state)
+                     (nth 2 (org-heading-components)))))
+    (when mystate
+      (save-excursion
+        (while (org-up-heading-safe)
+          (when (member (nth 2 (org-heading-components)) (list "NEXT"))
+            (org-todo "TODO")))))))

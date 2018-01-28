@@ -1,7 +1,6 @@
 (setq zclorgothers-packages
       '(
-        (org )
-              ))
+        (org )))
 
 
 (defun zclorgorthers/post-init-org()

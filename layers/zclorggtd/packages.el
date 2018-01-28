@@ -1,7 +1,6 @@
 (setq zclorggtd-packages
       '(
-        (org )
-              ))
+        (org )))
 
 (defun zclorggtd/post-init-org()
   (use-package org

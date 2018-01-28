@@ -40,8 +40,9 @@ values."
      ;;better-defaults
      emacs-lisp
      git
-     gtags
-     (colors : variables
+     (gtags :variables
+            gtags-enable-by-default nil)
+     (colors :variables
              colors-enable-rainbow-identifiers t
              colors-enable-nyan-cat-progress-bar nil)
      cscope
@@ -77,7 +78,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cdlatex auto-complete-clang  auto-complete-c-headers ac-math monokai-theme jdee irony company-irony company-irony-c-headers solarized-theme)
+   dotspacemacs-additional-packages '(cdlatex monokai-theme jdee solarized-theme ox-hugo org-mobile-sync)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(orgit org-projectile)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -123,7 +124,7 @@ values."
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
-   dotspacemacs-startup-lists nil
+   dotspacemacs-startup-lists '(recents)
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
    dotspacemacs-startup-recent-list-size 20

@@ -189,10 +189,23 @@
 (eval-after-load 'company
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
-;; Windows performance tweaks
-;;
-(when (boundp 'w32-pipe-read-delay)
-  (setq w32-pipe-read-delay 0))
-;; Set the buffer size to 64K on Windows (from the original 4K)
-(when (boundp 'w32-pipe-buffer-size)
-  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+;;latex
+(when (string-equal system-type "gnu/linux")
+  (add-hook 'LaTeX-mode-hook
+            (lambda()
+              ;;(add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
+              (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+              (setq TeX-command-default "XeLaTeX")))
+  (setq org-file-apps
+        (quote
+         ((auto-mode . emacs)
+          ("\\.mm\\'" . system)
+          ("\\.x?html?\\'" . system)
+          ("\\.pdf\\'" . "evince %s"))))
+  )
+(when (string-equal system-type "windows-nt")
+  (add-hook 'LaTeX-mode-hook
+            (lambda()
+              (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
+              (setq TeX-command-default "pdflatex")))
+  )

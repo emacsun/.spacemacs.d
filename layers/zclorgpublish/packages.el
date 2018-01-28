@@ -1,7 +1,6 @@
 (setq zclorgpublish-packages
       '(
-        (org )
-              ))
+        (org )))
 
 (defun zclorgpublish/post-init-org()
   (use-package org
