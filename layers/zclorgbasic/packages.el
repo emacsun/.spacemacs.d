@@ -15,7 +15,6 @@
   (use-package ox-hugo
     :defer t
     :init
-    :after ox
     ))
 (defun zclorgbasic/post-init-org()
   (use-package org

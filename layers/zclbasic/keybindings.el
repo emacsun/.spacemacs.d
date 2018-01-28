@@ -34,7 +34,7 @@
 (spacemacs/set-leader-keys "ss" 'spacemacs/helm-swoop-region-or-symbol)
 (spacemacs/set-leader-keys "sS" 'helm-swoop)
 (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
-(spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/zcl.space/index.org")))
+(spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/zcl.space-learning/index.org")))
 (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
 
 (define-key evil-insert-state-map (kbd "C-d") 'delete-char)

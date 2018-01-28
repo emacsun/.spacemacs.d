@@ -91,5 +91,17 @@
   (spacemacs/set-leader-keys "ow" 'bh/widen)
   (define-key org-mode-map (kbd "C-i") 'nil)
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
-  (setq org-bullets-bullet-list '("✿" "❀" "☢" "★" ))
+  ;; ❀❤♫♠♣♥♦♡♢♤♧
+  (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
+  ;; Org
+  (add-hook 'org-mode-hook
+            (lambda ()
+              ;; Enable fill column indicator
+              (fci-mode t)
+              ;; Turn off line numbering, it makes org so slow
+              (linum-mode -1)
+              ;; Set fill column to 79
+             (setq fill-column 80)
+              ;; Enable automatic line wrapping at fill column
+              (auto-fill-mode t)))
   )

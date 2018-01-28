@@ -8,7 +8,6 @@
   (use-package ox-hugo
     :defer t
     :init
-    :after ox
     ))
 (defun zclorgexport/post-init-org()
   (use-package org

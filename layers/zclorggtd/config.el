@@ -32,13 +32,7 @@
                                    ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
                                    ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
                                    ("~/zorg/zcl.space/content_org/life.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/zjoke.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/math.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/emacs.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/computer.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/communication.org" :maxlevel . 6)
-                                   ;;;; ("~/zorg/output/znotes/misc.org" :maxlevel . 6)
-                                   )))
+                                   ("~/zorg/zcl.space/content_org/tools.org" :maxlevel . 6))))
 
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)"  "|" "DONE(d)")
@@ -97,6 +91,10 @@
            :clock-in t :clock-resume t)
           ("hl" "Life"
            entry (file+olp "~/zorg/zcl.space/content_org/life.org" "Life")
+           (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
+          ("ho" "Tools"
+           entry (file+olp "~/zorg/zcl.space/content_org/tools.org" "Tools")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ("hm" "movie"
@@ -683,7 +681,8 @@
                ;;;; expands the files in the directories individually
                (org-defkey org-mode-map "\C-c["    'undefined)
                (org-defkey org-mode-map "\C-c]"    'undefined)
-               (org-defkey org-mode-map "\C-c;;"    'undefined))
+               ;;(org-defkey org-mode-map "\C-c;;"    'undefined)
+               )
             'append)
 
   (add-hook 'org-mode-hook

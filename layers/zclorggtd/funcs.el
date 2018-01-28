@@ -463,6 +463,19 @@ See `org-capture-templates' for more information."
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
+  ;; Do not cause auto Org->Hugo export to happen when saving captures
+  (defun modi/org-capture--remove-auto-org-to-hugo-export-maybe ()
+    "Function for `org-capture-before-finalize-hook'.
+Disable `org-hugo-export-wim-to-md-after-save'."
+    (setq org-hugo-allow-export-after-save nil))
+
+  (defun modi/org-capture--add-auto-org-to-hugo-export-maybe ()
+    "Function for `org-capture-after-finalize-hook'.
+Enable `org-hugo-export-wim-to-md-after-save'."
+    (setq org-hugo-allow-export-after-save t))
+
+  (add-hook 'org-capture-before-finalize-hook #'modi/org-capture--remove-auto-org-to-hugo-export-maybe)
+  (add-hook 'org-capture-after-finalize-hook #'modi/org-capture--add-auto-org-to-hugo-export-maybe)
   )
 
 ;;;;;;###autoload
