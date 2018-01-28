@@ -145,3 +145,18 @@ Version 2015-07-30"
                            (match-end 0)
                            '(invisible t)))
     (when state (setq buffer-read-only t))))
+(defun nanny/org-realign-tag-column ()
+  (interactive)
+  (if (and (equal major-mode 'org-mode)
+           (org-get-buffer-tags))
+      ;; ignore `message' with flet so org-set-tags doesn't yell at us.
+      (flet ((message (&rest args) 'ignore))
+        (let ((col (- (- (window-width) 3)))
+              (already-modified? (buffer-modified-p)))
+          (setq org-tags-column -60)
+          (org-set-tags 4 t)
+          ;; `org-set-tags' modifies the buffer, but I don't really care, so
+          ;; mark the buffer as unmodified if it was unmodified previously.
+          (if (not already-modified?)
+              (set-buffer-modified-p nil))))))
+(add-hook 'org-mode-hook 'nanny/org-realign-tag-column)
