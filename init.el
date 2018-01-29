@@ -304,6 +304,7 @@ layers configuration. You are free to put any user code."
   (setq-default dotspacemacs-line-numbers 'relative)
   (setq-default dospacemacs-line-numbers t)
   (setq-default evil-escape-key-sequence "df")
+  (setq-default evil-escape-delay 0.3)
   (setq-default dotacemacs-enable-paste-micro-state t)
   (setq-default dotspacemacs-persistent-server t)
   (setq powerline-default-separator 'arrow);;arrow, contour zigzag nil
