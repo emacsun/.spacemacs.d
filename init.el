@@ -124,7 +124,7 @@ values."
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
-   dotspacemacs-startup-lists '(recents)
+   dotspacemacs-startup-lists '(recents projects)
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
    dotspacemacs-startup-recent-list-size 20
@@ -279,10 +279,10 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+   (setq configuration-layer--elpa-archives
+         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
@@ -336,5 +336,4 @@ layers configuration. You are free to put any user code."
   (require 'helm-bookmark)
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
   (load custom-file)
-  (setq recentf-save-file (format "~/.emacs.d/.cache/recentf" ))
 )

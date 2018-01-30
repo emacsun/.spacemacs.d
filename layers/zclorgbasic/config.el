@@ -93,6 +93,7 @@
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
   ;; ❀❤♫♠♣♥♦♡♢♤♧
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
+  (setq org-ellipsis "⤵");Other interesting characters are ▼, ↴, and ⋱.
   ;; Org
   (add-hook 'org-mode-hook
             (lambda ()
