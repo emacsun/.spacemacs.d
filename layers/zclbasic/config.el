@@ -1,6 +1,5 @@
 (show-paren-mode 1)
 ;;(setq show-paren-style 'expression)
-
 (setq show-paren-style 'parenthesis)
 ;; show the time
 (setq system-time-locale "C")
@@ -9,7 +8,7 @@
 (setq display-time-day-and-date t)
 (setq display-time-default-load-average nil)
 (setq display-time-load-average-threshold 10000)
-(setq display-time-format "%m-%d %a %H:%M")
+(setq display-time-format "%m-%d W%w-%a %H:%M")
 (when (string-equal system-type "windows-nt")
   (let (
         (mypaths
@@ -221,3 +220,5 @@
     (mapc (lambda (x) (define-key map (format "%d" x)
                         `(lambda () (interactive) (company-complete-number ,x))))
           (number-sequence 0 9))))
+
+;;(run-at-time (current-time) 300 'recentf-save-list)

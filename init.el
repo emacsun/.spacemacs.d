@@ -321,19 +321,18 @@ layers configuration. You are free to put any user code."
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
-  (with-eval-after-load "org"
-    (add-hook 'org-mode-hook
-              (lambda ()
-                ;; Enable fill column indicator
-                (fci-mode t)
-                ;; Turn off line numbering, it makes org so slow
-                (linum-mode -1)
-                ;; Set fill column to 79
-                (setq fill-column 80)
-                (setq org-tags-column -70)
-                (setq org-agenda-tags-column -70)
-                ;; Enable automatic line wrapping at fill column
-                (auto-fill-mode t))))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              ;; Enable fill column indicator
+              (fci-mode t)
+              ;; Turn off line numbering, it makes org so slow
+              (linum-mode -1)
+              ;; Set fill column to 79
+              (setq fill-column 80)
+              (setq org-tags-column -70)
+              (setq org-agenda-tags-column -70)
+              ;; Enable automatic line wrapping at fill column
+              (auto-fill-mode t)))
   (require 'helm-bookmark)
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
   (load custom-file)
