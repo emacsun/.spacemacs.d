@@ -102,7 +102,11 @@
               ;; Turn off line numbering, it makes org so slow
               (linum-mode -1)
               ;; Set fill column to 79
-             (setq fill-column 80)
+             (setq fill-column 70)
+             (setq org-tags-column -65)
+             (setq org-agenda-tags-column -70)
               ;; Enable automatic line wrapping at fill column
-              (auto-fill-mode t)))
+             (auto-fill-mode t))
+            (org-indent-mode t))
+
   )

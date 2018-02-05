@@ -4,7 +4,6 @@
   ;;;;The following lines are always needed. Choose your own keys.
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (add-hook 'org-mode-hook 'turn-on-font-lock) ;; not needed when global-font-lock-mode is on
-  (setq org-agenda-use-tag-inheritance nil)
   (require 'org-habit)
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-default-notes-file  "~/zorg/output/znotes/znotes.org")
@@ -14,26 +13,18 @@
                                "~/zorg/Dropbox/base/zdiary.org"
                                "~/zorg/Dropbox/base/ztimelog.org"
                                "~/zorg/Dropbox/org/refile.org"
-                               ;;;;"~/zorg/MobileOrg/inbox.org"
-                               ;;;; "~/zorg/output/lte"
-                               ;;;; "~/zorg/output/lte/physical"
-                               ;;;; "~/zorg/output/communication"
-                               ;;;; "~/zorg/output/communication/ECC"
-                               ;;;; "~/zorg/output/communication/matlab/"
-                               ;;;; "~/zorg/output/math"
-                               ;;;; "~/zorg/output/math/PMA"
-                               ;;;; "~/zorg/output/znotes/"
-                               ))
+                             ))
   (setq org-refile-targets (quote (
-                                   ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
-                                   ("~/zorg/Dropbox/base/zlife.org" :maxlevel . 6)
-                                   ("~/zorg/Dropbox/base/zdiary.org" :maxlevel . 6)
-                                   ("~/zorg/zcl.space/content_org/math.org" :maxlevel . 6)
-                                   ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
-                                   ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
-                                   ("~/zorg/zcl.space/content_org/life.org" :maxlevel . 6)
-                                   ("~/zorg/zcl.space/content_org/tools.org" :maxlevel . 6))))
+            ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
+            ("~/zorg/Dropbox/base/zlife.org" :maxlevel . 6)
+            ("~/zorg/Dropbox/base/zdiary.org" :maxlevel . 6)
+            ("~/zorg/zcl.space/content_org/math.org" :maxlevel . 6)
+            ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
+            ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
+            ("~/zorg/zcl.space/content_org/life.org" :maxlevel . 6)
+            ("~/zorg/zcl.space/content_org/tools.org" :maxlevel . 6))))
 
+  (setq org-agenda-use-tag-inheritance t)
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "NEXT(n)"  "|" "DONE(d)")
                 (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
@@ -73,7 +64,6 @@
           ("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO %? :TODO: \n Added:%T\n"
            :clock-in t :clock-resume t)
-          ;;;;("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")"* TODO %? \n   Added:%U\n")
           ("h" "Hugo post")
           ("hm" "Math"
            entry (file+olp "~/zorg/zcl.space/content_org/math.org" "Math")
@@ -123,8 +113,6 @@
   ;;;; Targets include this file and any file contributing to the agenda - up to 9 levels deep
   ;;;; Use full outline paths for refile targets - we file directly with IDO
   (setq org-refile-use-outline-path t)
-  ;;;; when a task is done, popup to write some notes
-  (setq org-log-done 'note)
   ;;;; Targets complete directly with IDO
   (setq org-outline-path-complete-in-steps nil)
 
@@ -188,26 +176,12 @@
                               (org-tags-match-list-sublevels t)
                               (org-agenda-sorting-strategy
                                '(priority-down todo-state-down effort-up category-keep))))
-                  ;;;; (todo "DONE"
-                  ;;;;            ((org-agenda-overriding-header "Project DONE Tasks")
-                  ;;;;             (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
-                  ;;;;             (org-tags-match-list-sublevels t)
-                  ;;;;             (org-agenda-sorting-strategy
-                  ;;;;              '(priority-down todo-state-down effort-up category-keep))))
-                  ;;;; (tags-todo "-REFILE-CANCELLED-WAITING/!"
-                  ;;;;     ((org-agenda-overriding-header (if (marker-buffer org-agenda-restrict-begin) "Project Subtasks" "Standalone Tasks"))
-                  ;;;;      (org-agenda-skip-function 'bh/skip-project-tasks-maybe)
-                  ;;;;      (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
-                  ;;;;      (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
-                  ;;;;      (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
-                  ;;;;      (org-agenda-sorting-strategy
-                  ;;;;       '(category-keep))))
                   (todo "TODO"
                         ((org-agenda-overriding-header "Project Subtasks TODO")
-                         (org-tags-match-list-sublevels nil)))
+                         (org-tags-match-list-sublevels t)))
                   (todo "DONE"
                         ((org-agenda-overriding-header "Project Subtasks DONE")
-                         (org-tags-match-list-sublevels nil)))
+                         (org-tags-match-list-sublevels t)))
                   ;;;;(tags-todo "-CANCELLED+WAITING+HOLD/!"
                   (todo "HOLD"
                         ((org-agenda-overriding-header "Waiting and Postponed Tasks")
@@ -253,7 +227,6 @@
 
 ;;;; the task-id must stay closely under the Organization in a Property drawer
   (defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
-
 
   (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)
 
@@ -310,15 +283,12 @@
 
   (setq org-stuck-projects (quote ("" nil nil "")))
 
-
   (defvar bh/hide-scheduled-and-waiting-next-tasks t)
-
 
   (setq org-archive-mark-done nil)
   (setq org-archive-location "%s_archive::* Archived Tasks")
 
   (setq org-export-allow-BIND t)
-
 
   ;;;; Rebuild the reminders everytime the agenda is displayed
   (add-hook 'org-finalize-agenda-hook 'bh/org-agenda-to-appt 'append)
@@ -347,8 +317,6 @@
   (add-hook 'org-agenda-mode-hook
             '(lambda () (org-defkey org-agenda-mode-map "N" 'bh/narrow-to-subtree))
             'append)
-
-
 
   (add-hook 'org-agenda-mode-hook
             '(lambda () (org-defkey org-agenda-mode-map "U" 'bh/narrow-up-one-level))
@@ -481,7 +449,6 @@
   ;; Use the current window for C-c ' source editing
   (setq org-src-window-setup 'current-window)
 
-  (setq org-log-done (quote time))
   (setq org-log-into-drawer t)
   (setq org-log-state-notes-insert-after-drawers nil)
 
@@ -718,6 +685,5 @@
 
   (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
-  (setq org-log-done 'time);;;;一个 TODO（未完成）状态改变为一个完成状态时，标题下面就会插入一行 “CLOSED:[timestamp]”
   (setq org-log-done 'note);;;;提示你输入一个记录（note），并将它保存在n标题为“Closing Note”项目之下
   )
