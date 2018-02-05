@@ -90,6 +90,36 @@
   (spacemacs/set-leader-keys "ov" 'visible-mode)
   (spacemacs/set-leader-keys "ow" 'bh/widen)
   (define-key org-mode-map (kbd "C-i") 'nil)
+    (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+    ":" 'org-agenda-set-tags
+    "a" 'org-agenda
+    "d" 'org-agenda-deadline
+    "f" 'org-agenda-set-effort
+    "I" 'org-agenda-clock-in
+    "O" 'org-agenda-clock-out
+    "P" 'org-agenda-set-property
+    "R" 'org-agenda-refile
+    "r" 'org-agenda-refile
+    "Q" 'org-agenda-clock-cancel
+    "s" 'org-agenda-schedule)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "r" 'org-refile)
+  ;;(spacemacs/declare-prefix "ao" "org");; define prefix
+  ;; (spacemacs/set-leader-keys
+  ;;   ;; org-agenda
+  ;;   "ao#" 'org-agenda-list-stuck-projects
+  ;;   "ao/" 'org-occur-in-agenda-files
+  ;;   "aoa" 'org-agenda-list
+  ;;   "aoe" 'org-store-agenda-views
+  ;;   "aom" 'org-tags-view
+  ;;   "aoo" 'org-agenda
+  ;;   "aos" 'org-search-view
+  ;;   "aot" 'org-todo-list
+  ;;   ;; other
+  ;;   "aoO" 'org-clock-out
+  ;;   "aoc" 'org-capture
+  ;;   "aol" 'org-store-link)
+
   ;;(spacemacs/set-leader-keys "oSPC" 'bh/clock-in-last-task)
   ;; ❀❤♫♠♣♥♦♡♢♤♧
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
