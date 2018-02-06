@@ -128,7 +128,7 @@
   (add-hook 'org-mode-hook
             (lambda ()
               ;; Enable fill column indicator
-              (fci-mode t)
+              ;;(fci-mode t)
               ;; Turn off line numbering, it makes org so slow
               (linum-mode -1)
               ;; Set fill column to 79

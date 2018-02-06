@@ -365,4 +365,5 @@ layers configuration. You are free to put any user code."
  '(org-agenda-structure ((t (:background "#3C3D37" :foreground "spring green" :inverse-video nil :box (:line-width 2 :color "#272822") :underline nil :slant normal :weight bold :height 1.1))))
  '(org-level-1 ((t (:inherit default :foreground "#FD971F" :height 1.0))))
  '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :height 1.0))))
+ '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :height 1.0))))
  '(region ((t (:inherit highlight :background "lawn green" :foreground "black")))))
