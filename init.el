@@ -307,7 +307,7 @@ layers configuration. You are free to put any user code."
   (setq-default evil-escape-delay 0.3)
   (setq-default dotacemacs-enable-paste-micro-state t)
   (setq-default dotspacemacs-persistent-server t)
-  (setq powerline-default-separator 'arrow);;arrow, contour zigzag nil
+  (setq powerline-default-separator 'contour);;arrow, contour zigzag nil
   (setq org-fontify-whole-heading-line nil)
   (setq vc-handled-backends ())
   ;; (setq projectile)                     ;
@@ -321,18 +321,6 @@ layers configuration. You are free to put any user code."
   (with-eval-after-load "jdee"
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
-  (add-hook 'org-mode-hook
-            (lambda ()
-              ;; Enable fill column indicator
-              (fci-mode t)
-              ;; Turn off line numbering, it makes org so slow
-              (linum-mode -1)
-              ;; Set fill column to 79
-              (setq fill-column 80)
-              (setq org-tags-column -70)
-              (setq org-agenda-tags-column -70)
-              ;; Enable automatic line wrapping at fill column
-              (auto-fill-mode t)))
   (require 'helm-bookmark)
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
 ;;  (load custom-file)
