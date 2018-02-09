@@ -37,9 +37,6 @@
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
     (setq exec-path (append mypaths (list "." exec-directory)))))
 
-
-
-
 ;; ido
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
@@ -48,35 +45,6 @@
             (define-key ido-completion-map [tab] 'ido-complete)))
 
 
-
-;;calendar
-(setq diary-file "~/zorg/base/diary");; 默认的日记文件
-(setq diary-mail-addr "emacsun@163.com")
-;;sorted diary display
-(add-hook 'list-diary-entries-hook 'sort-diary-entries t)
-;; make your calender fancy
-(setq view-diary-entries-initially t
-      mark-diary-entries-in-calendar t
-      number-of-diary-entries 7)
-(add-hook 'diary-display-hook 'fancy-diary-display)
-(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-
-(add-hook 'fancy-diary-display-mode-hook
-	   '(lambda ()
-              (alt-clean-equal-signs)))
- (define-derived-mode fancy-diary-display-mode  fundamental-mode
-   "Diary"
-   "Major mode used while displaying diary entries using Fancy Display."
-   (set (make-local-variable 'font-lock-defaults)
-        '(fancy-diary-font-lock-keywords t))
-   (define-key (current-local-map) "q" 'quit-window)
-   (define-key (current-local-map) "h" 'calendar))
- (defadvice fancy-diary-display (after set-mode activate)
-   "Set the mode of the buffer *Fancy Diary Entries* to
- `fancy-diary-display-mode'."
-   (save-excursion
-     (set-buffer fancy-diary-buffer)
-     (fancy-diary-display-mode)))
 
 
 (setq Tex-parse-self t)
@@ -92,13 +60,12 @@
     (list "sumatrapdf" "SumatraPDF.exe \"%s.pdf\"  " 'TeX-run-command nil t)
     (list "ps2pdf" "ps2pdf \"%s.ps\" " 'TeX-run-command nil t)))
 ;;(autoload 'tex "tex" "edit the tex file")
-;;(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
+(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
 ;;(setq TeX-engine 'pdflatex);;设置latex引擎
 (when (string-equal system-type "gnu/linux")
   (setq TeX-engine 'xetex);;设置latex引擎
   )
-
-
+(setq TeX-engine 'xetex);;设置latex引擎
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;pdf view pragramm;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;(setq TeX-view-program-list
 ;      '(("acroread" "acroread %o")))
@@ -145,39 +112,10 @@
             (lambda ()
               (setq TeX-view-program-selection '((output-pdf "Evince")
                                                  (output-dvi "Okular")))))))
-(setq TeX-view-program-list
-      '(("Evince" "evince %o")
-	("Firefox" "firefox %o")))
 (when (string-equal system-type "windows-nt")
   (setq TeX-view-program-list
         '(("sumatrapdf" "SumatraPDF.exe %o")
           ("Firefox" "firefox %o"))))
-;; org
-(setq org-directory "~/zorg/")
-;;The following lines are always needed. Choose your own keys.
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed when global-font-lock-mode is on
-(add-hook 'org-mode-hook 'auto-complete-mode);
-;;other basic setup
-;; (defsubst company-clang--build-complete-args (pos)
-;;   (append '("-fsyntax-only" "-Xclang" "-std=c++11" "-code-completion-macros")
-;;           (unless (company-clang--auto-save-p)
-;;             (list "-x" (company-clang--lang-option)))
-;;           company-clang-arguments
-;;           '("-I" "C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++")
-;;           (when (stringp company-clang--prefix)
-;;             (list "-include" (expand-file-name company-clang--prefix)))
-;;           (list "-Xclang" (format "-code-completion-at=%s"
-;;                                   (company-clang--build-location pos)))
-;;           (list (if (company-clang--auto-save-p) buffer-file-name "-"))))
-
-;; (setq company-clang-arguments
-;;       (mapcar(lambda (item)(concat "-I" item))
-;;              (split-string
-;;               "
-;; /C/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/5.1.0/include/c++
-;;  .
-;;     ")))
 
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -188,32 +126,3 @@
 (eval-after-load 'company
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
-;;latex
-(when (string-equal system-type "gnu/linux")
-  (add-hook 'LaTeX-mode-hook
-            (lambda()
-              ;;(add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
-              (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
-              (setq TeX-command-default "XeLaTeX")))
-  (setq org-file-apps
-        (quote
-         ((auto-mode . emacs)
-          ("\\.mm\\'" . system)
-          ("\\.x?html?\\'" . system)
-          ("\\.pdf\\'" . "evince %s"))))
-  )
-(when (string-equal system-type "windows-nt")
-  (add-hook 'LaTeX-mode-hook
-            (lambda()
-              (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
-              (setq TeX-command-default "pdflatex")))
-  )
-;; Windows performance tweaks
-;;
-(when (boundp 'w32-pipe-read-delay)
-  (setq w32-pipe-read-delay 0))
-;; Set the buffer size to 64K on Windows (from the original 4K)
-(when (boundp 'w32-pipe-buffer-size)
-  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
-
-;;(run-at-time (current-time) 300 'recentf-save-list)
