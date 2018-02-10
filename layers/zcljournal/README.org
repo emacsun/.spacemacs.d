@@ -1,0 +1,48 @@
+#+TITLE: journal layer
+
+* Table of Contents                                        :TOC_4_gh:noexport:
+ - [[#description][Description]]
+ - [[#install][Install]]
+ - [[#key-bindings][Key bindings]]
+   - [[#global-bindings][Global Bindings]]
+   - [[#major-mode-bindings][Major Mode Bindings]]
+   - [[#calendar-mode-bindings][Calendar Mode Bindings]]
+
+* Description
+=spacemacs-journal= is a wrapper for [[https://github.com/bastibe/org-journal][org-journal]] providing spacemacs-style keybindings.
+
+=org-journal= provides functions to maintain a simple personal diary / journal using in Emacs.
+
+* Install
+To use journal layer:
+
+1. =git clone https://github.com/borgnix/spacemacs-journal.git ~/.emacs.d/private/journal=
+2. add it to your =~/.spacemacs=. You will need to add =journal= to the existing =dotspacemacs-configuration-layers= list in this file.
+
+* Key bindings
+** Global Bindings
+| Key Binding | Description                                      |
+|-------------+--------------------------------------------------|
+| ~SPC a j j~ | new journal entry                                |
+| ~SPC a j v~ | view journal of today                            |
+| ~SPC a j s~ | search journals within a specified time interval |
+| ~SPC a j S~ | search all journal for a string                 |
+** Major Mode Bindings
+| Key Binding | Description                     |
+|-------------+---------------------------------|
+| ~SPC m j j~ | new journal entry               |
+| ~SPC m j n~  | next journal file               |
+| ~SPC m j p~  | previous journal file           |
+| ~SPC m j s~ | search the current journal file |
+** Calendar Mode Bindings
+| Key Binding | Description                                |
+|-------------+--------------------------------------------|
+| ~J j~       | new journal entry                          |
+| ~J v~       | view an entry in a new buffer              |
+| ~J V~       | view an entry but do not switch to it      |
+| ~J n~       | go to next day with journal entries        |
+| ~J p~       | go to previous day with journal entries    |
+| ~J S~       | search in all entries of all time          |
+| ~J w~       | search in all entries of the current week  |
+| ~J m~       | search in all entries of the current month |
+| ~J y~       | search in all entries of the current year  |

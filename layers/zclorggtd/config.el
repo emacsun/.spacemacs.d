@@ -2,11 +2,11 @@
 (with-eval-after-load 'org
   ;;;;(setq org-directory "~/zorg/")
   ;;;;The following lines are always needed. Choose your own keys.
-  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-  (add-hook 'org-mode-hook 'turn-on-font-lock) ;; not needed when global-font-lock-mode is on
   (require 'org-habit)
-;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  (setq org-default-notes-file  "~/zorg/output/znotes/znotes.org")
+  (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
+  (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
+;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;set up the org
   (setq org-agenda-files (list "~/zorg/Dropbox/base/zlife.org"
                                "~/zorg/Dropbox/base/zwork.org"
                                "~/zorg/Dropbox/base/zrefile.org"

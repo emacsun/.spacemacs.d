@@ -1,0 +1,24 @@
+;; RefTeX parse info file
+;; File: c:/Users/cliyh/AppData/Roaming/.spacemacs.d/org-templates/math.org
+;; User: cliyh ()
+
+(set reftex-docstruct-symbol '(
+
+
+(xr nil "\\\\\\\\\\\\")
+
+(index-tags)
+
+(is-multi nil)
+
+(bibview-cache)
+
+(master-dir . "c:/Users/cliyh/AppData/Roaming/.spacemacs.d/org-templates/")
+
+(label-numbers)
+
+(bof "c:/Users/cliyh/AppData/Roaming/.spacemacs.d/org-templates/math.org")
+
+(eof "c:/Users/cliyh/AppData/Roaming/.spacemacs.d/org-templates/math.org")
+))
+
