@@ -17,7 +17,6 @@
   (setq org-refile-targets (quote (
             ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
             ("~/zorg/Dropbox/base/zlife.org" :maxlevel . 6)
-            ("~/zorg/Dropbox/base/zdiary.org" :maxlevel . 6)
             ("~/zorg/zcl.space/content_org/math.org" :maxlevel . 6)
             ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
             ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
@@ -43,21 +42,6 @@
 
   (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
-  ;;;; (setq org-todo-state-tags-triggers
-  ;;;;       (quote
-  ;;;;        (("CANCELLED" ("CANCELLED" . t) ("TODO" . nil) ("NEXT" . nil))
-  ;;;;         ("WAITING" ("WAITING" . t) ("TODO" . nil) ("NEXT" . nil))
-  ;;;;         ("HOLD" ("WAITING" . t) ("HOLD" . t) ("TODO" . nil) ("NEXT" . nil))
-  ;;;;         ("NEXT" ("NEXT" . t) ("TODO" . nil) ("DONE" . nil))
-  ;;;;         ("TODO" ("TODO" . t) ("NEXT" . nil) ("DONE" . nil))
-  ;;;;         ("DONE" ("DONE" . t) ("TODO" . nil) ("NEXT" . nil))
-  ;;;;         (done ("WAITING") ("HOLD"))
-  ;;;;         ;;;;("TODO" ("TODO" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT"))
-  ;;;;         ;;;;("NEXT" ("NEXT" . t) ("WAITING") ("CANCELLED") ("HOLD") ("TODO"))
-  ;;;;         ;;;;("DONE" ("DONE" . t) ("WAITING") ("CANCELLED") ("HOLD") ("NEXT") ("TODO"))
-  ;;;;         )))
-
-  (setq org-todo-state-tags-triggers nil);;
 
   (setq org-capture-templates
         '(
@@ -74,7 +58,6 @@
            entry (file+olp "~/zorg/zcl.space/content_org/computer.org" "Computer")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-
           ("ht" "Telecommunication"
            entry (file+olp "~/zorg/zcl.space/content_org/telecommunication.org" "Telecommunication")
            (function org-hugo-new-subtree-post-capture-template)
@@ -599,28 +582,6 @@
 
   (setq org-src-fontify-natively t)
 
-  (setq org-structure-template-alist
-        (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")
-                ("e" "#+begin_example\n?\n#+end_example" "<example>\n?\n</example>")
-                ("d" "#+begin_definition\n?\n#+end_definition" "<definition>\n?\n</definition>")
-                ("x" "#+begin_tikzinstance\n?\n#+end_tikzinstance" "<tikzinstance>\n?\n</tikzinstance>")
-                ("p" "#+begin_proof\n?\n#+end_proof" "<proof>\n?\n</proof>")
-                ("t" "#+begin_tikztheorem\n?\n#+end_tikztheorem" "<tikztheorem>\n?\n</tikztheorem>")
-                ("o" "#+begin_output\n?\n#+end_output" "<output>\n?\n</output>")
-                ("P" "#+begin_tikzproblem\n?\n#+end_tikzproblem" "<tikzproblem>\n?\n</tikzproblem>")
-                ("a" "#+begin_tikzanswer\n?\n#+end_tikzanswer" "<tikzanswer>\n?\n</tikzanswer>")
-                ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
-                ("Q" "#+begin_tikzquote\n?\n#+end_tikzquote" "<tikzquote>\n?\n</tikzquote>")
-                ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
-                ("c" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
-                ("l" "#+begin_latex\n?\n#+end_latex" "<literal style=\"latex\">\n?\n</literal>")
-                ("L" "#+latex: " "<literal style=\"latex\">?</literal>")
-                ("h" "#+begin_html\n?\n#+end_html" "<literal style=\"html\">\n?\n</literal>")
-                ("H" "#+html: " "<literal style=\"html\">?</literal>")
-                ;;;;("a" "#+begin_ascii\n?\n#+end_ascii")
-                ("A" "#+ascii: ")
-                ("i" "#+index: ?" "#+index: ?")
-                ("I" "#+include %file ?" "<include file=%file markup=\"?\">"))))
 
 
   (add-hook 'org-after-todo-state-change-hook 'bh/mark-next-parent-tasks-todo 'append)
@@ -657,7 +618,6 @@
               (local-set-key (kbd "C-c M-o") 'bh/mail-subtree))
             'append)
 
-
   (setq org-enable-priority-commands t)
   (setq org-default-priority ?E)
   (setq org-lowest-priority ?E)
@@ -685,5 +645,5 @@
 
   (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
-  (setq org-log-done 'note);;;;提示你输入一个记录（note），并将它保存在n标题为“Closing Note”项目之下
+  (setq org-log-done 'note);;
   )
