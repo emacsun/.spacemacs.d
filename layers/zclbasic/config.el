@@ -60,7 +60,7 @@
     (list "sumatrapdf" "SumatraPDF.exe \"%s.pdf\"  " 'TeX-run-command nil t)
     (list "ps2pdf" "ps2pdf \"%s.ps\" " 'TeX-run-command nil t)))
 ;;(autoload 'tex "tex" "edit the tex file")
-(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
+;;(setq-default TeX-command-list (append TeX-command-list my-tex-commands-extra))
 ;;(setq TeX-engine 'pdflatex);;设置latex引擎
 (when (string-equal system-type "gnu/linux")
   (setq TeX-engine 'xetex);;设置latex引擎
