@@ -82,7 +82,7 @@
           ;;;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;;;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
           ("l" "my Log Time" entry (file+datetree "~/zorg/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
-          ("d" "diary" entry (file+datetree "~/zorg/Dropbox/base/zdiary.org" ) "* %t - %?  :diary:" :clock-in t :clock-resume t)
+          ("d" "diary" entry (file+datetree "~/zorg/Dropbox/base/zdiary.org" ) "*  %?\n%T" :clock-in t :clock-resume t)
           ("x" "org-protocol" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO Review %c \n Added:%T\n")
           ;;;;	("m" "Meeting" entry (file+datetree "~/zorg/Dropbox/base/timelog.org") "** %T MEETING with %? :MEETING:"
