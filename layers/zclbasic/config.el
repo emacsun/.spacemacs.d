@@ -8,7 +8,7 @@
 (setq display-time-day-and-date t)
 (setq display-time-default-load-average nil)
 (setq display-time-load-average-threshold 10000)
-(setq display-time-format "%m-%d W%w-%a %H:%M")
+(setq display-time-format "%m-%d W%W-%a %H:%M")
 (when (string-equal system-type "windows-nt")
   (let (
         (mypaths

@@ -46,7 +46,7 @@
   (setq org-capture-templates
         '(
           ("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")
-           "* TODO %? :TODO: \n Added:%T\n"
+           "* TODO %?  \n Added:%T\n"
            :clock-in t :clock-resume t)
           ("h" "Hugo post")
           ("hm" "Math"

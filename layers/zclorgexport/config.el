@@ -101,12 +101,17 @@
 
 (setq reftex-default-bibliography
       (quote
-       ("default.bib" "~/zorg/research_diary/bib/201310diary.bib")))
+       ("default.bib" "~/zorg/research_library/zcl.bib")))
 (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
 ;;;;orgpublish;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq org-latex-to-pdf-process
-      '("xelatex -interaction nonstopmode %f"
-        "xelatex -interaction nonstopmode %f"))
+;; (setq org-latex-to-pdf-process
+;;       '("xelatex -interaction nonstopmode %f"
+;;         "xelatex -interaction nonstopmode %f"))
+;;(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+(setq org-latex-pdf-process '("%latex -interaction nonstopmode -output-directory %o %f"
+                              "bibtex %b"
+                              "%latex -interaction nonstopmode -output-directory %o %f"
+                              "%latex -interaction nonstopmode -output-directory %o %f"))
 (setq org-list-allow-alphabetical t)
   (setq org-structure-template-alist
         (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")

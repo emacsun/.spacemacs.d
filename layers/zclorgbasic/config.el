@@ -23,4 +23,8 @@
               ;; Enable automatic line wrapping at fill column
               (auto-fill-mode t)
               (org-indent-mode t)))
+  (setq org-ref-open-pdf-function
+        (lambda (fpath)
+          (start-process "sumatrapdf" "*helm-bibtex-sumatrapdf*" "c:/Emacs64/bin/SumatraPDF.exe" fpath)))
+
   )
