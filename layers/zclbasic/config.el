@@ -46,3 +46,8 @@
 
 (spacemacs|diminish reftex-mode "Ⓡ" "R")
 (spacemacs|diminish ggtags-mode "Ⓖ" "G")
+;;set i the shortcut of going to parent directory
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "i")
+              (lambda () (interactive) (find-alternate-file "..")))))
