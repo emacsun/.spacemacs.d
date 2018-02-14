@@ -85,7 +85,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(cdlatex monokai-theme jdee solarized-theme ox-hugo org-mobile-sync)
+   dotspacemacs-additional-packages '(cdlatex monokai-theme jdee solarized-theme ox-hugo org-mobile-sync all-the-icons)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(orgit org-projectile)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -330,6 +330,9 @@ layers configuration. You are free to put any user code."
     (setq jdee-read-compile-args nil))
   (require 'helm-bookmark)
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
+    (setq dotspacemacs-enable-paste-transient-state t)
+    (setq neo-theme 'icons)
+
 ;;  (load custom-file)
 
 )
