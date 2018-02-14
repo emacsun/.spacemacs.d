@@ -59,7 +59,6 @@
   (add-to-list 'org-latex-classes
                '("org-article"
                  "\\documentclass{org-article}
-               \\usepackage[AUTO]{inputenc}
                [NO-DEFAULT-PACKAGES]
                [PACKAGES]
                [EXTRA]"
@@ -112,6 +111,12 @@
                               "bibtex %b"
                               "%latex -interaction nonstopmode -output-directory %o %f"
                               "%latex -interaction nonstopmode -output-directory %o %f"))
+(when (string-equal system-type "windows-nt")
+  (add-hook 'LaTeX-mode-hook
+      (lambda()
+      (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
+      (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+      (setq TeX-command-default "pdflatex"))))
 (setq org-list-allow-alphabetical t)
   (setq org-structure-template-alist
         (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")

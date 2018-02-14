@@ -7,4 +7,4 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+LaTeX_CLASS: org-article
-#+LaTeX_CLASS_OPTIONS: [koma,letterpaper,captions=tableheading,utopia,11pt,listings-sv,microtype,paralist,colorlinks=true,urlcolor=blue]
+#+LaTeX_CLASS_OPTIONS: [koma,letterpaper,captions=tableheading,ctex,11pt,listings-sv,microtype,paralist,colorlinks=true,urlcolor=blue]
