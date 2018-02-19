@@ -1,0 +1,10 @@
+#+AUTHOR:   Eason Zhang
+#+EMAIL:     chaolongworld AT gmail dot com
+#+LANGUAGE:  en
+#+OPTIONS:   *:t <:nil timestamp:nil toc:t prop:nil
+#+OPTIONS:   H:3 num:t  \n:nil  @:t ::t |:t ^:nil -:t f:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:nil pri:nil tags:nil
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LaTeX_CLASS: org-article
+#+LaTeX_CLASS_OPTIONS: [koma,letterpaper,captions=tableheading,ctex,11pt,listings-sv,microtype,paralist,colorlinks=true,urlcolor=blue]
