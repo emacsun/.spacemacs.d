@@ -74,10 +74,6 @@
            entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Movie")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("hl" "life"
-           entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Life")
-           (function org-hugo-new-subtree-post-capture-template)
-           :clock-in t :clock-resume t)
           ;;;; ("w" "wordpress" entry (file+headline "~/zorg/Dropbox/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
           ;;;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;;;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)

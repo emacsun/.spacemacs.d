@@ -98,7 +98,9 @@
   "Q" 'org-agenda-clock-cancel
   "s" 'org-agenda-schedule)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode
-  "r" 'org-refile)
+  "r" 'org-refile
+  "o" 'org-export-dispatch
+  )
 ;;(spacemacs/declare-prefix "ao" "org");; define prefix
 ;; (spacemacs/set-leader-keys
 ;;   ;; org-agenda
