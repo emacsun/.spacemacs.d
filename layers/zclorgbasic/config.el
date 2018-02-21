@@ -18,11 +18,10 @@
               (linum-mode -1)
               ;; Set fill column to 79
               (setq fill-column 70)
-              (setq org-tags-column -65)
-              (setq org-agenda-tags-column -70)
+              (setq org-tags-column 'auto)
+              (setq org-agenda-tags-column 'auto)
               ;; Enable automatic line wrapping at fill column
               (auto-fill-mode t)
-              (wc-mode t)
               (org-indent-mode t)))
   (setq org-ref-open-pdf-function
         (lambda (fpath)

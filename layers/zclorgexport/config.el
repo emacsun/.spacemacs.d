@@ -3,7 +3,7 @@
   (setq org-src-fontify-natively t)
   (setq org-hide-emphasis-markers t)
   ;;automatically delete this auxiliary files after export
-
+  (setq org-export-coding-system 'utf-8)
   (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
   ;; open docx files in default application (ie msword)
   (setq org-file-apps
@@ -77,22 +77,7 @@
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  (add-to-list 'org-latex-classes
-               '("lanphondiary"
-                 "\\documentclass{lanphondiary}
-               \\usepackage[AUTO]{inputenc}
-               [NO-DEFAULT-PACKAGES]
-               [PACKAGES]
-               [EXTRA]"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;; 使用Listings宏包格式化源代码(只是把代码框用listing环境框起来，还需要额外的设置)
 (setq org-latex-listings t)
-;; 导出Beamer的设置
-;; place #+LaTeX_CLASS: beamer in org files
 ;;-----------------------------------------------------------------------------
 (add-to-list 'org-latex-classes
              ;; beamer class, for presentations

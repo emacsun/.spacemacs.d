@@ -357,6 +357,7 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822")) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C"))))
+ '(bold ((t (:foreground "khaki" :weight bold))))
  '(evil-search-highlight-persist-highlight-face ((t (:background "aquamarine" :foreground "black"))))
  '(flyspell-incorrect ((t (:inherit nil :foreground "red" :underline (:color "#F92672" :style wave)))))
  '(font-lock-comment-face ((t (:foreground "cornflower blue"))))

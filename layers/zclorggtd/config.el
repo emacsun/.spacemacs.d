@@ -6,6 +6,7 @@
   (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
   (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
   (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
+  (setq org-clock-idle-time 10)
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;set up the org
   (setq org-agenda-files (list "~/zorg/Dropbox/base/zlife.org"
