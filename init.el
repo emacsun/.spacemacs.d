@@ -366,4 +366,5 @@ layers configuration. You are free to put any user code."
  '(org-level-2 ((t (:inherit default :foreground "orange" :height 1.3))))
  '(org-level-3 ((t (:inherit default :foreground "light sea green" :height 1.2))))
  '(org-level-4 ((t (:inherit default :foreground "green" :height 1.1))))
+ '(org-tag ((t (:foreground "light sea green" :weight bold))))
  '(region ((t (:inherit highlight :background "lawn green" :foreground "black")))))

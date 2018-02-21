@@ -4,6 +4,7 @@
   ;;;;The following lines are always needed. Choose your own keys.
   (require 'org-habit)
   (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
+  (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
   (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;set up the org
