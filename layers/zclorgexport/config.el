@@ -4,6 +4,8 @@
   (setq org-hide-emphasis-markers t)
   ;;automatically delete this auxiliary files after export
   (setq org-export-coding-system 'utf-8)
+    ;; set the exported latex file using the user defined labels
+  (setq org-latex-prefer-user-labels t);
   (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl")))
   ;; open docx files in default application (ie msword)
   (setq org-file-apps
