@@ -26,5 +26,18 @@
   (setq org-ref-open-pdf-function
         (lambda (fpath)
           (start-process "sumatrapdf" "*helm-bibtex-sumatrapdf*" "c:/Emacs64/bin/SumatraPDF.exe" fpath)))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((perl . t)
+     (ruby . t)
+     (sh . t)
+     (dot . t)
+     (js . t)
+     (latex .t)
+     (python . t)
+     (emacs-lisp . t)
+     (plantuml . t)
+     (C . t)
+     (ditaa . t)))
 
   )

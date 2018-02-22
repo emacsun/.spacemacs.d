@@ -107,7 +107,9 @@
 (setq org-latex-pdf-process '("%latex -interaction nonstopmode -output-directory %o %f"
                               "bibtex %b"
                               "%latex -interaction nonstopmode -output-directory %o %f"
-                              "%latex -interaction nonstopmode -output-directory %o %f"))
+                              "%latex -interaction nonstopmode -output-directory %o %f"
+                              "rm -rf %b.out %b.log %b.bbl %b.thm %b.aux auto "
+                              ))
 (when (string-equal system-type "windows-nt")
   (add-hook 'LaTeX-mode-hook
       (lambda()
