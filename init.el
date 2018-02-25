@@ -337,8 +337,6 @@ layers configuration. You are free to put any user code."
   (setq dotspacemacs-enable-paste-transient-state t)
   (setq neo-theme 'icons)
   (spacemacs/toggle-mode-line-minor-modes-off)
-  (server-start)
-  ;;  (load custom-file)
 
   )
 ;; Do not write anything past this comment. This is where Emacs will

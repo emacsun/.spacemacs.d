@@ -6,7 +6,6 @@
   (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
   (setq org-agenda-inhibit-startup t)
 
-  (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
   (setq org-clock-idle-time 10)
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;set up the org
@@ -15,7 +14,6 @@
                                "~/zorg/Dropbox/base/zrefile.org"
                                "~/zorg/Dropbox/base/zdiary.org"
                                "~/zorg/Dropbox/base/ztimelog.org"
-                               "~/zorg/Dropbox/org/refile.org"
                              ))
   (setq org-refile-targets (quote (
             ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
@@ -51,36 +49,36 @@
           ("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO %?  \n Added:%T\n"
            :clock-in t :clock-resume t)
-          ("h" "Hugo post")
-          ("hm" "Math"
+          ;;("h" "Hugo post")
+          ("m" "Math"
            entry (file+olp "~/zorg/zcl.space/content_org/math.org" "Math")
            (function org-hugo-new-subtree-post-capture-template)
            ":math:"
            :clock-in t :clock-resume t)
-          ("hc" "Computer"
+          ("c" "Computer"
            entry (file+olp "~/zorg/zcl.space/content_org/computer.org" "Computer")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("ht" "Telecommunication"
+          ("e" "Telecommunication"
            entry (file+olp "~/zorg/zcl.space/content_org/telecommunication.org" "Telecommunication")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("hl" "Life"
+          ("l" "Life"
            entry (file+olp "~/zorg/zcl.space/content_org/life.org" "Life")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("ho" "Tools"
+          ("o" "Tools"
            entry (file+olp "~/zorg/zcl.space/content_org/tools.org" "Tools")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("hm" "movie"
+          ("i" "movie"
            entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Movie")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ;;;; ("w" "wordpress" entry (file+headline "~/zorg/Dropbox/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
           ;;;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
           ;;;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
-          ("l" "my Log Time" entry (file+datetree "~/zorg/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
+          ("g" "my Log Time" entry (file+datetree "~/zorg/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
           ("d" "diary" entry (file+datetree "~/zorg/Dropbox/base/zdiary.org" ) "*  %?\n%T" :clock-in t :clock-resume t)
           ("x" "org-protocol" entry (file "~/zorg/Dropbox/base/zrefile.org")
            "* TODO Review %c \n Added:%T\n")
@@ -442,12 +440,8 @@
                             org-gnus
                             org-id
                             org-info
-                            org-jsinfo
                             org-habit
                             org-inlinetask
-                            org-irc
-                            org-mew
-                            org-mhe
                             org-protocol
                             org-rmail
                             org-vm

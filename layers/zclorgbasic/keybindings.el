@@ -50,6 +50,7 @@
 (spacemacs/set-leader-keys "of" 'boxquote-insert-file)
 (spacemacs/set-leader-keys "oi" 'org-toggle-inline-images)
 (spacemacs/set-leader-keys "oj" 'org-toggle-latex-fragment)
+(spacemacs/set-leader-keys "ok" 'org-set-tags-command)
 (spacemacs/set-leader-keys "ol" 'org-toggle-link-display)
 (spacemacs/set-leader-keys "om" 'org-toggle-pretty-entities)
 (spacemacs/set-leader-keys "on" 'narrow-to-region)
