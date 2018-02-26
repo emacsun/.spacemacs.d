@@ -75,6 +75,7 @@
 (spacemacs/set-leader-keys "ow" 'widen)
 (spacemacs/set-leader-keys "ou" 'bh/narrow-up-one-level)
 (spacemacs/set-leader-keys "og" 'org-clock-goto)
+(spacemacs/set-leader-keys "oM" 'org-toggle-inline-images)
 (spacemacs/set-leader-keys "oo" 'bh/make-org-scratch)
 (spacemacs/set-leader-keys "oO" 'bh/punch-out)
 (spacemacs/set-leader-keys "or" 'boxquote-region)
@@ -100,6 +101,7 @@
   "s" 'org-agenda-schedule)
 (spacemacs/set-leader-keys-for-major-mode 'org-mode
   "r" 'org-refile
+  "M" 'org-toggle-inline-images
   "o" 'org-export-dispatch
   )
 ;;(spacemacs/declare-prefix "ao" "org");; define prefix
