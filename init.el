@@ -63,13 +63,13 @@ values."
              bibtex-completion-pdf-extension '(".pdf" ".djvu")
              )
      org
-     pandoc
      zclorgbasic
      zclorggtd
      zclorgexport
      zclorgpublish
      zclorgmobile
      zcljournal
+     pandoc
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
