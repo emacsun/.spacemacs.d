@@ -336,6 +336,9 @@ layers configuration. You are free to put any user code."
   (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
   (setq dotspacemacs-enable-paste-transient-state t)
   (setq neo-theme 'icons)
+  (with-eval-after-load 'yasnippet
+    (setq yas-snippet-dirs (remq 'yas-installed-snippets-dir yas-snippet-dirs)))
+
   (spacemacs/toggle-mode-line-minor-modes-off)
 
   )
