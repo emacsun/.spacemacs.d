@@ -1,4 +1,4 @@
-                                        ; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -62,14 +62,14 @@ values."
              bibtex-completion-pdf-field "File"
              bibtex-completion-pdf-extension '(".pdf" ".djvu")
              )
-     org
-     zclorgbasic
-     zclorggtd
-     zclorgexport
-     zclorgpublish
-     zclorgmobile
-     zcljournal
+      zclorgbasic
+      zclorggtd
+      zclorgexport
+      zclorgpublish
+      zclorgmobile
+      zcljournal
      pandoc
+     org
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -338,7 +338,7 @@ layers configuration. You are free to put any user code."
   (setq neo-theme 'icons)
   (with-eval-after-load 'yasnippet
     (setq yas-snippet-dirs (remq 'yas-installed-snippets-dir yas-snippet-dirs)))
-
+  (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   (spacemacs/toggle-mode-line-minor-modes-off)
 
   )
@@ -349,6 +349,10 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-pandoc-menu-entry
+   (quote
+    ((120 "to docx and open." org-pandoc-export-to-docx-and-open)
+     (88 "to docx." org-pandoc-export-to-docx))))
  '(package-selected-packages
    (quote
     (pandoc-mode ox-pandoc ht wc-mode all-the-icons org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-journal org-plus-contrib ox-hugo yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit ssh-agency spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jdee indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format cdlatex cargo bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
@@ -362,6 +366,8 @@ layers configuration. You are free to put any user code."
  '(evil-search-highlight-persist-highlight-face ((t (:background "aquamarine" :foreground "black"))))
  '(flyspell-incorrect ((t (:inherit nil :foreground "red" :underline (:color "#F92672" :style wave)))))
  '(font-lock-comment-face ((t (:foreground "cornflower blue"))))
+ '(markdown-code-face ((t nil)))
+ '(markdown-inline-code-face ((t (:inherit (markdown-code-face font-lock-constant-face)))))
  '(org-agenda-clocking ((t (:inherit secondary-selection :background "yellow"))))
  '(org-agenda-structure ((t (:background "#3C3D37" :foreground "spring green" :inverse-video nil :box (:line-width 2 :color "#272822") :underline nil :slant normal :weight bold :height 1.1))))
  '(org-code ((t (:foreground "spring green"))))

@@ -50,26 +50,30 @@
            "* TODO %?  \n Added:%T\n"
            :clock-in t :clock-resume t)
           ;;("h" "Hugo post")
-          ("m" "Math"
+          ("m" "Hugo:Math"
            entry (file+olp "~/zorg/zcl.space/content_org/math.org" "Math")
            (function org-hugo-new-subtree-post-capture-template)
            ":math:"
            :clock-in t :clock-resume t)
-          ("c" "Computer"
+          ("c" "Hugo:Computer"
            entry (file+olp "~/zorg/zcl.space/content_org/computer.org" "Computer")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("e" "Telecommunication"
+          ("e" "Hugo:Telecommunication"
            entry (file+olp "~/zorg/zcl.space/content_org/telecommunication.org" "Telecommunication")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("l" "Life"
+          ("l" "Hugo:Life"
            entry (file+olp "~/zorg/zcl.space/content_org/life.org" "Life")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ("o" "Tools"
+          ("o" "Hugo:Tools"
            entry (file+olp "~/zorg/zcl.space/content_org/tools.org" "Tools")
            (function org-hugo-new-subtree-post-capture-template)
+           :clock-in t :clock-resume t)
+          ("p" "Hugo:Projects"
+           entry (file+olp "~/zorg/zcl.space/content_org/projects.org" "Projects")
+           (function org-hugo-new-subtree-project-capture-template)
            :clock-in t :clock-resume t)
           ("i" "movie"
            entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Movie")

@@ -463,6 +463,27 @@ See `org-capture-templates' for more information."
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
+  (defun org-hugo-new-subtree-project-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+    (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
+           (date (format-time-string (org-time-stamp-format  :inactive) (org-current-time)))
+           (title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " fname)
+                   ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: "  ":summary \"summary\"")
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":image_preview \"projects/project.jpg\"")
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":[header] ")
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":image  \"projects/project_header.jpg\"  " )
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":caption  \"stay hungry, stay foolish:smile:\" ")
+                   ":END:"
+                   "%?\n")          ;Place the cursor here finally
+                 "\n")))
   ;; Do not cause auto Org->Hugo export to happen when saving captures
   (defun modi/org-capture--remove-auto-org-to-hugo-export-maybe ()
     "Function for `org-capture-before-finalize-hook'.
