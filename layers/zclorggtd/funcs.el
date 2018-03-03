@@ -478,9 +478,7 @@ See `org-capture-templates' for more information."
                    ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: "  ":summary \"summary\"")
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":image_preview \"projects/project.jpg\"")
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":[header] ")
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":image  \"projects/project_header.jpg\"  " )
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":caption  \"stay hungry, stay foolish:smile:\" ")
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":header '((image . \"projects/Readingabook_header.jpg\") (caption . \"stay hungry, stay foolish\")) " )
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
