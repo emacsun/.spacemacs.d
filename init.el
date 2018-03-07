@@ -157,7 +157,7 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Yahei Consolas Hybrid";
                                :size 50
-                               :weight normal
+                               :weight bold
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -366,6 +366,7 @@ layers configuration. You are free to put any user code."
  '(evil-search-highlight-persist-highlight-face ((t (:background "aquamarine" :foreground "black"))))
  '(flyspell-incorrect ((t (:inherit nil :foreground "red" :underline (:color "#F92672" :style wave)))))
  '(font-lock-comment-face ((t (:foreground "cornflower blue"))))
+ '(helm-selection-line ((t (:background "forest green" :foreground "cyan" :underline nil))))
  '(markdown-code-face ((t nil)))
  '(markdown-inline-code-face ((t (:inherit (markdown-code-face font-lock-constant-face)))))
  '(org-agenda-clocking ((t (:inherit secondary-selection :background "yellow"))))
