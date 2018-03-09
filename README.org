@@ -32,3 +32,5 @@ config.el into several layers:
 
 On my personal blog site www.zcl.space , there is a section dedicated
 to my use of Emacs.
+
+Enjoy!
