@@ -5,7 +5,7 @@
   (require 'org-habit)
   (org-defkey org-agenda-mode-map "p" 'org-journal-new-entry)
   (setq org-agenda-inhibit-startup t)
-
+  (setq org-agenda-time-leading-zero t)
   (setq org-clock-idle-time 10)
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;set up the org
