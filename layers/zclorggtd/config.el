@@ -352,8 +352,8 @@
   ;;;; Remove completed items from search results
   (setq org-agenda-skip-timestamp-if-done t)
 
-  ;;;;(setq org-agenda-include-diary t)
-  ;;;;(setq org-agenda-diary-file "~/zorg/diary.org")
+  (setq org-agenda-include-diary t)
+  (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
 
   (setq org-agenda-insert-diary-extract-time t)
 

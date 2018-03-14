@@ -18,7 +18,7 @@
     color:white;
   }
 </style>")
-
+(setq org-html-postamble nil)
 ;; Do not prompt to confirm evaluation
 ;; This may be dangerous - make sure you understand the consequences
 ;; of setting this -- see the docstring for details
@@ -38,6 +38,13 @@
 (setq org-export-htmlize-output-type (quote css))
 (setq org-export-with-LaTeX-fragments t)
 (setq org-export-headline-levels 6)
+(defvar nico-website-html-postamble
+  "<div class='footer'>
+Copyright 2018 %a (%v HTML).<br>
+Last updated %C. <br>
+Built with %c.
+</div>")
+
 (setq org-publish-project-alist
       (quote (("zcl-org"
                :base-directory "~/zorg/zcl.space-learning/"
@@ -53,6 +60,7 @@
                :sitemap-sort-folders last
                ;;:sitemap-file-entry-format "%t%d"
                :style-include-default nil
+               :html-postamble ,nico-website-html-postamble
                :section-numbers nil
                :table-of-contents nil
                :author-info nil
@@ -117,19 +125,19 @@
                                        ("was-html" . "<?xml version=\"1.0\" encoding=\"%s\"?>")
                                        ("php" . "<?php echo \"<?xml version=\\\"1.0\\\" encoding=\\\"%s\\\" ?>\"; ?>"))))
 (setq org-html-doctype "xhtml-strict")
-(setq org-html-postamble-format
-      (quote
-       (("en" "<div id=\"disqus_thread\"></div>
-<script type=\"text/javascript\">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'zclspace';
+;; (setq org-html-postamble-format
+;;       (quote
+;;        (("en" "<div id=\"disqus_thread\"></div>
+;; <script type=\"text/javascript\">
+;;     /* * * CONFIGURATION VARIABLES * * */
+;;     var disqus_shortname = 'zclspace';
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\" rel=\"nofollow\">comments powered by Disqus.</a></noscript>"))))
+;;     /* * * DON'T EDIT BELOW THIS LINE * * */
+;;     (function() {
+;;         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+;;         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+;;         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+;;     })();
+;; </script>
+;; <noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\" rel=\"nofollow\">comments powered by Disqus.</a></noscript>"))))
 )

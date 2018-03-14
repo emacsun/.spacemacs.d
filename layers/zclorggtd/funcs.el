@@ -459,7 +459,7 @@ See `org-capture-templates' for more information."
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " fname)
                    ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: "  ":summary \"summary\"")
+                   ,(concat ":EXPORT_DESCRIPTION: "  "summary of this post")
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
@@ -476,9 +476,9 @@ See `org-capture-templates' for more information."
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " fname)
                    ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: "  ":summary \"summary\"")
+                   ,(concat ":EXPORT_DESCRIPTION: "  "summary of this post")
                    ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":image_preview \"projects/project.jpg\"")
-                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":header '((image . \"projects/Readingabook_header.jpg\") (caption . \"stay hungry, stay foolish\")) " )
+                   ,(concat ":EXPORT_HUGO_CUSTOM_FRONT_MATTER+: " ":header '((image . \"projects/project_header.jpg\") (caption . \"stay hungry, stay foolish\")) " )
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))
