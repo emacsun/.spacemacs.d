@@ -62,14 +62,14 @@ values."
              bibtex-completion-pdf-field "File"
              bibtex-completion-pdf-extension '(".pdf" ".djvu")
              )
-      zclorgbasic
-      zclorggtd
-      zclorgexport
-      zclorgpublish
-      zclorgmobile
-      zcljournal
-     pandoc
      org
+     zclorgbasic
+     zclorggtd
+     zclorgexport
+     zclorgpublish
+     zclorgmobile
+     zcljournal
+     pandoc
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -291,10 +291,10 @@ in `dotspacemacs/user-config'."
   ;;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
   ;;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
   ;;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+  ;;         ("org-cn"   . "http://elpa.emacs-china.org/org/")
+  ;;         ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
   (setq tramp-ssh-controlmaster-options
@@ -355,7 +355,7 @@ layers configuration. You are free to put any user code."
      (88 "to docx." org-pandoc-export-to-docx))))
  '(package-selected-packages
    (quote
-    (pandoc-mode ox-pandoc ht wc-mode all-the-icons org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-journal org-plus-contrib ox-hugo yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit ssh-agency spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jdee indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format cdlatex cargo bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (ox-hugo htmlize pandoc-mode ox-pandoc ht wc-mode all-the-icons org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-journal org-plus-contrib yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit ssh-agency spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jdee indent-guide ibuffer-projectile hy-mode hungry-delete hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format cdlatex cargo bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -377,4 +377,5 @@ layers configuration. You are free to put any user code."
  '(org-level-3 ((t (:inherit default :foreground "light sea green" :height 1.2))))
  '(org-level-4 ((t (:inherit default :foreground "green" :height 1.1))))
  '(org-tag ((t (:foreground "light sea green" :weight bold))))
- '(region ((t (:inherit highlight :background "lawn green" :foreground "black")))))
+ '(region ((t (:inherit highlight :background "lawn green" :foreground "black"))))
+ '(sp-show-pair-match-face ((t (:background "#272822" :foreground "dim gray" :inverse-video t :weight normal)))))

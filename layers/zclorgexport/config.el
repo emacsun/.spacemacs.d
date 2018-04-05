@@ -1,7 +1,7 @@
 (with-eval-after-load 'org
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;wo de;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   (setq org-src-fontify-natively t)
-  (setq org-hide-emphasis-markers t)
+  (setq org-hide-emphasis-markers nil)
   ;;automatically delete this auxiliary files after export
   (setq org-export-coding-system 'utf-8)
     ;; set the exported latex file using the user defined labels
@@ -130,7 +130,8 @@
                 ("q" "#+begin_quote\n?\n#+end_quote" "<quote>\n?\n</quote>")
                 ("Q" "#+begin_tikzquote\n?\n#+end_tikzquote" "<tikzquote>\n?\n</tikzquote>")
                 ("v" "#+begin_verse\n?\n#+end_verse" "<verse>\n?\n</verse>")
-                ("c" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
+                ("c" "#+begin_corollary\n?\n#+end_corollary" "<corollary>\n?\n</corollary>")
+                ("C" "#+begin_center\n?\n#+end_center" "<center>\n?\n</center>")
                 ("l" "#+begin_latex\n?\n#+end_latex" "<literal style=\"latex\">\n?\n</literal>")
                 ("L" "#+latex: " "<literal style=\"latex\">?</literal>")
                 ("h" "#+begin_html\n?\n#+end_html" "<literal style=\"html\">\n?\n</literal>")

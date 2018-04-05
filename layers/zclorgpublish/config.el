@@ -1,13 +1,4 @@
 (with-eval-after-load 'org
-;; Explicitly load required exporters
-;;;###autoload
-;;(require 'ox-html)
-;;;###autoload
-;;(require 'ox-latex)
-;;;###autoload
-;;(require 'ox-ascii)
-;;;###autoload
-;;(require 'ox-publish)
 (setq org-ditaa-jar-path "~/java/ditaa0_6b.jar")
 (setq org-plantuml-jar-path "~/java/plantuml.jar")
 
@@ -46,7 +37,8 @@ Built with %c.
 </div>")
 
 (setq org-publish-project-alist
-      (quote (("zcl-org"
+      (quote (
+              ("zcl-org"
                :base-directory "~/zorg/zcl.space-learning/"
                :publishing-directory "~/zorg/zcl.space-learning/"
                :recursive t
@@ -74,6 +66,35 @@ Built with %c.
                :author nil)
               ("zcl"
                :components ("zcl-org" "zcl-extra"))
+
+              ("hugo-org"
+               :base-directory "~/zorg/zcl.space/content_org/"
+               :publishing-directory "~/zorg/zcl.space/content_org/"
+               :recursive t
+               :section-number nil
+               :table-of-contents nil
+               :base-extension "org"
+               :publishing-function org-html-publish-to-html
+               :auto-sitemap t                ; Generate sitemap.org automagically...
+               :sitemap-filename "sitemap.org"  ;  call it sitemap.org
+               :sitemap-title "站点地图"         ;
+               :sitemap-sort-folders last
+               ;;:sitemap-file-entry-format "%t%d"
+               :style-include-default nil
+               :html-postamble nil
+               :section-numbers nil
+               :table-of-contents nil
+               :author-info nil
+               :creator-info nil)
+              ("hugo-extra"
+               :base-directory "~/zorg/zcl.space/content_org/"
+               :publishing-directory "~/zorg/zcl.space/content_org/"
+               :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
+               :publishing-function org-publish-attachment
+               :recursive t
+               :author nil)
+              ("hugo"
+               :components ("hugo-org" "hugo-extra"))
 
               ("znotes-inherit"
                :base-directory "~/zorg/zcl.space-learning/"
