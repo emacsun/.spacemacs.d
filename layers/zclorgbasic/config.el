@@ -8,6 +8,13 @@
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   ;;(setq org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
   (setq org-ellipsis "⤵");Other interesting characters are ▼, ↴, and ⋱.
+    ;;(setq org-bullets-bullet-list '("✿"  "♣" "♧" "❀"))
+  ;;  "➢" "➣" "➤" "≪", "≫", "«", "»"
+  ;; "✡" "✽" "✲" "✱" "✻" "✼" "✽" "✾" "✿" "❀" "❁" "❂" "❃" "❄" "❅" "❆" "❇"
+  ;;  "○" "☉" "◎" "◉" "○" "◌" "◎" "●" "◦" "◯" "❍" "￮" "⊙" "⊚" "⊛" "∙" "∘"
+  ;;"☯" "☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷"
+  ;; Org
+
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (add-hook 'org-mode-hook 'turn-on-font-lock)
   ;; Org
