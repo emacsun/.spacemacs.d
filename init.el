@@ -340,6 +340,8 @@ layers configuration. You are free to put any user code."
     (setq yas-snippet-dirs (remq 'yas-installed-snippets-dir yas-snippet-dirs)))
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   (spacemacs/toggle-mode-line-minor-modes-off)
+  (setq projectile-enable-caching t)
+  (server-start)
 
   )
 ;; Do not write anything past this comment. This is where Emacs will
