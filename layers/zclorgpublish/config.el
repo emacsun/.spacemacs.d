@@ -9,7 +9,6 @@
     color:white;
   }
 </style>")
-(setq org-html-postamble nil)
 ;; Do not prompt to confirm evaluation
 ;; This may be dangerous - make sure you understand the consequences
 ;; of setting this -- see the docstring for details
@@ -135,7 +134,7 @@ Built with %c.
 
 ;;(setq org-latex-toc-command "\\tableofcontents\n\\titlepic{\\includegraphics[scale=0.25]{../../img/sinc.PNG}}\n\n\n")
 (setq org-latex-toc-command "\\tableofcontents\n")
-(setq org-html-postamble t)
+(setq org-html-postamble nil)
 ;;(setq org-html-postamble-format )
 
 (global-set-key (kbd "C-<f12>") 'bh/save-then-publish)
