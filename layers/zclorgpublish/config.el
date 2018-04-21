@@ -51,7 +51,7 @@ Built with %c.
                :sitemap-sort-folders last
                ;;:sitemap-file-entry-format "%t%d"
                :style-include-default nil
-               :html-postamble ,nico-website-html-postamble
+               :html-postamble nil
                :section-numbers nil
                :table-of-contents nil
                :author-info nil

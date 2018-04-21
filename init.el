@@ -341,8 +341,7 @@ layers configuration. You are free to put any user code."
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   (spacemacs/toggle-mode-line-minor-modes-off)
   (setq projectile-enable-caching t)
-  (server-start)
-
+  ;;(server-start)
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
