@@ -11,6 +11,7 @@
 (spacemacs/set-leader-keys "fp" 'ffap)
 (global-set-key (kbd "C-x b") 'eshell)
 (global-set-key (kbd "M-SPC") 'set-mark-command)
+(global-set-key (kbd "C-SPC") 'set-mark-command)
 
 (global-set-key [f4] 'helm-projectile-grep)
 

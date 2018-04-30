@@ -7,7 +7,7 @@
   ;; ❀❤♫♠♣♥♦♡♢♤♧
   (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   ;;(setq org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
-  (setq org-ellipsis "⤵");Other interesting characters are ▼, ↴, and ⋱.
+  (setq org-ellipsis "▼");Other interesting characters are ▼, ↴, and ⋱.
     ;;(setq org-bullets-bullet-list '("✿"  "♣" "♧" "❀"))
   ;;  "➢" "➣" "➤" "≪", "≫", "«", "»"
   ;; "✡" "✽" "✲" "✱" "✻" "✼" "✽" "✾" "✿" "❀" "❁" "❂" "❃" "❄" "❅" "❆" "❇"
