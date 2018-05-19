@@ -38,8 +38,8 @@ Built with %c.
 (setq org-publish-project-alist
       (quote (
               ("zcl-org"
-               :base-directory "~/zorg/zcl.space-learning/"
-               :publishing-directory "~/zorg/zcl.space-learning/"
+               :base-directory "~/Dropbox/zcl.space-learning/"
+               :publishing-directory "~/Dropbox/zcl.space-learning/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -57,8 +57,8 @@ Built with %c.
                :author-info nil
                :creator-info nil)
               ("zcl-extra"
-               :base-directory "~/zorg/zcl.space-learning/"
-               :publishing-directory "~/zorg/zcl.space-learning/"
+               :base-directory "~/Dropbox/zcl.space-learning/"
+               :publishing-directory "~/Dropbox/zcl.space-learning/"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -67,8 +67,8 @@ Built with %c.
                :components ("zcl-org" "zcl-extra"))
 
               ("hugo-org"
-               :base-directory "~/zorg/zcl.space/content_org/"
-               :publishing-directory "~/zorg/zcl.space/content_org/"
+               :base-directory "~/Dropbox/zcl.space/content_org/"
+               :publishing-directory "~/Dropbox/zcl.space/content_org/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -86,8 +86,8 @@ Built with %c.
                :author-info nil
                :creator-info nil)
               ("hugo-extra"
-               :base-directory "~/zorg/zcl.space/content_org/"
-               :publishing-directory "~/zorg/zcl.space/content_org/"
+               :base-directory "~/Dropbox/zcl.space/content_org/"
+               :publishing-directory "~/Dropbox/zcl.space/content_org/"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t
@@ -96,15 +96,15 @@ Built with %c.
                :components ("hugo-org" "hugo-extra"))
 
               ("znotes-inherit"
-               :base-directory "~/zorg/zcl.space-learning/"
+               :base-directory "~/Dropbox/zcl.space-learning/"
                :recursive t
                :base-extension "css\\|js"
-               :publishing-directory "~/zorg/zcl.space-learning/znotes/"
+               :publishing-directory "~/Dropbox/zcl.space-learning/znotes/"
                :publishing-function org-publish-attachment
                )
               ("znotes-org"
-               :base-directory "~/zorg/zcl.space-learning/znotes"
-               :publishing-directory "~/zorg/zcl.space-learning/znotes/"
+               :base-directory "~/Dropbox/zcl.space-learning/znotes"
+               :publishing-directory "~/Dropbox/zcl.space-learning/znotes/"
                :recursive t
                :section-number nil
                :table-of-contents nil
@@ -122,8 +122,8 @@ Built with %c.
                :creator-info nil
                )
               ("znotes-extra"
-               :base-directory "~/zorg/zcl.space-learning/znotes"
-               :publishing-directory "~/zorg/zcl.space-learning/znotes"
+               :base-directory "~/Dropbox/zcl.space-learning/znotes"
+               :publishing-directory "~/Dropbox/zcl.space-learning/znotes"
                :base-extension "css\\|pdf\\|jpg\\|gif\\|PNG\\|JPG\\|png"
                :publishing-function org-publish-attachment
                :recursive t

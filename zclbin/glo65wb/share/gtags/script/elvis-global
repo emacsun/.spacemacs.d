@@ -1,5 +1,0 @@
-#!/bin/sh
-#
-# global command for elvis
-#
-${GTAGSGLOBAL-global} --result=ctags "$@"

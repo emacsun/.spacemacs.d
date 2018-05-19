@@ -15,7 +15,7 @@
 
 (global-set-key [f4] 'helm-projectile-grep)
 
-(set-register ?i (cons 'file "~/zorg/zcl.space/index.org"))
+(set-register ?i (cons 'file "~/Dropbox/zcl.space/index.org"))
 ;; define-key copied  from the init.el
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
 (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
@@ -37,7 +37,7 @@
 (spacemacs/set-leader-keys "xo" 'delete-blank-lines)
 (spacemacs/set-leader-keys "xll" 'qiang-copy-line)
 (spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
-(spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/zorg/zcl.space-learning/index.org")))
+(spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/Dropbox/zcl.space-learning/index.org")))
 (define-key evil-insert-state-map (kbd "C-a") 'beginning-of-line)
 
 (define-key evil-insert-state-map (kbd "C-d") 'delete-char)

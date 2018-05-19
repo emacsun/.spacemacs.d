@@ -122,12 +122,11 @@
                               "%latex -interaction nonstopmode -output-directory %o %f"
                               "rm -rf %b.out %b.log %b.bbl %b.thm %b.aux auto "
                               ))
-(when (string-equal system-type "windows-nt")
-  (add-hook 'LaTeX-mode-hook
-      (lambda()
-      (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
-      (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
-      (setq TeX-command-default "pdflatex"))))
+(add-hook 'LaTeX-mode-hook
+          (lambda()
+            (add-to-list 'TeX-command-list '("PdfLaTeX" "%`pdflatex%(mode)%' %t" TeX-run-TeX nil t))
+            (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+            (setq TeX-command-default "pdflatex")))
 (setq org-list-allow-alphabetical t)
   (setq org-structure-template-alist
         (quote (("s" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")

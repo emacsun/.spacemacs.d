@@ -9,20 +9,20 @@
   (setq org-clock-idle-time 10)
 ;;;;;;;;orggtd;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;set up the org
-  (setq org-agenda-files (list "~/zorg/Dropbox/base/zlife.org"
-                               "~/zorg/Dropbox/base/zwork.org"
-                               "~/zorg/Dropbox/base/zrefile.org"
-                               "~/zorg/Dropbox/base/zdiary.org"
-                               "~/zorg/Dropbox/base/ztimelog.org"
+  (setq org-agenda-files (list "~/Dropbox/base/zlife.org"
+                               "~/Dropbox/base/zwork.org"
+                               "~/Dropbox/base/zrefile.org"
+                               "~/Dropbox/base/zdiary.org"
+                               "~/Dropbox/base/ztimelog.org"
                              ))
   (setq org-refile-targets (quote (
-            ("~/zorg/Dropbox/base/zwork.org" :maxlevel . 6)
-            ("~/zorg/Dropbox/base/zlife.org" :maxlevel . 6)
-            ("~/zorg/zcl.space/content_org/math.org" :maxlevel . 6)
-            ("~/zorg/zcl.space/content_org/computer.org" :maxlevel . 6)
-            ("~/zorg/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
-            ("~/zorg/zcl.space/content_org/life.org" :maxlevel . 6)
-            ("~/zorg/zcl.space/content_org/tools.org" :maxlevel . 6))))
+            ("~/Dropbox/base/zwork.org" :maxlevel . 6)
+            ("~/Dropbox/base/zlife.org" :maxlevel . 6)
+            ("~/Dropbox/zcl.space/content_org/math.org" :maxlevel . 6)
+            ("~/Dropbox/zcl.space/content_org/computer.org" :maxlevel . 6)
+            ("~/Dropbox/zcl.space/content_org/telecommunication.org" :maxlevel . 6)
+            ("~/Dropbox/zcl.space/content_org/life.org" :maxlevel . 6)
+            ("~/Dropbox/zcl.space/content_org/tools.org" :maxlevel . 6))))
 
   (setq org-agenda-use-tag-inheritance t)
   (setq org-todo-keywords
@@ -46,49 +46,49 @@
 
   (setq org-capture-templates
         '(
-          ("t" "todo" entry (file "~/zorg/Dropbox/base/zrefile.org")
+          ("t" "todo" entry (file "~/Dropbox/base/zrefile.org")
            "* TODO %?  \n Added:%T\n"
            :clock-in t :clock-resume t)
           ;;("h" "Hugo post")
           ("m" "Hugo:Math"
-           entry (file+olp "~/zorg/zcl.space/content_org/math.org" "Math")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/math.org" "Math")
            (function org-hugo-new-subtree-post-capture-template)
            ":math:"
            :clock-in t :clock-resume t)
           ("c" "Hugo:Computer"
-           entry (file+olp "~/zorg/zcl.space/content_org/computer.org" "Computer")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/computer.org" "Computer")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ("e" "Hugo:Telecommunication"
-           entry (file+olp "~/zorg/zcl.space/content_org/telecommunication.org" "Telecommunication")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/telecommunication.org" "Telecommunication")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ("l" "Hugo:Life"
-           entry (file+olp "~/zorg/zcl.space/content_org/life.org" "Life")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/life.org" "Life")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ("o" "Hugo:Tools"
-           entry (file+olp "~/zorg/zcl.space/content_org/tools.org" "Tools")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/tools.org" "Tools")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
           ("p" "Hugo:Projects"
-           entry (file+olp "~/zorg/zcl.space/content_org/projects.org" "Projects")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/projects.org" "Projects")
            (function org-hugo-new-subtree-project-capture-template)
            :clock-in t :clock-resume t)
           ("i" "movie"
-           entry (file+olp "~/zorg/zcl.space/content_org/all-posts.org" "Movie")
+           entry (file+olp "~/Dropbox/zcl.space/content_org/all-posts.org" "Movie")
            (function org-hugo-new-subtree-post-capture-template)
            :clock-in t :clock-resume t)
-          ;;;; ("w" "wordpress" entry (file+headline "~/zorg/Dropbox/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
-          ;;;; ("n" "notes" entry (file "~/zorg/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
-          ;;;; ("c" "communication" entry (file "~/zorg/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
-          ("g" "my Log Time" entry (file+datetree "~/zorg/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
-          ("d" "diary" entry (file+datetree "~/zorg/Dropbox/base/zdiary.org" ) "*  %?\n%T" :clock-in t :clock-resume t)
-          ("x" "org-protocol" entry (file "~/zorg/Dropbox/base/zrefile.org")
+          ;;;; ("w" "wordpress" entry (file+headline "~/Dropbox/base/zwork.org" "wordpress")"** TODO %? \n Added:%T\n" )
+          ;;;; ("n" "notes" entry (file "~/output/znotes/znotes-index.org")"* %?   :note:\n" :clock-in t :clock-resume t)
+          ;;;; ("c" "communication" entry (file "~/output/communication/communication-index.org")"* %?   :communication:\n" :clock-in t :clock-resume t)
+          ("g" "my Log Time" entry (file+datetree "~/Dropbox/base/ztimelog.org" ) "** %T - %?  :timelog:" :clock-in t :clock-resume t)
+          ("d" "diary" entry (file+datetree "~/Dropbox/base/zdiary.org" ) "*  %?\n%T" :clock-in t :clock-resume t)
+          ("x" "org-protocol" entry (file "~/Dropbox/base/zrefile.org")
            "* TODO Review %c \n Added:%T\n")
-          ;;;;	("m" "Meeting" entry (file+datetree "~/zorg/Dropbox/base/timelog.org") "** %T MEETING with %? :MEETING:"
+          ;;;;	("m" "Meeting" entry (file+datetree "~/Dropbox/base/timelog.org") "** %T MEETING with %? :MEETING:"
           ;;;;          :clock-in t :clock-resume t )
-          ;;;;	("p" "Phone call" entry (file+datetree "~/zorg/Dropbox/base/timelog.org") "** %T PHONE %? :PHONE:"
+          ;;;;	("p" "Phone call" entry (file+datetree "~/Dropbox/base/timelog.org") "** %T PHONE %? :PHONE:"
           ;;;;          :clock-in t :clock-resume t)
           ))
 
@@ -353,7 +353,7 @@
   (setq org-agenda-skip-timestamp-if-done t)
 
   (setq org-agenda-include-diary t)
-  (setq org-agenda-diary-file  "~/zorg/Dropbox/base/zdiary.org")
+  (setq org-agenda-diary-file  "~/Dropbox/base/zdiary.org")
 
   (setq org-agenda-insert-diary-extract-time t)
 

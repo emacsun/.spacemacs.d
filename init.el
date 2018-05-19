@@ -56,9 +56,9 @@ values."
      ;;ycmd
      latex
      (bibtex :variables
-             org-ref-default-bibliography '("~/zorg/research_library/zcl.bib")
-             org-ref-pdf-directory "~/zorg/research_library"
-             org-ref-bibliography-notes "~/zorg/papernotes.org"
+             org-ref-default-bibliography '("~/Dropbox/research_library/zcl.bib")
+             org-ref-pdf-directory "~/Dropbox/research_library"
+             org-ref-bibliography-notes "~/Dropbox/papernotes.org"
              bibtex-completion-pdf-field "File"
              bibtex-completion-pdf-extension '(".pdf" ".djvu")
              )
@@ -69,7 +69,6 @@ values."
      zclorgpublish
      zclorgmobile
      zcljournal
-     pandoc
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      (syntax-checking :variables
@@ -155,9 +154,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Yahei Consolas Hybrid";
-                               :size 50
-                               :weight bold
+   dotspacemacs-default-font '("Source Code Pro";"Consolas";
+                               :size 20
+                               :weight normal
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -333,12 +332,10 @@ layers configuration. You are free to put any user code."
     (setq jdee-server-dir "~/.spacemacs.d/local/jdee-server/target")
     (setq jdee-read-compile-args nil))
   (require 'helm-bookmark)
-  (setq-default ispell-program-name "C:/Aspell/bin/aspell.exe")
   (setq dotspacemacs-enable-paste-transient-state t)
   (setq neo-theme 'nerd) ;icons
   (with-eval-after-load 'yasnippet
     (setq yas-snippet-dirs (remq 'yas-installed-snippets-dir yas-snippet-dirs)))
-  (setq org-bullets-bullet-list '("✿" "❀" "♣" "♧" ))
   (spacemacs/toggle-mode-line-minor-modes-off)
   (setq projectile-enable-caching t)
   ;;(server-start)
@@ -350,13 +347,13 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-pandoc-menu-entry
-   (quote
-    ((120 "to docx and open." org-pandoc-export-to-docx-and-open)
-     (88 "to docx." org-pandoc-export-to-docx))))
+ '(gud-pdb-command-name "python3 -m pdb")
+ '(org-babel-python-command "python3.6")
  '(package-selected-packages
    (quote
-    (powerline spinner alert log4e gntp markdown-mode hydra dash-functional parent-mode projectile request xcscope haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct seq flycheck pkg-info epl flx magit magit-popup git-commit ghub let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight web-completion-data pos-tip company rust-mode bind-map bind-key yasnippet packed auctex anaconda-mode pythonic f dash s memoize helm avy helm-core async auto-complete popup ox-hugo htmlize pandoc-mode ox-pandoc ht wc-mode all-the-icons org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-journal org-plus-contrib yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit ssh-agency spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jdee indent-guide ibuffer-projectile hy-mode hungry-delete hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format cdlatex cargo bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (realgud powerline spinner alert log4e gntp markdown-mode hydra dash-functional parent-mode projectile request xcscope haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter flyspell-correct seq flycheck pkg-info epl flx magit magit-popup git-commit ghub let-alist with-editor smartparens iedit anzu evil goto-chg undo-tree highlight web-completion-data pos-tip company rust-mode bind-map bind-key yasnippet packed auctex pythonic f dash s memoize helm avy helm-core async auto-complete popup ox-hugo htmlize pandoc-mode ox-pandoc ht wc-mode all-the-icons org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib biblio biblio-core org-journal org-plus-contrib yapfify xterm-color ws-butler winum which-key web-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit ssh-agency spaceline solarized-theme smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox org-present org-pomodoro org-mobile-sync org-mime org-download org-bullets open-junk-file neotree multi-term move-text monokai-theme mmm-mode matlab-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode jdee indent-guide ibuffer-projectile hy-mode hungry-delete hl-todo highlight-symbol highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump disaster diminish diff-hl define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode cmake-mode clean-aindent-mode clang-format cdlatex cargo bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(python-shell-interpreter "ipython3")
+ '(realgud-safe-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
